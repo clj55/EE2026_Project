@@ -1,15 +1,4 @@
 Vivado Simulator 2018.2
 Time resolution is 1 ps
-Stopped at time : 53334425 ns : File "C:/Users/clair/EE2026_vivado/EE2026_Project/MODS.xpr/MODS/MODS.srcs/sources_1/new/Top_Student.v" Line 106
-Stopped at time : 80000025 ns : File "C:/Users/clair/EE2026_vivado/EE2026_Project/MODS.xpr/MODS/MODS.srcs/sources_1/new/Top_Student.v" Line 115
-Stopped at time : 80000035 ns : File "C:/Users/clair/EE2026_vivado/EE2026_Project/MODS.xpr/MODS/MODS.srcs/sources_1/new/Top_Student.v" Line 115
-Stopped at time : 80000045 ns : File "C:/Users/clair/EE2026_vivado/EE2026_Project/MODS.xpr/MODS/MODS.srcs/sources_1/new/Top_Student.v" Line 115
-Stopped at time : 228671265 ns : File "C:/Users/clair/EE2026_vivado/EE2026_Project/MODS.xpr/MODS/MODS.srcs/sources_1/new/Top_Student.v" Line 119
-Stopped at time : 53334425 ns : File "C:/Users/clair/EE2026_vivado/EE2026_Project/MODS.xpr/MODS/MODS.srcs/sources_1/new/Top_Student.v" Line 106
-Stopped at time : 53334425 ns : File "C:/Users/clair/EE2026_vivado/EE2026_Project/MODS.xpr/MODS/MODS.srcs/sources_1/new/Top_Student.v" Line 108
-Stopped at time : 54001085 ns : File "C:/Users/clair/EE2026_vivado/EE2026_Project/MODS.xpr/MODS/MODS.srcs/sources_1/new/Top_Student.v" Line 191
-Stopped at time : 54667765 ns : File "C:/Users/clair/EE2026_vivado/EE2026_Project/MODS.xpr/MODS/MODS.srcs/sources_1/new/Top_Student.v" Line 191
-Stopped at time : 55334445 ns : File "C:/Users/clair/EE2026_vivado/EE2026_Project/MODS.xpr/MODS/MODS.srcs/sources_1/new/Top_Student.v" Line 191
-Stopped at time : 56001125 ns : File "C:/Users/clair/EE2026_vivado/EE2026_Project/MODS.xpr/MODS/MODS.srcs/sources_1/new/Top_Student.v" Line 191
-Stopped at time : 56667805 ns : File "C:/Users/clair/EE2026_vivado/EE2026_Project/MODS.xpr/MODS/MODS.srcs/sources_1/new/Top_Student.v" Line 191
-Stopped at time : 80000025 ns : File "C:/Users/clair/EE2026_vivado/EE2026_Project/MODS.xpr/MODS/MODS.srcs/sources_1/new/Top_Student.v" Line 115
+Stopped at time : 0 fs : File "C:/Users/clair/EE2026_vivado/EE2026_Project/MODS.xpr/MODS/MODS.srcs/sources_1/new/Top_Student.v" Line 77
+Stopped at time : 666685 ns : File "C:/Users/clair/EE2026_vivado/EE2026_Project/MODS.xpr/MODS/MODS.srcs/sources_1/new/Top_Student.v" Line 185

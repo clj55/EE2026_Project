@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date         : Sun Oct  6 18:43:47 2024
+| Date         : Sun Oct  6 23:39:19 2024
 | Host         : Computer running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Top_Student_control_sets_placed.rpt
 | Design       : Top_Student
@@ -23,8 +23,8 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Number of unique control sets                            |    19 |
-| Unused register locations in slices containing registers |    26 |
+| Number of unique control sets                            |    16 |
+| Unused register locations in slices containing registers |    28 |
 +----------------------------------------------------------+-------+
 
 
@@ -36,9 +36,9 @@ Table of Contents
 +--------+--------------+
 |      4 |            1 |
 |      6 |            1 |
-|     10 |            1 |
+|     10 |            2 |
 |     12 |            1 |
-|    16+ |           15 |
+|    16+ |           11 |
 +--------+--------------+
 
 
@@ -48,40 +48,37 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              46 |           14 |
+| No           | No                    | No                     |             114 |           25 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |             378 |           52 |
-| Yes          | No                    | No                     |             168 |           25 |
+| No           | Yes                   | No                     |             378 |           55 |
+| Yes          | No                    | No                     |             104 |           13 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              54 |           10 |
+| Yes          | Yes                   | No                     |              48 |           10 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+-----------------------------+--------------------------------+---------------------------------+------------------+----------------+
-|         Clock Signal        |          Enable Signal         |         Set/Reset Signal        | Slice Load Count | Bel Load Count |
-+-----------------------------+--------------------------------+---------------------------------+------------------+----------------+
-| ~clk6p25m_BUFG              |                                |                                 |                2 |              4 |
-|  oneHzclk/wait_count_reg[1] |                                |                                 |                1 |              6 |
-|  BASYS_CLOCK_IBUF_BUFG      | ddd/x_red[7]_i_2_n_0           | ddd/x_red[7]_i_1_n_0            |                2 |             10 |
-|  BASYS_CLOCK_IBUF_BUFG      | ddd/y_green[5]_i_2_n_0         | ddd/y_green[5]_i_1_n_0          |                2 |             12 |
-|  BASYS_CLOCK_IBUF_BUFG      | ddd/x_green_0                  | ddd/y_green[5]_i_1_n_0          |                3 |             16 |
-|  BASYS_CLOCK_IBUF_BUFG      | ddd/y_red                      | ddd/y_red[7]_i_1_n_0            |                3 |             16 |
-|  counter_clk                | ddd/greenx/enable021_out       |                                 |                3 |             16 |
-|  counter_clk                | ddd/greeny/E[0]                |                                 |                3 |             16 |
-|  counter_clk                | ddd/redx/out_var[7]_i_1__2_n_0 |                                 |                3 |             16 |
-|  counter_clk                | ddd/redy/enable0               |                                 |                3 |             16 |
-| ~clk6p25m_BUFG              |                                | oled/frame_counter[16]_i_1_n_0  |                4 |             32 |
-|  BASYS_CLOCK_IBUF_BUFG      |                                |                                 |               11 |             36 |
-| ~clk6p25m_BUFG              | oled/delay[0]_i_1_n_0          |                                 |                5 |             40 |
-| ~clk6p25m_BUFG              | oled/state                     |                                 |                8 |             64 |
-|  BASYS_CLOCK_IBUF_BUFG      |                                | fiftyHzclk/COUNT[0]_i_1__2_n_0  |                8 |             64 |
-|  BASYS_CLOCK_IBUF_BUFG      |                                | oneHzclk/COUNT[0]_i_1__0_n_0    |                8 |             64 |
-|  BASYS_CLOCK_IBUF_BUFG      |                                | sixp25MHzclk/clear              |                8 |             64 |
-|  BASYS_CLOCK_IBUF_BUFG      |                                | thirtyHzclk/COUNT[0]_i_1__1_n_0 |                8 |             64 |
-| ~clk6p25m_BUFG              |                                | oled/spi_word[39]_i_1_n_0       |               16 |             90 |
-+-----------------------------+--------------------------------+---------------------------------+------------------+----------------+
++------------------------+-----------------------------------+---------------------------------+------------------+----------------+
+|      Clock Signal      |           Enable Signal           |         Set/Reset Signal        | Slice Load Count | Bel Load Count |
++------------------------+-----------------------------------+---------------------------------+------------------+----------------+
+| ~clk6p25m_BUFG         |                                   |                                 |                2 |              4 |
+|  oneHzclk/clk1         |                                   |                                 |                1 |              6 |
+|  BASYS_CLOCK_IBUF_BUFG | ddd/x_red[6]_i_2_n_0              | ddd/x_red[6]_i_1_n_0            |                2 |             10 |
+|  BASYS_CLOCK_IBUF_BUFG | ddd/y_green[5]_i_2_n_0            | ddd/y_green[5]_i_1_n_0          |                2 |             10 |
+|  BASYS_CLOCK_IBUF_BUFG | ddd/x_green[6]_i_1_n_0            | ddd/y_green[5]_i_1_n_0          |                4 |             12 |
+|  BASYS_CLOCK_IBUF_BUFG | ddd/y_red[7]_i_1_n_0              | ddd/x_red[6]_i_1_n_0            |                2 |             16 |
+| ~clk6p25m_BUFG         |                                   | oled/frame_counter[16]_i_1_n_0  |                4 |             32 |
+|  BASYS_CLOCK_IBUF_BUFG |                                   |                                 |               14 |             40 |
+| ~clk6p25m_BUFG         | oled/delay[0]_i_1_n_0             |                                 |                5 |             40 |
+|  BASYS_CLOCK_IBUF_BUFG |                                   | sixp25MHzclk/clear              |                8 |             64 |
+|  BASYS_CLOCK_IBUF_BUFG |                                   | thirtyHzclk/COUNT[0]_i_1__1_n_0 |                8 |             64 |
+|  BASYS_CLOCK_IBUF_BUFG |                                   | oneHzclk/COUNT[0]_i_1__0_n_0    |                8 |             64 |
+|  BASYS_CLOCK_IBUF_BUFG |                                   | fiftyHzclk/COUNT[0]_i_1__2_n_0  |                8 |             64 |
+| ~clk6p25m_BUFG         | oled/FSM_onehot_state[31]_i_1_n_0 |                                 |                8 |             64 |
+|  counter_clk           |                                   |                                 |                8 |             64 |
+| ~clk6p25m_BUFG         |                                   | oled/spi_word[39]_i_1_n_0       |               19 |             90 |
++------------------------+-----------------------------------+---------------------------------+------------------+----------------+
 
 
