@@ -1,0 +1,958 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Tue Oct  8 02:42:32 2024
+# Process ID: 1020
+# Current directory: C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.runs/synth_1
+# Command line: vivado.exe -log main.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source main.tcl
+# Log file: C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.runs/synth_1/main.vds
+# Journal file: C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source main.tcl -notrace
+Command: synth_design -top main -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 20804 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 387.637 ; gain = 101.043
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'main' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/main.v:23]
+INFO: [Synth 8-6157] synthesizing module 'flexible_clock' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/flexible_clock.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'flexible_clock' (1#1) [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/flexible_clock.v:23]
+WARNING: [Synth 8-689] width (1) of port connection 'CLOCK' does not match port width (32) of module 'flexible_clock' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/main.v:35]
+WARNING: [Synth 8-689] width (1) of port connection 'CLOCK' does not match port width (32) of module 'flexible_clock' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/main.v:36]
+WARNING: [Synth 8-689] width (1) of port connection 'CLOCK' does not match port width (32) of module 'flexible_clock' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/main.v:37]
+WARNING: [Synth 8-689] width (1) of port connection 'CLOCK' does not match port width (32) of module 'flexible_clock' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/main.v:38]
+WARNING: [Synth 8-689] width (1) of port connection 'CLOCK' does not match port width (32) of module 'flexible_clock' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/main.v:39]
+INFO: [Synth 8-6157] synthesizing module 'Oled_Display' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/imports/Desktop/Oled_Display.v:36]
+	Parameter Width bound to: 96 - type: integer 
+	Parameter Height bound to: 64 - type: integer 
+	Parameter PixelCount bound to: 6144 - type: integer 
+	Parameter PixelCountWidth bound to: 13 - type: integer 
+	Parameter ClkFreq bound to: 6250000 - type: integer 
+	Parameter FrameFreq bound to: 60 - type: integer 
+	Parameter FrameDiv bound to: 104166 - type: integer 
+	Parameter FrameDivWidth bound to: 17 - type: integer 
+	Parameter PowerDelay bound to: 20 - type: integer 
+	Parameter ResetDelay bound to: 3 - type: integer 
+	Parameter VccEnDelay bound to: 20 - type: integer 
+	Parameter StartupCompleteDelay bound to: 100 - type: integer 
+	Parameter MaxDelay bound to: 100 - type: integer 
+	Parameter MaxDelayCount bound to: 625000 - type: integer 
+	Parameter StateCount bound to: 32 - type: integer 
+	Parameter StateWidth bound to: 5 - type: integer 
+	Parameter PowerUp bound to: 5'b00000 
+	Parameter Reset bound to: 5'b00001 
+	Parameter ReleaseReset bound to: 5'b00011 
+	Parameter EnableDriver bound to: 5'b00010 
+	Parameter DisplayOff bound to: 5'b00110 
+	Parameter SetRemapDisplayFormat bound to: 5'b00111 
+	Parameter SetStartLine bound to: 5'b00101 
+	Parameter SetOffset bound to: 5'b00100 
+	Parameter SetNormalDisplay bound to: 5'b01100 
+	Parameter SetMultiplexRatio bound to: 5'b01101 
+	Parameter SetMasterConfiguration bound to: 5'b01111 
+	Parameter DisablePowerSave bound to: 5'b01110 
+	Parameter SetPhaseAdjust bound to: 5'b01010 
+	Parameter SetDisplayClock bound to: 5'b01011 
+	Parameter SetSecondPrechargeA bound to: 5'b01001 
+	Parameter SetSecondPrechargeB bound to: 5'b01000 
+	Parameter SetSecondPrechargeC bound to: 5'b11000 
+	Parameter SetPrechargeLevel bound to: 5'b11001 
+	Parameter SetVCOMH bound to: 5'b11011 
+	Parameter SetMasterCurrent bound to: 5'b11010 
+	Parameter SetContrastA bound to: 5'b11110 
+	Parameter SetContrastB bound to: 5'b11111 
+	Parameter SetContrastC bound to: 5'b11101 
+	Parameter DisableScrolling bound to: 5'b11100 
+	Parameter ClearScreen bound to: 5'b10100 
+	Parameter VccEn bound to: 5'b10101 
+	Parameter DisplayOn bound to: 5'b10111 
+	Parameter PrepareNextFrame bound to: 5'b10110 
+	Parameter SetColAddress bound to: 5'b10010 
+	Parameter SetRowAddress bound to: 5'b10011 
+	Parameter WaitNextFrame bound to: 5'b10001 
+	Parameter SendPixel bound to: 5'b10000 
+	Parameter SpiCommandMaxWidth bound to: 40 - type: integer 
+	Parameter SpiCommandBitCountWidth bound to: 6 - type: integer 
+INFO: [Synth 8-226] default block is never used [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/imports/Desktop/Oled_Display.v:123]
+INFO: [Synth 8-226] default block is never used [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/imports/Desktop/Oled_Display.v:198]
+WARNING: [Synth 8-693] zero replication count - replication ignored [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/imports/Desktop/Oled_Display.v:346]
+INFO: [Synth 8-6155] done synthesizing module 'Oled_Display' (2#1) [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/imports/Desktop/Oled_Display.v:36]
+INFO: [Synth 8-6157] synthesizing module 'Top_Student' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/Top_Student.v:14]
+WARNING: [Synth 8-689] width (1) of port connection 'CLOCK' does not match port width (32) of module 'flexible_clock' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/Top_Student.v:213]
+INFO: [Synth 8-6155] done synthesizing module 'Top_Student' (3#1) [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/Top_Student.v:14]
+INFO: [Synth 8-6157] synthesizing module 'task4B' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/task4B.v:14]
+INFO: [Synth 8-6157] synthesizing module 'taskb' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/task4B.v:30]
+INFO: [Synth 8-6157] synthesizing module 'convert' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/task4B.v:121]
+INFO: [Synth 8-6155] done synthesizing module 'convert' (4#1) [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/task4B.v:121]
+WARNING: [Synth 8-689] width (1) of port connection 'CLOCK' does not match port width (32) of module 'flexible_clock' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/task4B.v:42]
+WARNING: [Synth 8-6090] variable 'count' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/task4B.v:71]
+WARNING: [Synth 8-6090] variable 'count' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/task4B.v:75]
+WARNING: [Synth 8-6090] variable 'count' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/task4B.v:79]
+WARNING: [Synth 8-6090] variable 'count' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/task4B.v:81]
+INFO: [Synth 8-6155] done synthesizing module 'taskb' (5#1) [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/task4B.v:30]
+INFO: [Synth 8-6155] done synthesizing module 'task4B' (6#1) [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/task4B.v:14]
+INFO: [Synth 8-6157] synthesizing module 'task4C' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/task4C.v:14]
+INFO: [Synth 8-6157] synthesizing module 'flexible_clk' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/task4C.v:205]
+INFO: [Synth 8-6155] done synthesizing module 'flexible_clk' (7#1) [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/task4C.v:205]
+INFO: [Synth 8-6157] synthesizing module 'draw_oled' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/task4C.v:36]
+	Parameter BLACK_TOP bound to: 15 - type: integer 
+	Parameter BLACK_BOTTOM bound to: 49 - type: integer 
+	Parameter BLACK_SIDE bound to: 80 - type: integer 
+	Parameter SQUARE_SIZE bound to: 15 - type: integer 
+	Parameter MAX_X bound to: 96 - type: integer 
+	Parameter MAX_Y bound to: 64 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'count_wait' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/task4C.v:192]
+INFO: [Synth 8-6155] done synthesizing module 'count_wait' (8#1) [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/task4C.v:192]
+INFO: [Synth 8-6157] synthesizing module 'incrementer' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/task4C.v:181]
+INFO: [Synth 8-6155] done synthesizing module 'incrementer' (9#1) [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/task4C.v:181]
+INFO: [Synth 8-6155] done synthesizing module 'draw_oled' (10#1) [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/task4C.v:36]
+INFO: [Synth 8-6155] done synthesizing module 'task4C' (11#1) [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/task4C.v:14]
+INFO: [Synth 8-6157] synthesizing module 'task4D' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/task4D.v:23]
+INFO: [Synth 8-6157] synthesizing module 'direction_mux' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/direction_mux.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'direction_mux' (12#1) [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/direction_mux.v:23]
+INFO: [Synth 8-6157] synthesizing module 'animate' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/animate.v:23]
+WARNING: [Synth 8-311] ignoring non-constant assignment in initial block [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/animate.v:32]
+WARNING: [Synth 8-311] ignoring non-constant assignment in initial block [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/animate.v:33]
+WARNING: [Synth 8-689] width (1) of port connection 'CLOCK' does not match port width (32) of module 'flexible_clock' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/animate.v:39]
+WARNING: [Synth 8-6014] Unused sequential element x_increment_reg was removed.  [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/animate.v:41]
+WARNING: [Synth 8-6014] Unused sequential element y_increment_reg was removed.  [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/animate.v:42]
+INFO: [Synth 8-6155] done synthesizing module 'animate' (13#1) [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/animate.v:23]
+INFO: [Synth 8-6157] synthesizing module 'make_square' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/make_square.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'make_square' (14#1) [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/make_square.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'task4D' (15#1) [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/task4D.v:23]
+WARNING: [Synth 8-689] width (1) of port connection 'CLOCK' does not match port width (32) of module 'flexible_clock' [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/main.v:65]
+INFO: [Synth 8-6155] done synthesizing module 'main' (16#1) [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/main.v:23]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[31]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[30]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[29]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[28]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[27]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[26]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[25]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[24]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[23]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[22]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[21]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[20]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[19]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[18]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[17]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[16]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[15]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[14]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[13]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[12]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[11]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[10]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[9]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[8]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[7]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[6]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[5]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[4]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[3]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[2]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[1]
+WARNING: [Synth 8-3331] design animate has unconnected port x_start[6]
+WARNING: [Synth 8-3331] design animate has unconnected port x_start[5]
+WARNING: [Synth 8-3331] design animate has unconnected port x_start[4]
+WARNING: [Synth 8-3331] design animate has unconnected port x_start[3]
+WARNING: [Synth 8-3331] design animate has unconnected port x_start[2]
+WARNING: [Synth 8-3331] design animate has unconnected port x_start[1]
+WARNING: [Synth 8-3331] design animate has unconnected port x_start[0]
+WARNING: [Synth 8-3331] design animate has unconnected port y_start[6]
+WARNING: [Synth 8-3331] design animate has unconnected port y_start[5]
+WARNING: [Synth 8-3331] design animate has unconnected port y_start[4]
+WARNING: [Synth 8-3331] design animate has unconnected port y_start[3]
+WARNING: [Synth 8-3331] design animate has unconnected port y_start[2]
+WARNING: [Synth 8-3331] design animate has unconnected port y_start[1]
+WARNING: [Synth 8-3331] design animate has unconnected port y_start[0]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[31]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[30]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[29]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[28]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[27]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[26]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[25]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[24]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[23]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[22]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[21]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[20]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[19]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[18]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[17]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[16]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[15]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[14]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[13]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[12]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[11]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[10]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[9]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[8]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[7]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[6]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[5]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[4]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[3]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[2]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[1]
+WARNING: [Synth 8-3331] design animate has unconnected port fps[0]
+WARNING: [Synth 8-3331] design task4D has unconnected port sw[4]
+WARNING: [Synth 8-3331] design task4D has unconnected port sw[3]
+WARNING: [Synth 8-3331] design task4D has unconnected port sw[2]
+WARNING: [Synth 8-3331] design task4D has unconnected port sw[1]
+WARNING: [Synth 8-3331] design task4D has unconnected port sw[0]
+WARNING: [Synth 8-3331] design Top_Student has unconnected port sw4
+WARNING: [Synth 8-3331] design main has unconnected port JB[2]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 442.355 ; gain = 155.762
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 442.355 ; gain = 155.762
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 442.355 ; gain = 155.762
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/constrs_1/new/constr.xdc]
+Finished Parsing XDC File [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/constrs_1/new/constr.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/constrs_1/new/constr.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/main_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/main_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.runs/synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 787.387 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:06 ; elapsed = 00:00:11 . Memory (MB): peak = 787.387 ; gain = 500.793
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:06 ; elapsed = 00:00:11 . Memory (MB): peak = 787.387 ; gain = 500.793
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:06 ; elapsed = 00:00:11 . Memory (MB): peak = 787.387 ; gain = 500.793
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'Oled_Display'
+INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "fsm_next_state0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "oled_data" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "oled_data" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "oled_data" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "oled_data" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "oled_data" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "oled_data" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "oled_data" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "wait_done0" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/task4C.v:184]
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'draw_oled'
+INFO: [Synth 8-5546] ROM "waiting" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "waiting" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "waiting" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "x_green" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "x_green" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "y_green" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "y_red" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "x_red" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "x_red" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "x_vect" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 PowerUp | 00000000100000000000000000000000 |                            00000
+                   Reset | 00000000000100000000000000000000 |                            00001
+            ReleaseReset | 00000000000000000000100000000000 |                            00011
+            EnableDriver | 00000000000000000001000000000000 |                            00010
+              DisplayOff | 00000000000000000100000000000000 |                            00110
+   SetRemapDisplayFormat | 00000100000000000000000000000000 |                            00111
+            SetStartLine | 00001000000000000000000000000000 |                            00101
+               SetOffset | 10000000000000000000000000000000 |                            00100
+        SetNormalDisplay | 00000000000000000000000010000000 |                            01100
+       SetMultiplexRatio | 00000000000000000000000000100000 |                            01101
+  SetMasterConfiguration | 00000000000000000000000001000000 |                            01111
+        DisablePowerSave | 00000000000000000000000000000100 |                            01110
+          SetPhaseAdjust | 00000000000000000000000000001000 |                            01010
+         SetDisplayClock | 00000000001000000000000000000000 |                            01011
+     SetSecondPrechargeA | 00000000010000000000000000000000 |                            01001
+     SetSecondPrechargeB | 01000000000000000000000000000000 |                            01000
+     SetSecondPrechargeC | 00000010000000000000000000000000 |                            11000
+       SetPrechargeLevel | 00000001000000000000000000000000 |                            11001
+                SetVCOMH | 00000000000000010000000000000000 |                            11011
+        SetMasterCurrent | 00000000000000100000000000000000 |                            11010
+            SetContrastA | 00000000000001000000000000000000 |                            11110
+            SetContrastB | 00100000000000000000000000000000 |                            11111
+            SetContrastC | 00000000000000000000000000000001 |                            11101
+        DisableScrolling | 00000000000000000000000000000010 |                            11100
+             ClearScreen | 00000000000000000000000000010000 |                            10100
+                   VccEn | 00010000000000000000000000000000 |                            10101
+               DisplayOn | 00000000000010000000000000000000 |                            10111
+        PrepareNextFrame | 00000000000000001000000000000000 |                            10110
+           SetColAddress | 00000000000000000000010000000000 |                            10010
+           SetRowAddress | 00000000000000000000000100000000 |                            10011
+           WaitNextFrame | 00000000000000000000001000000000 |                            10001
+               SendPixel | 00000000000000000010000000000000 |                            10000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'Oled_Display'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE0 |                              000 |                              000
+                 iSTATE1 |                              111 |                              001
+                 iSTATE2 |                              110 |                              010
+                 iSTATE3 |                              101 |                              011
+                 iSTATE4 |                              100 |                              100
+                 iSTATE5 |                              011 |                              101
+                 iSTATE6 |                              001 |                              110
+                  iSTATE |                              010 |                              111
+*
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'draw_oled'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:12 . Memory (MB): peak = 787.387 ; gain = 500.793
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 3     
+	   2 Input     17 Bit       Adders := 1     
+	   3 Input      9 Bit       Adders := 1     
+	   2 Input      9 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 6     
+	   3 Input      8 Bit       Adders := 4     
+	   2 Input      7 Bit       Adders := 6     
+	   2 Input      6 Bit       Adders := 1     
+	   2 Input      2 Bit       Adders := 4     
++---Registers : 
+	               40 Bit    Registers := 1     
+	               17 Bit    Registers := 1     
+	               16 Bit    Registers := 7     
+	                8 Bit    Registers := 8     
+	                7 Bit    Registers := 5     
+	                6 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 4     
+	                1 Bit    Registers := 22    
++---Multipliers : 
+	                32x32  Multipliers := 2     
++---Muxes : 
+	   2 Input     40 Bit        Muxes := 3     
+	  32 Input     32 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 2     
+	  32 Input     20 Bit        Muxes := 1     
+	   2 Input     17 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 26    
+	   3 Input     16 Bit        Muxes := 1     
+	  16 Input     16 Bit        Muxes := 1     
+	   5 Input     16 Bit        Muxes := 2     
+	   2 Input     11 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 4     
+	   7 Input      8 Bit        Muxes := 1     
+	   3 Input      8 Bit        Muxes := 1     
+	   6 Input      8 Bit        Muxes := 1     
+	   8 Input      8 Bit        Muxes := 2     
+	   2 Input      7 Bit        Muxes := 10    
+	   7 Input      7 Bit        Muxes := 1     
+	   6 Input      7 Bit        Muxes := 1     
+	   5 Input      7 Bit        Muxes := 1     
+	   3 Input      7 Bit        Muxes := 1     
+	  32 Input      6 Bit        Muxes := 1     
+	   2 Input      6 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 3     
+	  32 Input      5 Bit        Muxes := 1     
+	   9 Input      5 Bit        Muxes := 1     
+	   8 Input      5 Bit        Muxes := 1     
+	   6 Input      5 Bit        Muxes := 1     
+	   3 Input      4 Bit        Muxes := 1     
+	   8 Input      3 Bit        Muxes := 2     
+	   5 Input      3 Bit        Muxes := 2     
+	   2 Input      2 Bit        Muxes := 13    
+	   2 Input      1 Bit        Muxes := 24    
+	   9 Input      1 Bit        Muxes := 1     
+	   8 Input      1 Bit        Muxes := 3     
+	   3 Input      1 Bit        Muxes := 2     
+	   6 Input      1 Bit        Muxes := 1     
+	   7 Input      1 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 3     
+	   5 Input      1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module main 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 2     
+	                7 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   5 Input     16 Bit        Muxes := 2     
+	   3 Input      7 Bit        Muxes := 1     
+	   3 Input      4 Bit        Muxes := 1     
+	   5 Input      3 Bit        Muxes := 2     
+	   5 Input      1 Bit        Muxes := 1     
+Module flexible_clock 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
+Module Oled_Display 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     17 Bit       Adders := 1     
+	   2 Input      6 Bit       Adders := 1     
++---Registers : 
+	               40 Bit    Registers := 1     
+	               17 Bit    Registers := 1     
+	                6 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     40 Bit        Muxes := 3     
+	  32 Input     32 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 2     
+	  32 Input     20 Bit        Muxes := 1     
+	   2 Input     17 Bit        Muxes := 1     
+	  32 Input      6 Bit        Muxes := 1     
+	   2 Input      6 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 2     
+	  32 Input      5 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 2     
+Module Top_Student 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 3     
++---Registers : 
+	               16 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Multipliers : 
+	                32x32  Multipliers := 2     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 18    
+	   3 Input     16 Bit        Muxes := 1     
+	   2 Input     11 Bit        Muxes := 2     
+	   9 Input      5 Bit        Muxes := 1     
+	   8 Input      5 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 1     
+	   6 Input      5 Bit        Muxes := 1     
+	   9 Input      1 Bit        Muxes := 1     
+Module taskb 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      2 Bit       Adders := 3     
++---Registers : 
+	               16 Bit    Registers := 1     
+	                2 Bit    Registers := 3     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	  16 Input     16 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 3     
+Module flexible_clk 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
+Module count_wait 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      2 Bit        Muxes := 1     
+Module incrementer 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      2 Bit        Muxes := 2     
+Module draw_oled 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 1     
+	                8 Bit    Registers := 4     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 5     
+	   2 Input      8 Bit        Muxes := 4     
+	   7 Input      8 Bit        Muxes := 1     
+	   3 Input      8 Bit        Muxes := 1     
+	   6 Input      8 Bit        Muxes := 1     
+	   8 Input      8 Bit        Muxes := 2     
+	   2 Input      7 Bit        Muxes := 2     
+	   7 Input      7 Bit        Muxes := 1     
+	   6 Input      7 Bit        Muxes := 1     
+	   8 Input      3 Bit        Muxes := 2     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 18    
+	   8 Input      1 Bit        Muxes := 3     
+	   3 Input      1 Bit        Muxes := 2     
+	   6 Input      1 Bit        Muxes := 1     
+	   7 Input      1 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 3     
+Module direction_mux 
+Detailed RTL Component Info : 
++---Registers : 
+	                7 Bit    Registers := 2     
++---Muxes : 
+	   2 Input      7 Bit        Muxes := 2     
+	   5 Input      7 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 4     
+Module animate 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input      9 Bit       Adders := 1     
+	   2 Input      9 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 2     
+	   2 Input      7 Bit       Adders := 2     
++---Registers : 
+	               16 Bit    Registers := 1     
+	                7 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 1     
+	   2 Input      7 Bit        Muxes := 6     
+Module make_square 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input      8 Bit       Adders := 4     
+	   2 Input      7 Bit       Adders := 4     
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 4 [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/Top_Student.v:40]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 4 [C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/new/Top_Student.v:40]
+DSP Report: Generating DSP oled_data4, operation Mode is: A*B.
+DSP Report: operator oled_data4 is absorbed into DSP oled_data4.
+DSP Report: operator oled_data4 is absorbed into DSP oled_data4.
+DSP Report: Generating DSP oled_data4, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator oled_data4 is absorbed into DSP oled_data4.
+DSP Report: operator oled_data4 is absorbed into DSP oled_data4.
+DSP Report: Generating DSP oled_data4, operation Mode is: A*B.
+DSP Report: operator oled_data4 is absorbed into DSP oled_data4.
+DSP Report: operator oled_data4 is absorbed into DSP oled_data4.
+DSP Report: Generating DSP oled_data4, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator oled_data4 is absorbed into DSP oled_data4.
+DSP Report: operator oled_data4 is absorbed into DSP oled_data4.
+DSP Report: Generating DSP oled_data4, operation Mode is: A*B.
+DSP Report: operator oled_data4 is absorbed into DSP oled_data4.
+DSP Report: operator oled_data4 is absorbed into DSP oled_data4.
+DSP Report: Generating DSP oled_data4, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator oled_data4 is absorbed into DSP oled_data4.
+DSP Report: operator oled_data4 is absorbed into DSP oled_data4.
+DSP Report: Generating DSP oled_data4, operation Mode is: A*B.
+DSP Report: operator oled_data4 is absorbed into DSP oled_data4.
+DSP Report: operator oled_data4 is absorbed into DSP oled_data4.
+DSP Report: Generating DSP oled_data4, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator oled_data4 is absorbed into DSP oled_data4.
+DSP Report: operator oled_data4 is absorbed into DSP oled_data4.
+INFO: [Synth 8-5544] ROM "ddd/p_0_out" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ddd/p_0_out" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "ddd/y_green" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ddd/x_red" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ddd/x_red" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ddd/waiting" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ddd/x_green" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ddd/x_green" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ddd/waiting" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ddd/waiting" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ddd/state" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ddd/state" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ddd/y_red" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ddd/state" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[31]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[30]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[29]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[28]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[27]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[26]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[25]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[24]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[23]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[22]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[21]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[20]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[19]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[18]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[17]
+WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[16]
+INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line62/center_sq_colour_reg[0]' (FD) to 'kashfy/nolabel_line62/center_sq_colour_reg[10]'
+INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[0]' (FD) to 'claire/ddd/oled_data_reg[1]'
+INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[0]' (FD) to 'tim/b/pixel_data_reg[1]'
+INFO: [Synth 8-3886] merging instance 'sk/oled_data_reg[0]' (FDE) to 'sk/oled_data_reg[4]'
+INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line62/center_sq_colour_reg[1]' (FD) to 'kashfy/nolabel_line62/center_sq_colour_reg[10]'
+INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[1]' (FD) to 'claire/ddd/oled_data_reg[2]'
+INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[1]' (FD) to 'tim/b/pixel_data_reg[2]'
+INFO: [Synth 8-3886] merging instance 'sk/oled_data_reg[1]' (FDE) to 'sk/oled_data_reg[4]'
+INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line62/center_sq_colour_reg[2]' (FD) to 'kashfy/nolabel_line62/center_sq_colour_reg[10]'
+INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[2]' (FD) to 'claire/ddd/oled_data_reg[3]'
+INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[2]' (FD) to 'tim/b/pixel_data_reg[3]'
+INFO: [Synth 8-3886] merging instance 'sk/oled_data_reg[2]' (FDE) to 'sk/oled_data_reg[4]'
+INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line62/center_sq_colour_reg[3]' (FD) to 'kashfy/nolabel_line62/center_sq_colour_reg[10]'
+INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[3]' (FD) to 'claire/ddd/oled_data_reg[4]'
+INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[3]' (FD) to 'tim/b/pixel_data_reg[4]'
+INFO: [Synth 8-3886] merging instance 'sk/oled_data_reg[3]' (FDE) to 'sk/oled_data_reg[4]'
+INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line62/center_sq_colour_reg[4]' (FD) to 'kashfy/nolabel_line62/center_sq_colour_reg[10]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (claire/\ddd/oled_data_reg[4] )
+INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line62/center_sq_colour_reg[5]' (FD) to 'kashfy/nolabel_line62/center_sq_colour_reg[6]'
+INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[5]' (FD) to 'claire/ddd/oled_data_reg[6]'
+INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[5]' (FD) to 'tim/b/pixel_data_reg[6]'
+INFO: [Synth 8-3886] merging instance 'sk/oled_data_reg[5]' (FDE) to 'sk/oled_data_reg[9]'
+INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line62/center_sq_colour_reg[6]' (FD) to 'kashfy/nolabel_line62/center_sq_colour_reg[7]'
+INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[6]' (FD) to 'claire/ddd/oled_data_reg[7]'
+INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[6]' (FD) to 'tim/b/pixel_data_reg[7]'
+INFO: [Synth 8-3886] merging instance 'sk/oled_data_reg[6]' (FDE) to 'sk/oled_data_reg[9]'
+INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line62/center_sq_colour_reg[7]' (FD) to 'kashfy/nolabel_line62/center_sq_colour_reg[8]'
+INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[7]' (FD) to 'claire/ddd/oled_data_reg[8]'
+INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[7]' (FD) to 'tim/b/pixel_data_reg[8]'
+INFO: [Synth 8-3886] merging instance 'sk/oled_data_reg[7]' (FDE) to 'sk/oled_data_reg[9]'
+INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[8]' (FD) to 'claire/ddd/oled_data_reg[9]'
+INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[8]' (FD) to 'tim/b/pixel_data_reg[9]'
+INFO: [Synth 8-3886] merging instance 'sk/oled_data_reg[8]' (FDE) to 'sk/oled_data_reg[9]'
+INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line62/center_sq_colour_reg[9]' (FD) to 'kashfy/nolabel_line62/center_sq_colour_reg[10]'
+INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[9]' (FD) to 'claire/ddd/oled_data_reg[10]'
+INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[9]' (FD) to 'tim/b/pixel_data_reg[10]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (kashfy/\nolabel_line62/center_sq_colour_reg[10] )
+INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line62/center_sq_colour_reg[11]' (FD) to 'kashfy/nolabel_line62/center_sq_colour_reg[12]'
+INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[11]' (FD) to 'claire/ddd/oled_data_reg[12]'
+INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[11]' (FD) to 'tim/b/pixel_data_reg[12]'
+INFO: [Synth 8-3886] merging instance 'sk/oled_data_reg[11]' (FDE) to 'sk/oled_data_reg[15]'
+INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[12]' (FD) to 'claire/ddd/oled_data_reg[13]'
+INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[12]' (FD) to 'tim/b/pixel_data_reg[13]'
+INFO: [Synth 8-3886] merging instance 'sk/oled_data_reg[12]' (FDE) to 'sk/oled_data_reg[15]'
+INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line62/center_sq_colour_reg[13]' (FD) to 'kashfy/nolabel_line62/center_sq_colour_reg[15]'
+INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[13]' (FD) to 'claire/ddd/oled_data_reg[14]'
+INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[13]' (FD) to 'tim/b/pixel_data_reg[14]'
+INFO: [Synth 8-3886] merging instance 'sk/oled_data_reg[13]' (FDE) to 'sk/oled_data_reg[15]'
+INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line62/center_sq_colour_reg[14]' (FD) to 'kashfy/nolabel_line62/center_sq_colour_reg[15]'
+INFO: [Synth 8-3886] merging instance 'kashfy/choose_direction/y_vect_reg[6]' (FDRE) to 'kashfy/choose_direction/y_vect_reg[5]'
+INFO: [Synth 8-3886] merging instance 'kashfy/choose_direction/y_vect_reg[5]' (FDRE) to 'kashfy/choose_direction/y_vect_reg[4]'
+INFO: [Synth 8-3886] merging instance 'kashfy/choose_direction/y_vect_reg[4]' (FDRE) to 'kashfy/choose_direction/y_vect_reg[3]'
+INFO: [Synth 8-3886] merging instance 'kashfy/choose_direction/y_vect_reg[3]' (FDRE) to 'kashfy/choose_direction/y_vect_reg[2]'
+INFO: [Synth 8-3886] merging instance 'kashfy/choose_direction/y_vect_reg[2]' (FDRE) to 'kashfy/choose_direction/y_vect_reg[1]'
+INFO: [Synth 8-3886] merging instance 'kashfy/choose_direction/x_vect_reg[6]' (FDRE) to 'kashfy/choose_direction/x_vect_reg[5]'
+INFO: [Synth 8-3886] merging instance 'kashfy/choose_direction/x_vect_reg[5]' (FDRE) to 'kashfy/choose_direction/x_vect_reg[4]'
+INFO: [Synth 8-3886] merging instance 'kashfy/choose_direction/x_vect_reg[4]' (FDRE) to 'kashfy/choose_direction/x_vect_reg[3]'
+INFO: [Synth 8-3886] merging instance 'kashfy/choose_direction/x_vect_reg[3]' (FDRE) to 'kashfy/choose_direction/x_vect_reg[2]'
+INFO: [Synth 8-3886] merging instance 'kashfy/choose_direction/x_vect_reg[2]' (FDRE) to 'kashfy/choose_direction/x_vect_reg[1]'
+INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[14]' (FD) to 'claire/ddd/oled_data_reg[15]'
+INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[14]' (FD) to 'tim/b/pixel_data_reg[15]'
+INFO: [Synth 8-3886] merging instance 'sk/oled_data_reg[14]' (FDE) to 'sk/oled_data_reg[15]'
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (kashfy/\nolabel_line62/center_sq_colour_reg[15] )
+INFO: [Synth 8-3886] merging instance 'sk/state_reg[3]' (FDRE) to 'sk/state_reg[4]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (sk/\state_reg[4] )
+INFO: [Synth 8-3886] merging instance 'an_reg[2]' (FD) to 'an_reg[3]'
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\an_reg[3] )
+INFO: [Synth 8-3886] merging instance 'seg_reg[0]' (FD) to 'seg_reg[3]'
+INFO: [Synth 8-3886] merging instance 'seg_reg[1]' (FD) to 'seg_reg[2]'
+INFO: [Synth 8-3886] merging instance 'seg_reg[2]' (FD) to 'seg_reg[5]'
+INFO: [Synth 8-3886] merging instance 'seg_reg[3]' (FD) to 'seg_reg[4]'
+INFO: [Synth 8-3886] merging instance 'kashfy/draw_sq/oled_data_reg[0]' (FD) to 'kashfy/draw_sq/oled_data_reg[1]'
+INFO: [Synth 8-3886] merging instance 'kashfy/draw_sq/oled_data_reg[1]' (FD) to 'kashfy/draw_sq/oled_data_reg[2]'
+INFO: [Synth 8-3886] merging instance 'kashfy/draw_sq/oled_data_reg[2]' (FD) to 'kashfy/draw_sq/oled_data_reg[3]'
+INFO: [Synth 8-3886] merging instance 'kashfy/draw_sq/oled_data_reg[3]' (FD) to 'kashfy/draw_sq/oled_data_reg[4]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (kashfy/\draw_sq/oled_data_reg[4] )
+INFO: [Synth 8-3886] merging instance 'kashfy/draw_sq/oled_data_reg[5]' (FD) to 'kashfy/draw_sq/oled_data_reg[6]'
+INFO: [Synth 8-3886] merging instance 'kashfy/draw_sq/oled_data_reg[6]' (FD) to 'kashfy/draw_sq/oled_data_reg[7]'
+INFO: [Synth 8-3886] merging instance 'kashfy/draw_sq/oled_data_reg[7]' (FD) to 'kashfy/draw_sq/oled_data_reg[8]'
+INFO: [Synth 8-3886] merging instance 'kashfy/draw_sq/oled_data_reg[9]' (FD) to 'kashfy/draw_sq/oled_data_reg[10]'
+INFO: [Synth 8-3886] merging instance 'kashfy/draw_sq/oled_data_reg[11]' (FD) to 'kashfy/draw_sq/oled_data_reg[12]'
+INFO: [Synth 8-3886] merging instance 'kashfy/draw_sq/oled_data_reg[13]' (FD) to 'kashfy/draw_sq/oled_data_reg[14]'
+INFO: [Synth 8-3886] merging instance 'kashfy/draw_sq/oled_data_reg[14]' (FD) to 'kashfy/draw_sq/oled_data_reg[15]'
+INFO: [Synth 8-3886] merging instance 'oled_data_reg[0]' (FD) to 'oled_data_reg[1]'
+INFO: [Synth 8-3886] merging instance 'oled_data_reg[1]' (FD) to 'oled_data_reg[2]'
+INFO: [Synth 8-3886] merging instance 'oled_data_reg[2]' (FD) to 'oled_data_reg[3]'
+INFO: [Synth 8-3886] merging instance 'oled_data_reg[3]' (FD) to 'oled_data_reg[4]'
+INFO: [Synth 8-3886] merging instance 'oled_data_reg[5]' (FD) to 'oled_data_reg[6]'
+INFO: [Synth 8-3886] merging instance 'oled_data_reg[6]' (FD) to 'oled_data_reg[7]'
+INFO: [Synth 8-3886] merging instance 'oled_data_reg[7]' (FD) to 'oled_data_reg[8]'
+INFO: [Synth 8-3886] merging instance 'oled_data_reg[11]' (FD) to 'oled_data_reg[12]'
+INFO: [Synth 8-3886] merging instance 'oled_data_reg[13]' (FD) to 'oled_data_reg[14]'
+INFO: [Synth 8-3886] merging instance 'oled_data_reg[14]' (FD) to 'oled_data_reg[15]'
+WARNING: [Synth 8-3332] Sequential element (state_reg[4]) is unused and will be removed from module Top_Student.
+WARNING: [Synth 8-3332] Sequential element (ddd/oled_data_reg[4]) is unused and will be removed from module task4C.
+WARNING: [Synth 8-3332] Sequential element (nolabel_line62/center_sq_colour_reg[15]) is unused and will be removed from module task4D.
+WARNING: [Synth 8-3332] Sequential element (nolabel_line62/center_sq_colour_reg[10]) is unused and will be removed from module task4D.
+WARNING: [Synth 8-3332] Sequential element (draw_sq/oled_data_reg[4]) is unused and will be removed from module task4D.
+WARNING: [Synth 8-3332] Sequential element (an_reg[3]) is unused and will be removed from module main.
+INFO: [Synth 8-3886] merging instance 'an_reg[0]' (FD) to 'seg_reg[6]'
+INFO: [Synth 8-3886] merging instance 'an_reg[1]' (FD) to 'seg_reg[4]'
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:17 . Memory (MB): peak = 787.387 ; gain = 500.793
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping  Report (see note below)
++------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping    | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Top_Student | A*B            | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Top_Student | (PCIN>>17)+A*B | 16     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Top_Student | A*B            | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Top_Student | (PCIN>>17)+A*B | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Top_Student | A*B            | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Top_Student | (PCIN>>17)+A*B | 16     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Top_Student | A*B            | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Top_Student | (PCIN>>17)+A*B | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:28 . Memory (MB): peak = 820.340 ; gain = 533.746
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:28 . Memory (MB): peak = 831.492 ; gain = 544.898
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:14 ; elapsed = 00:00:29 . Memory (MB): peak = 873.914 ; gain = 587.320
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6064] Net n_0_333 is driving 70 big block pins (URAM, BRAM and DSP loads). Created 7 replicas of its driver. 
+INFO: [Synth 8-6064] Net \sk/oled_data5 [16] is driving 70 big block pins (URAM, BRAM and DSP loads). Created 7 replicas of its driver. 
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:14 ; elapsed = 00:00:30 . Memory (MB): peak = 873.914 ; gain = 587.320
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:14 ; elapsed = 00:00:30 . Memory (MB): peak = 873.914 ; gain = 587.320
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:14 ; elapsed = 00:00:30 . Memory (MB): peak = 873.914 ; gain = 587.320
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:14 ; elapsed = 00:00:30 . Memory (MB): peak = 873.914 ; gain = 587.320
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:14 ; elapsed = 00:00:30 . Memory (MB): peak = 873.914 ; gain = 587.320
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:14 ; elapsed = 00:00:30 . Memory (MB): peak = 873.914 ; gain = 587.320
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |BUFG    |     5|
+|2     |CARRY4  |   241|
+|3     |DSP48E1 |     6|
+|4     |LUT1    |    34|
+|5     |LUT2    |   289|
+|6     |LUT3    |   192|
+|7     |LUT4    |   134|
+|8     |LUT5    |   172|
+|9     |LUT6    |   339|
+|10    |FDE_1   |    32|
+|11    |FDRE    |   677|
+|12    |FDSE    |    12|
+|13    |IBUF    |    22|
+|14    |OBUF    |    34|
+|15    |OBUFT   |     1|
++------+--------+------+
+
+Report Instance Areas: 
++------+---------------------+-----------------+------+
+|      |Instance             |Module           |Cells |
++------+---------------------+-----------------+------+
+|1     |top                  |                 |  2190|
+|2     |  claire             |task4C           |   426|
+|3     |    ddd              |draw_oled        |   263|
+|4     |      greenx         |incrementer      |    23|
+|5     |      greeny         |incrementer_10   |    25|
+|6     |      redx           |incrementer_11   |    22|
+|7     |      redy           |incrementer_12   |    20|
+|8     |      w              |count_wait       |     7|
+|9     |    fiftyHzclk       |flexible_clk     |    54|
+|10    |    oneHzclk         |flexible_clk_8   |    54|
+|11    |    thirtyHzclk      |flexible_clk_9   |    55|
+|12    |  clk1000hz          |flexible_clock   |    57|
+|13    |  clk10hz            |flexible_clock_0 |    62|
+|14    |  clk2hz             |flexible_clock_1 |    59|
+|15    |  clk5hz             |flexible_clock_2 |    57|
+|16    |  clk6hz             |flexible_clock_3 |    62|
+|17    |  clk6p25m           |flexible_clock_4 |    58|
+|18    |  display            |Oled_Display     |   676|
+|19    |  kashfy             |task4D           |   175|
+|20    |    choose_direction |direction_mux    |     8|
+|21    |    draw_sq          |make_square      |    25|
+|22    |    nolabel_line62   |animate          |   142|
+|23    |      get_fps_clock  |flexible_clock_7 |    50|
+|24    |  sk                 |Top_Student      |   254|
+|25    |    clk1000hz        |flexible_clock_6 |    50|
+|26    |  tim                |task4B           |   181|
+|27    |    b                |taskb            |   181|
+|28    |      clk1k          |flexible_clock_5 |    50|
+|29    |      conv           |convert          |    49|
++------+---------------------+-----------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:14 ; elapsed = 00:00:30 . Memory (MB): peak = 873.914 ; gain = 587.320
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 44 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:09 ; elapsed = 00:00:23 . Memory (MB): peak = 873.914 ; gain = 242.289
+Synthesis Optimization Complete : Time (s): cpu = 00:00:14 ; elapsed = 00:00:30 . Memory (MB): peak = 873.914 ; gain = 587.320
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 301 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 32 instances were transformed.
+  FDE_1 => FDRE (inverted pins: C): 32 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+192 Infos, 124 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:15 ; elapsed = 00:00:32 . Memory (MB): peak = 873.914 ; gain = 598.832
+WARNING: [Constraints 18-5210] No constraint will be written out.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.runs/synth_1/main.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file main_utilization_synth.rpt -pb main_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.025 . Memory (MB): peak = 873.914 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Tue Oct  8 02:43:09 2024...

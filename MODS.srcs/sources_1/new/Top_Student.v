@@ -15,15 +15,11 @@ module Top_Student (
     input CLOCK,
     input sw4,
     input btnC, btnU,
-    output [7:0] JB
+    input [12:0] pixel_index,
+    output reg [15:0] oled_data
 );
 
-    reg [15:0] oled_data = 0;
     wire clk625, clk1000;
-    wire frame_begin;
-    wire sending_pixels;
-    wire sample_pixel;
-    wire [12:0] pixel_index;    
     wire [7:0] x, y;
     reg btnU_pressed = 0;
     reg [4:0] state = 0;
@@ -238,11 +234,4 @@ module Top_Student (
         
         if (btnU || btnC) counter <= 0;
     end
-    
-    flexible_clock clk6p25m (CLOCK, 7, clk625);
-            
-    Oled_Display display (.clk(clk625), .reset(0), .frame_begin(frame_begin), .sending_pixels(sending_pixels),
-  .sample_pixel(sample_pixel), .pixel_index(pixel_index), .pixel_data(oled_data), .cs(JB[0]), .sdin(JB[1]), 
-  .sclk(JB[3]), .d_cn(JB[4]), .resn(JB[5]), .vccen(JB[6]), .pmoden(JB[7]));
-
 endmodule
