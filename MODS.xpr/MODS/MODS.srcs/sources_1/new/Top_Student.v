@@ -88,35 +88,39 @@ module taskb(
     reg btndpress = 0;
 
     always @ (posedge slowclock1k) begin
-        if ((btnc || btnu || btnd) && count == 0) count <= 1;
-        count <= ((count > 0) && (count < 200)) ? count + 1 : count;
-        if (count == 200) begin
-            if (!btnc && !btnu && !btnd) begin
-                count <= 0;          
+        count <= (count != 32'hFFFFFFFF) ? count + 1 : count;
+        if (count >= 200) begin
+            if (btnc || btnu || btnd) begin
+                if (btnc == 1 && btncpress == 0) begin
+                    btncstate <= (btncstate == 3) ? 0 : btncstate + 1;
+                    btncpress <= 1;
+                end
+                if (btnu == 1 && btnupress == 0) begin
+                    btnustate <= (btnustate == 3) ? 0 : btnustate + 1;
+                    btnupress <= 1;
+                end
+                if (btnd == 1 && btndpress == 0) begin
+                    btndstate <= (btndstate == 3) ? 0 : btndstate + 1;
+                    btndpress <= 1;
+                end
             end
-        end 
+            if (btnc == 0 && btncpress == 1) begin
+                btncpress <= 0;
+                count = 0;
+            end
+            if (btnu == 0 && btnupress == 1) begin
+                btnupress <= 0;
+                count = 0;
+            end
+            if (btnd == 0 && btndpress == 1) begin
+                btndpress <= 0;
+                count = 0;
+            end
+            if (btnc || btnu || btnd) count <= 0;
+        end   
     end
     
     always @ (posedge clock) begin
-        if (count == 200) begin
-            if (btnc == 1 && btncpress == 0) begin
-                btncstate <= (btncstate == 3) ? 0 : btncstate + 1;
-                btncpress <= 1;
-            end
-            if (btnu == 1 && btnupress == 0) begin
-                btnustate <= (btnustate == 3) ? 0 : btnustate + 1;
-                btnupress <= 1;
-            end
-            if (btnd == 1 && btndpress == 0) begin
-                btndstate <= (btndstate == 3) ? 0 : btndstate + 1;
-                btndpress <= 1;
-            end
-            if (!btnc && !btnu && !btnd) begin     
-                btncpress <= 0;
-                btnupress <= 0;
-                btndpress <= 0;      
-            end
-        end   
         if (x>=43 && x<=52) begin
             if (y>=6 && y<=15) begin
                 case (btnustate)
