@@ -156,11 +156,11 @@ module main(
                 oled_data = 16'b11111_111111_11111;
             end else if (x >= 10 + 15 + 15 && x < 10 + 15 + 15 + 45 && y >= 10 && y < 53) begin
                 if (x >= 10 + 15 + 15 + 15 && x < 10 + 15 + 15 + 15 + 15 && y >= 10 + 15 && y < 53 - 15) begin
-                    oled_data = 16'b00000_000000_00000;
+                    oled_data = 0;
                 end
                 oled_data = 16'b11111_111111_11111;; 
             end else begin
-                oled_data = 16'b11111_111111_11111;
+                oled_data = 0;
             end
         end
     end
