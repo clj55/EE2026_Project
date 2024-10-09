@@ -21,7 +21,7 @@
 
 
 module task4D(
-    input clk, btnC, btnL, btnR, btnD, btnU, [15:0]sw,  
+    input clk, btnC, btnL, btnR, btnD, btnU, reset,  
     input [12:0] pixel_index,
     output wire [15:0] oled_data
 );
@@ -32,14 +32,15 @@ wire [6:0] x;
 wire [6:0] y;
 wire [6:0] x_var;
 wire [6:0] y_var;
-wire [6:0] x_var_default;
-wire [6:0] y_var_default;
+//wire [6:0] x_var_animate;
+//wire [6:0] y_var_animate;
+//wire reset;
 
-//assign x_var_default = 0;
-//assign y_var_default = 0;
+//assign x_var_animate = 0;
+//assign y_var_animate = 0;
 
-//assign x_var = (sw == 16'b1000_0000_1011_0101) ? 0 : x_var;
-//assign y_var = (sw == 16'b1000_0000_1011_0101) ? 0 : y_var;  
+// reset the task when any sw switch is toggled
+//assign reset = (sw == 16'b1000_0000_1011_0101) ? 0 : 1;  
 
 //reg [15:0] oled_colour;
 
@@ -66,12 +67,12 @@ assign y = pixel_index / 96;
 // use pushbuttons to choose direction
 wire [6:0]x_vect;
 wire [6:0]y_vect;
-direction_mux choose_direction (.clk(clk), .btnC(btnC), .btnL(btnL), .btnR(btnR), .btnD(btnD), .btnU(btnU), .x_vect(x_vect), .y_vect(y_vect));
+direction_mux choose_direction (.clk(clk), .btnC(btnC), .btnL(btnL), .btnR(btnR), .btnD(btnD), .btnU(btnU), .reset(reset), .x_vect(x_vect), .y_vect(y_vect));
 
 // animate the movement of the square
 wire [15:0]center_sq_colour;
 animate(.clk(clk), .x_start(0), .y_start(0), .x_vect(x_vect), .y_vect(y_vect), .sq_width(7), .sq_height(7), .fps(20), 
-        .stat_colour(16'b11111_000000_00000), .move_colour(16'b11100_001111_00000), .x_var(x_var), .y_var(y_var), .center_sq_colour(center_sq_colour));
+        .stat_colour(16'b11111_000000_00000), .move_colour(16'b11100_001111_00000), .reset(reset), .x_var(x_var), .y_var(y_var), .center_sq_colour(center_sq_colour));
 
 // draw the squares
 make_square draw_sq (.clk(clk), .x(x), .y(y), 

@@ -21,11 +21,11 @@
 
 
 module direction_mux(
-    input clk, btnC, btnL, btnR, btnD, btnU, 
+    input clk, btnC, btnL, btnR, btnD, btnU, reset,
     output reg [6:0]x_vect, reg [6:0]y_vect 
     );
     always @ (posedge clk) begin
-        if (btnC) begin // stop moving
+        if (btnC || reset) begin // stop moving
             x_vect = 0;
             y_vect = 0;
         end else if (btnL) begin // move left

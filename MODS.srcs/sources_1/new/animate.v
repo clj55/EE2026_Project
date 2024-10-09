@@ -21,7 +21,7 @@
 
 
 module animate(
-    input clk, [6:0]x_start, [6:0]y_start, [6:0]x_vect, [6:0]y_vect, [6:0]sq_width, [6:0]sq_height, [31:0]fps, [15:0]stat_colour, [15:0]move_colour,
+    input clk, [6:0]x_start, [6:0]y_start, [6:0]x_vect, [6:0]y_vect, [6:0]sq_width, [6:0]sq_height, [31:0]fps, [15:0]stat_colour, [15:0]move_colour, reset,
     output reg [6:0]x_var, reg [6:0]y_var, reg [15:0]center_sq_colour
     );
     
@@ -40,6 +40,7 @@ module animate(
     always @ (posedge fps_clock) begin
         x_increment = x_vect; 
         y_increment = y_vect;
+        
         
         // REFINE THE COLLISIONS! 
         
@@ -70,6 +71,13 @@ module animate(
         end else begin
             center_sq_colour = move_colour;
 //            center_sq_colour = 16'b11111_000111_00000;
+        end
+        
+        if (reset) begin
+            x_var = 0;
+            y_var = 0;
+            x_increment = 0;
+            y_increment = 0;
         end
         
         x_var <= x_var + x_increment;

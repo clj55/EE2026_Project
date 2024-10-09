@@ -14,9 +14,9 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 33452 
+INFO: Helper process launched with PID 7688 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 390.840 ; gain = 101.117
+Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 389.953 ; gain = 100.215
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'main' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/main.v:23]
 INFO: [Synth 8-6157] synthesizing module 'flexible_clock' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/flexible_clock.v:23]
@@ -118,15 +118,18 @@ INFO: [Synth 8-6157] synthesizing module 'animate' [C:/Users/cyber/Desktop/EE202
 WARNING: [Synth 8-311] ignoring non-constant assignment in initial block [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:32]
 WARNING: [Synth 8-311] ignoring non-constant assignment in initial block [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:33]
 WARNING: [Synth 8-689] width (1) of port connection 'CLOCK' does not match port width (32) of module 'flexible_clock' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:39]
+WARNING: [Synth 8-6090] variable 'x_var' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:83]
+WARNING: [Synth 8-6090] variable 'y_var' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:84]
 WARNING: [Synth 8-6014] Unused sequential element x_increment_reg was removed.  [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:41]
 WARNING: [Synth 8-6014] Unused sequential element y_increment_reg was removed.  [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:42]
 INFO: [Synth 8-6155] done synthesizing module 'animate' (13#1) [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:23]
+WARNING: [Synth 8-689] width (1) of port connection 'reset' does not match port width (16) of module 'animate' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/task4D.v:75]
 INFO: [Synth 8-6157] synthesizing module 'make_square' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/make_square.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'make_square' (14#1) [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/make_square.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'task4D' (15#1) [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/task4D.v:23]
 INFO: [Synth 8-6157] synthesizing module 'draw_grp_number' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/draw_grp_number.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'draw_grp_number' (16#1) [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/draw_grp_number.v:23]
-WARNING: [Synth 8-689] width (1) of port connection 'CLOCK' does not match port width (32) of module 'flexible_clock' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/main.v:68]
+WARNING: [Synth 8-689] width (1) of port connection 'CLOCK' does not match port width (32) of module 'flexible_clock' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/main.v:69]
 WARNING: [Synth 8-3848] Net seg in module/entity main does not have driver. [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/main.v:27]
 WARNING: [Synth 8-3848] Net an in module/entity main does not have driver. [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/main.v:28]
 INFO: [Synth 8-6155] done synthesizing module 'main' (17#1) [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/main.v:23]
@@ -221,7 +224,7 @@ WARNING: [Synth 8-3331] design main has unconnected port an[1]
 WARNING: [Synth 8-3331] design main has unconnected port an[0]
 WARNING: [Synth 8-3331] design main has unconnected port JB[2]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:03 . Memory (MB): peak = 446.176 ; gain = 156.453
+Finished RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:03 . Memory (MB): peak = 445.281 ; gain = 155.543
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -234,10 +237,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:01 ; elapsed = 00:00:03 . Memory (MB): peak = 446.176 ; gain = 156.453
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:01 ; elapsed = 00:00:03 . Memory (MB): peak = 445.281 ; gain = 155.543
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:01 ; elapsed = 00:00:03 . Memory (MB): peak = 446.176 ; gain = 156.453
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:01 ; elapsed = 00:00:03 . Memory (MB): peak = 445.281 ; gain = 155.543
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -255,22 +258,22 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 789.355 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 790.531 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:05 ; elapsed = 00:00:11 . Memory (MB): peak = 789.355 ; gain = 499.633
+Finished Constraint Validation : Time (s): cpu = 00:00:05 ; elapsed = 00:00:12 . Memory (MB): peak = 790.531 ; gain = 500.793
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:05 ; elapsed = 00:00:11 . Memory (MB): peak = 789.355 ; gain = 499.633
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:05 ; elapsed = 00:00:12 . Memory (MB): peak = 790.531 ; gain = 500.793
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:05 ; elapsed = 00:00:11 . Memory (MB): peak = 789.355 ; gain = 499.633
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:05 ; elapsed = 00:00:12 . Memory (MB): peak = 790.531 ; gain = 500.793
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'Oled_Display'
 INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
@@ -299,6 +302,7 @@ INFO: [Synth 8-5546] ROM "y_red" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "x_red" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "x_red" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5544] ROM "x_vect" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "activity_state" won't be mapped to RAM because it is too sparse
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -351,7 +355,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'draw_oled'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:12 . Memory (MB): peak = 789.355 ; gain = 499.633
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:13 . Memory (MB): peak = 790.531 ; gain = 500.793
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -382,7 +386,7 @@ Detailed RTL Component Info :
 	                6 Bit    Registers := 1     
 	                5 Bit    Registers := 1     
 	                2 Bit    Registers := 4     
-	                1 Bit    Registers := 21    
+	                1 Bit    Registers := 22    
 +---Multipliers : 
 	                32x32  Multipliers := 2     
 +---Muxes : 
@@ -401,7 +405,7 @@ Detailed RTL Component Info :
 	   3 Input      8 Bit        Muxes := 1     
 	   6 Input      8 Bit        Muxes := 1     
 	   8 Input      8 Bit        Muxes := 2     
-	   2 Input      7 Bit        Muxes := 12    
+	   2 Input      7 Bit        Muxes := 14    
 	   7 Input      7 Bit        Muxes := 1     
 	   6 Input      7 Bit        Muxes := 1     
 	   5 Input      7 Bit        Muxes := 1     
@@ -415,14 +419,13 @@ Detailed RTL Component Info :
 	   8 Input      3 Bit        Muxes := 2     
 	   5 Input      3 Bit        Muxes := 2     
 	   2 Input      2 Bit        Muxes := 13    
-	   2 Input      1 Bit        Muxes := 24    
+	   2 Input      1 Bit        Muxes := 28    
 	   9 Input      1 Bit        Muxes := 1     
 	   8 Input      1 Bit        Muxes := 3     
 	   3 Input      1 Bit        Muxes := 2     
 	   6 Input      1 Bit        Muxes := 1     
 	   7 Input      1 Bit        Muxes := 1     
-	   4 Input      1 Bit        Muxes := 3     
-	   5 Input      1 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 6     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -434,12 +437,13 @@ Module main
 Detailed RTL Component Info : 
 +---Registers : 
 	               16 Bit    Registers := 2     
-	                1 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
 +---Muxes : 
 	   5 Input     16 Bit        Muxes := 2     
 	   2 Input     16 Bit        Muxes := 1     
 	   5 Input      3 Bit        Muxes := 2     
-	   5 Input      1 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 4     
+	   4 Input      1 Bit        Muxes := 3     
 Module flexible_clock 
 Detailed RTL Component Info : 
 +---Registers : 
@@ -559,7 +563,7 @@ Detailed RTL Component Info :
 	                7 Bit    Registers := 2     
 +---Muxes : 
 	   2 Input     16 Bit        Muxes := 1     
-	   2 Input      7 Bit        Muxes := 6     
+	   2 Input      7 Bit        Muxes := 10    
 Module make_square 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -569,10 +573,6 @@ Detailed RTL Component Info :
 	               16 Bit    Registers := 1     
 +---Muxes : 
 	   2 Input     16 Bit        Muxes := 2     
-Module task4D 
-Detailed RTL Component Info : 
-+---Muxes : 
-	   2 Input      7 Bit        Muxes := 2     
 Module draw_grp_number 
 Detailed RTL Component Info : 
 +---Registers : 
@@ -637,7 +637,7 @@ INFO: [Synth 8-5546] ROM "ddd/state" won't be mapped to RAM because it is too sp
 INFO: [Synth 8-5546] ROM "ddd/state" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "ddd/y_red" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "ddd/state" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "activity_state" won't be mapped to RAM because it is too sparse
 WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[31]
 WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[30]
 WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[29]
@@ -649,40 +649,40 @@ WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[24]
 WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[23]
 WARNING: [Synth 8-3331] design flexible_clock has unconnected port CLOCK[22]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line73/center_sq_colour_reg[0]' (FD) to 'kashfy/nolabel_line73/center_sq_colour_reg[10]'
+INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line74/center_sq_colour_reg[0]' (FD) to 'kashfy/nolabel_line74/center_sq_colour_reg[10]'
 INFO: [Synth 8-3886] merging instance 'draw_10/oled_data_reg[0]' (FDS) to 'draw_10/oled_data_reg[1]'
 INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[0]' (FD) to 'claire/ddd/oled_data_reg[1]'
 INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[0]' (FD) to 'tim/b/pixel_data_reg[1]'
 INFO: [Synth 8-3886] merging instance 'sk/oled_data_reg[0]' (FDE) to 'sk/oled_data_reg[4]'
-INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line73/center_sq_colour_reg[1]' (FD) to 'kashfy/nolabel_line73/center_sq_colour_reg[10]'
+INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line74/center_sq_colour_reg[1]' (FD) to 'kashfy/nolabel_line74/center_sq_colour_reg[10]'
 INFO: [Synth 8-3886] merging instance 'draw_10/oled_data_reg[1]' (FDS) to 'draw_10/oled_data_reg[2]'
 INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[1]' (FD) to 'claire/ddd/oled_data_reg[2]'
 INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[1]' (FD) to 'tim/b/pixel_data_reg[2]'
 INFO: [Synth 8-3886] merging instance 'sk/oled_data_reg[1]' (FDE) to 'sk/oled_data_reg[4]'
-INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line73/center_sq_colour_reg[2]' (FD) to 'kashfy/nolabel_line73/center_sq_colour_reg[10]'
+INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line74/center_sq_colour_reg[2]' (FD) to 'kashfy/nolabel_line74/center_sq_colour_reg[10]'
 INFO: [Synth 8-3886] merging instance 'draw_10/oled_data_reg[2]' (FDS) to 'draw_10/oled_data_reg[3]'
 INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[2]' (FD) to 'claire/ddd/oled_data_reg[3]'
 INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[2]' (FD) to 'tim/b/pixel_data_reg[3]'
 INFO: [Synth 8-3886] merging instance 'sk/oled_data_reg[2]' (FDE) to 'sk/oled_data_reg[4]'
-INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line73/center_sq_colour_reg[3]' (FD) to 'kashfy/nolabel_line73/center_sq_colour_reg[10]'
+INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line74/center_sq_colour_reg[3]' (FD) to 'kashfy/nolabel_line74/center_sq_colour_reg[10]'
 INFO: [Synth 8-3886] merging instance 'draw_10/oled_data_reg[3]' (FDS) to 'draw_10/oled_data_reg[4]'
 INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[3]' (FD) to 'claire/ddd/oled_data_reg[4]'
 INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[3]' (FD) to 'tim/b/pixel_data_reg[4]'
 INFO: [Synth 8-3886] merging instance 'sk/oled_data_reg[3]' (FDE) to 'sk/oled_data_reg[4]'
-INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line73/center_sq_colour_reg[4]' (FD) to 'kashfy/nolabel_line73/center_sq_colour_reg[10]'
+INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line74/center_sq_colour_reg[4]' (FD) to 'kashfy/nolabel_line74/center_sq_colour_reg[10]'
 INFO: [Synth 8-3886] merging instance 'draw_10/oled_data_reg[4]' (FDS) to 'draw_10/oled_data_reg[5]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (claire/\ddd/oled_data_reg[4] )
-INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line73/center_sq_colour_reg[5]' (FD) to 'kashfy/nolabel_line73/center_sq_colour_reg[6]'
+INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line74/center_sq_colour_reg[5]' (FD) to 'kashfy/nolabel_line74/center_sq_colour_reg[6]'
 INFO: [Synth 8-3886] merging instance 'draw_10/oled_data_reg[5]' (FDS) to 'draw_10/oled_data_reg[6]'
 INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[5]' (FD) to 'claire/ddd/oled_data_reg[6]'
 INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[5]' (FD) to 'tim/b/pixel_data_reg[6]'
 INFO: [Synth 8-3886] merging instance 'sk/oled_data_reg[5]' (FDE) to 'sk/oled_data_reg[9]'
-INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line73/center_sq_colour_reg[6]' (FD) to 'kashfy/nolabel_line73/center_sq_colour_reg[7]'
+INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line74/center_sq_colour_reg[6]' (FD) to 'kashfy/nolabel_line74/center_sq_colour_reg[7]'
 INFO: [Synth 8-3886] merging instance 'draw_10/oled_data_reg[6]' (FDS) to 'draw_10/oled_data_reg[7]'
 INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[6]' (FD) to 'claire/ddd/oled_data_reg[7]'
 INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[6]' (FD) to 'tim/b/pixel_data_reg[7]'
 INFO: [Synth 8-3886] merging instance 'sk/oled_data_reg[6]' (FDE) to 'sk/oled_data_reg[9]'
-INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line73/center_sq_colour_reg[7]' (FD) to 'kashfy/nolabel_line73/center_sq_colour_reg[8]'
+INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line74/center_sq_colour_reg[7]' (FD) to 'kashfy/nolabel_line74/center_sq_colour_reg[8]'
 INFO: [Synth 8-3886] merging instance 'draw_10/oled_data_reg[7]' (FDS) to 'draw_10/oled_data_reg[8]'
 INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[7]' (FD) to 'claire/ddd/oled_data_reg[8]'
 INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[7]' (FD) to 'tim/b/pixel_data_reg[8]'
@@ -691,13 +691,13 @@ INFO: [Synth 8-3886] merging instance 'draw_10/oled_data_reg[8]' (FDS) to 'draw_
 INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[8]' (FD) to 'claire/ddd/oled_data_reg[9]'
 INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[8]' (FD) to 'tim/b/pixel_data_reg[9]'
 INFO: [Synth 8-3886] merging instance 'sk/oled_data_reg[8]' (FDE) to 'sk/oled_data_reg[9]'
-INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line73/center_sq_colour_reg[9]' (FD) to 'kashfy/nolabel_line73/center_sq_colour_reg[10]'
+INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line74/center_sq_colour_reg[9]' (FD) to 'kashfy/nolabel_line74/center_sq_colour_reg[10]'
 INFO: [Synth 8-3886] merging instance 'draw_10/oled_data_reg[9]' (FDS) to 'draw_10/oled_data_reg[10]'
 INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[9]' (FD) to 'claire/ddd/oled_data_reg[10]'
 INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[9]' (FD) to 'tim/b/pixel_data_reg[10]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (kashfy/\nolabel_line73/center_sq_colour_reg[10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (kashfy/\nolabel_line74/center_sq_colour_reg[10] )
 INFO: [Synth 8-3886] merging instance 'draw_10/oled_data_reg[10]' (FDS) to 'draw_10/oled_data_reg[11]'
-INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line73/center_sq_colour_reg[11]' (FD) to 'kashfy/nolabel_line73/center_sq_colour_reg[12]'
+INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line74/center_sq_colour_reg[11]' (FD) to 'kashfy/nolabel_line74/center_sq_colour_reg[12]'
 INFO: [Synth 8-3886] merging instance 'draw_10/oled_data_reg[11]' (FDS) to 'draw_10/oled_data_reg[12]'
 INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[11]' (FD) to 'claire/ddd/oled_data_reg[12]'
 INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[11]' (FD) to 'tim/b/pixel_data_reg[12]'
@@ -706,12 +706,12 @@ INFO: [Synth 8-3886] merging instance 'draw_10/oled_data_reg[12]' (FDS) to 'draw
 INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[12]' (FD) to 'claire/ddd/oled_data_reg[13]'
 INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[12]' (FD) to 'tim/b/pixel_data_reg[13]'
 INFO: [Synth 8-3886] merging instance 'sk/oled_data_reg[12]' (FDE) to 'sk/oled_data_reg[15]'
-INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line73/center_sq_colour_reg[13]' (FD) to 'kashfy/nolabel_line73/center_sq_colour_reg[15]'
+INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line74/center_sq_colour_reg[13]' (FD) to 'kashfy/nolabel_line74/center_sq_colour_reg[15]'
 INFO: [Synth 8-3886] merging instance 'draw_10/oled_data_reg[13]' (FDS) to 'draw_10/oled_data_reg[14]'
 INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[13]' (FD) to 'claire/ddd/oled_data_reg[14]'
 INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[13]' (FD) to 'tim/b/pixel_data_reg[14]'
 INFO: [Synth 8-3886] merging instance 'sk/oled_data_reg[13]' (FDE) to 'sk/oled_data_reg[15]'
-INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line73/center_sq_colour_reg[14]' (FD) to 'kashfy/nolabel_line73/center_sq_colour_reg[15]'
+INFO: [Synth 8-3886] merging instance 'kashfy/nolabel_line74/center_sq_colour_reg[14]' (FD) to 'kashfy/nolabel_line74/center_sq_colour_reg[15]'
 INFO: [Synth 8-3886] merging instance 'kashfy/choose_direction/y_vect_reg[6]' (FDRE) to 'kashfy/choose_direction/y_vect_reg[5]'
 INFO: [Synth 8-3886] merging instance 'kashfy/choose_direction/y_vect_reg[5]' (FDRE) to 'kashfy/choose_direction/y_vect_reg[4]'
 INFO: [Synth 8-3886] merging instance 'kashfy/choose_direction/y_vect_reg[4]' (FDRE) to 'kashfy/choose_direction/y_vect_reg[3]'
@@ -726,7 +726,7 @@ INFO: [Synth 8-3886] merging instance 'draw_10/oled_data_reg[14]' (FDS) to 'draw
 INFO: [Synth 8-3886] merging instance 'claire/ddd/oled_data_reg[14]' (FD) to 'claire/ddd/oled_data_reg[15]'
 INFO: [Synth 8-3886] merging instance 'tim/b/pixel_data_reg[14]' (FD) to 'tim/b/pixel_data_reg[15]'
 INFO: [Synth 8-3886] merging instance 'sk/oled_data_reg[14]' (FDE) to 'sk/oled_data_reg[15]'
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (kashfy/\nolabel_line73/center_sq_colour_reg[15] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (kashfy/\nolabel_line74/center_sq_colour_reg[15] )
 INFO: [Synth 8-3886] merging instance 'sk/state_reg[3]' (FDRE) to 'sk/state_reg[4]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (sk/\state_reg[4] )
 INFO: [Synth 8-3886] merging instance 'kashfy/draw_sq/oled_data_reg[0]' (FD) to 'kashfy/draw_sq/oled_data_reg[1]'
@@ -753,12 +753,12 @@ INFO: [Synth 8-3886] merging instance 'oled_data_reg[13]' (FD) to 'oled_data_reg
 INFO: [Synth 8-3886] merging instance 'oled_data_reg[14]' (FD) to 'oled_data_reg[15]'
 WARNING: [Synth 8-3332] Sequential element (state_reg[4]) is unused and will be removed from module Top_Student.
 WARNING: [Synth 8-3332] Sequential element (ddd/oled_data_reg[4]) is unused and will be removed from module task4C.
-WARNING: [Synth 8-3332] Sequential element (nolabel_line73/center_sq_colour_reg[15]) is unused and will be removed from module task4D.
-WARNING: [Synth 8-3332] Sequential element (nolabel_line73/center_sq_colour_reg[10]) is unused and will be removed from module task4D.
+WARNING: [Synth 8-3332] Sequential element (nolabel_line74/center_sq_colour_reg[15]) is unused and will be removed from module task4D.
+WARNING: [Synth 8-3332] Sequential element (nolabel_line74/center_sq_colour_reg[10]) is unused and will be removed from module task4D.
 WARNING: [Synth 8-3332] Sequential element (draw_sq/oled_data_reg[4]) is unused and will be removed from module task4D.
 WARNING: [Synth 8-3332] Sequential element (reg_clock_reg) is unused and will be removed from module flexible_clock__4.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:08 ; elapsed = 00:00:18 . Memory (MB): peak = 789.355 ; gain = 499.633
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:17 . Memory (MB): peak = 790.531 ; gain = 500.793
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -792,13 +792,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:27 . Memory (MB): peak = 820.332 ; gain = 530.609
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:27 . Memory (MB): peak = 827.574 ; gain = 537.836
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:28 . Memory (MB): peak = 831.562 ; gain = 541.840
+Finished Timing Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:27 . Memory (MB): peak = 838.465 ; gain = 548.727
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -810,7 +810,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:13 ; elapsed = 00:00:28 . Memory (MB): peak = 874.227 ; gain = 584.504
+Finished Technology Mapping : Time (s): cpu = 00:00:14 ; elapsed = 00:00:28 . Memory (MB): peak = 881.207 ; gain = 591.469
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -836,48 +836,20 @@ INFO: [Synth 8-6064] Net \sk/oled_data5 [16] is driving 70 big block pins (URAM,
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:13 ; elapsed = 00:00:29 . Memory (MB): peak = 874.227 ; gain = 584.504
+Finished IO Insertion : Time (s): cpu = 00:00:15 ; elapsed = 00:00:29 . Memory (MB): peak = 881.207 ; gain = 591.469
 ---------------------------------------------------------------------------------
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/y_var[6] with 1st driver pin 'i_983/O' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:47]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/y_var[6] with 2nd driver pin 'kashfy/nolabel_line73/y_var_reg[6]/Q' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:51]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/y_var[5] with 1st driver pin 'i_984/O' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:47]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/y_var[5] with 2nd driver pin 'kashfy/nolabel_line73/y_var_reg[5]/Q' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:51]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/y_var[4] with 1st driver pin 'i_985/O' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:47]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/y_var[4] with 2nd driver pin 'kashfy/nolabel_line73/y_var_reg[4]/Q' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:51]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/y_var[3] with 1st driver pin 'i_986/O' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:47]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/y_var[3] with 2nd driver pin 'kashfy/nolabel_line73/y_var_reg[3]/Q' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:51]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/y_var[2] with 1st driver pin 'i_987/O' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:47]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/y_var[2] with 2nd driver pin 'kashfy/nolabel_line73/y_var_reg[2]/Q' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:51]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/y_var[1] with 1st driver pin 'i_988/O' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:47]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/y_var[1] with 2nd driver pin 'kashfy/nolabel_line73/y_var_reg[1]/Q' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:51]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/y_var[0] with 1st driver pin 'i_989/O' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:47]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/y_var[0] with 2nd driver pin 'kashfy/nolabel_line73/y_var_reg[0]/Q' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:51]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/x_var[6] with 1st driver pin 'i_976/O' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:47]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/x_var[6] with 2nd driver pin 'kashfy/nolabel_line73/x_var_reg[6]/Q' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:47]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/x_var[5] with 1st driver pin 'i_977/O' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:47]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/x_var[5] with 2nd driver pin 'kashfy/nolabel_line73/x_var_reg[5]/Q' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:47]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/x_var[4] with 1st driver pin 'i_978/O' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:47]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/x_var[4] with 2nd driver pin 'kashfy/nolabel_line73/x_var_reg[4]/Q' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:47]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/x_var[3] with 1st driver pin 'i_979/O' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:47]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/x_var[3] with 2nd driver pin 'kashfy/nolabel_line73/x_var_reg[3]/Q' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:47]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/x_var[2] with 1st driver pin 'i_980/O' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:47]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/x_var[2] with 2nd driver pin 'kashfy/nolabel_line73/x_var_reg[2]/Q' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:47]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/x_var[1] with 1st driver pin 'i_981/O' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:47]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/x_var[1] with 2nd driver pin 'kashfy/nolabel_line73/x_var_reg[1]/Q' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:47]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/x_var[0] with 1st driver pin 'i_982/O' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:47]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net kashfy/x_var[0] with 2nd driver pin 'kashfy/nolabel_line73/x_var_reg[0]/Q' [C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/new/animate.v:47]
 
 Report Check Netlist: 
 +------+------------------+-------+---------+-------+------------------+
 |      |Item              |Errors |Warnings |Status |Description       |
 +------+------------------+-------+---------+-------+------------------+
-|1     |multi_driven_nets |      0|       14|Failed |Multi driven nets |
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:13 ; elapsed = 00:00:29 . Memory (MB): peak = 874.227 ; gain = 584.504
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:15 ; elapsed = 00:00:29 . Memory (MB): peak = 881.207 ; gain = 591.469
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -889,25 +861,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:13 ; elapsed = 00:00:29 . Memory (MB): peak = 874.227 ; gain = 584.504
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:15 ; elapsed = 00:00:29 . Memory (MB): peak = 881.207 ; gain = 591.469
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:13 ; elapsed = 00:00:29 . Memory (MB): peak = 874.227 ; gain = 584.504
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:15 ; elapsed = 00:00:29 . Memory (MB): peak = 881.207 ; gain = 591.469
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:13 ; elapsed = 00:00:29 . Memory (MB): peak = 874.227 ; gain = 584.504
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:15 ; elapsed = 00:00:29 . Memory (MB): peak = 881.207 ; gain = 591.469
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:13 ; elapsed = 00:00:29 . Memory (MB): peak = 874.227 ; gain = 584.504
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:15 ; elapsed = 00:00:29 . Memory (MB): peak = 881.207 ; gain = 591.469
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -927,14 +899,14 @@ Report Cell Usage:
 |2     |CARRY4  |   246|
 |3     |DSP48E1 |     6|
 |4     |LUT1    |    36|
-|5     |LUT2    |   340|
-|6     |LUT3    |   204|
-|7     |LUT4    |   141|
-|8     |LUT5    |   188|
-|9     |LUT6    |   355|
+|5     |LUT2    |   330|
+|6     |LUT3    |   208|
+|7     |LUT4    |   152|
+|8     |LUT5    |   181|
+|9     |LUT6    |   363|
 |10    |FDE_1   |    32|
-|11    |FDRE    |   637|
-|12    |FDSE    |    16|
+|11    |FDRE    |   642|
+|12    |FDSE    |    12|
 |13    |IBUF    |    22|
 |14    |OBUF    |    23|
 |15    |OBUFT   |    12|
@@ -944,9 +916,9 @@ Report Instance Areas:
 +------+---------------------+-----------------+------+
 |      |Instance             |Module           |Cells |
 +------+---------------------+-----------------+------+
-|1     |top                  |                 |  2263|
-|2     |  claire             |task4C           |   430|
-|3     |    ddd              |draw_oled        |   267|
+|1     |top                  |                 |  2270|
+|2     |  claire             |task4C           |   425|
+|3     |    ddd              |draw_oled        |   262|
 |4     |      greenx         |incrementer      |    23|
 |5     |      greeny         |incrementer_9    |    25|
 |6     |      redx           |incrementer_10   |    22|
@@ -955,31 +927,31 @@ Report Instance Areas:
 |9     |    fiftyHzclk       |flexible_clk     |    54|
 |10    |    oneHzclk         |flexible_clk_7   |    54|
 |11    |    thirtyHzclk      |flexible_clk_8   |    55|
-|12    |  clk10hz            |flexible_clock   |    62|
-|13    |  clk2hz             |flexible_clock_0 |    59|
-|14    |  clk5hz             |flexible_clock_1 |    57|
-|15    |  clk6hz             |flexible_clock_2 |    62|
+|12    |  clk10hz            |flexible_clock   |    60|
+|13    |  clk2hz             |flexible_clock_0 |    58|
+|14    |  clk5hz             |flexible_clock_1 |    58|
+|15    |  clk6hz             |flexible_clock_2 |    64|
 |16    |  clk6p25m           |flexible_clock_3 |    58|
-|17    |  display            |Oled_Display     |   780|
-|18    |  draw_10            |draw_grp_number  |    21|
-|19    |  kashfy             |task4D           |   183|
-|20    |    choose_direction |direction_mux    |    38|
-|21    |    draw_sq          |make_square      |    47|
-|22    |    nolabel_line73   |animate          |    98|
+|17    |  display            |Oled_Display     |   769|
+|18    |  draw_10            |draw_grp_number  |    25|
+|19    |  kashfy             |task4D           |   193|
+|20    |    choose_direction |direction_mux    |    16|
+|21    |    draw_sq          |make_square      |    27|
+|22    |    nolabel_line74   |animate          |   150|
 |23    |      get_fps_clock  |flexible_clock_6 |    50|
 |24    |  sk                 |Top_Student      |   252|
 |25    |    clk1000hz        |flexible_clock_5 |    50|
-|26    |  tim                |task4B           |   180|
-|27    |    b                |taskb            |   180|
+|26    |  tim                |task4B           |   179|
+|27    |    b                |taskb            |   179|
 |28    |      clk1k          |flexible_clock_4 |    50|
 |29    |      conv           |convert          |    49|
 +------+---------------------+-----------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:13 ; elapsed = 00:00:29 . Memory (MB): peak = 874.227 ; gain = 584.504
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:15 ; elapsed = 00:00:29 . Memory (MB): peak = 881.207 ; gain = 591.469
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 28 critical warnings and 50 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:11 ; elapsed = 00:00:23 . Memory (MB): peak = 874.227 ; gain = 241.324
-Synthesis Optimization Complete : Time (s): cpu = 00:00:14 ; elapsed = 00:00:29 . Memory (MB): peak = 874.227 ; gain = 584.504
+Synthesis finished with 0 errors, 0 critical warnings and 50 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:11 ; elapsed = 00:00:23 . Memory (MB): peak = 881.207 ; gain = 246.219
+Synthesis Optimization Complete : Time (s): cpu = 00:00:15 ; elapsed = 00:00:29 . Memory (MB): peak = 881.207 ; gain = 591.469
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 306 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -990,11 +962,11 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   FDE_1 => FDRE (inverted pins: C): 32 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-201 Infos, 126 Warnings, 28 Critical Warnings and 0 Errors encountered.
+202 Infos, 129 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:15 ; elapsed = 00:00:32 . Memory (MB): peak = 874.227 ; gain = 596.023
+synth_design: Time (s): cpu = 00:00:17 ; elapsed = 00:00:32 . Memory (MB): peak = 881.207 ; gain = 602.941
 WARNING: [Constraints 18-5210] No constraint will be written out.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/cyber/Desktop/EE2026_Project/MODS.runs/synth_1/main.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file main_utilization_synth.rpt -pb main_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.035 . Memory (MB): peak = 874.227 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Thu Oct 10 00:18:15 2024...
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.036 . Memory (MB): peak = 881.207 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Thu Oct 10 00:44:38 2024...

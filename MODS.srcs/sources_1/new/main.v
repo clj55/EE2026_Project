@@ -52,6 +52,7 @@ module main(
     
     reg seg_state = 0;
     reg activity_state = 0;
+    reg reset;
     
     Oled_Display display (.clk(clk625), .reset(0), .frame_begin(frame_begin), .sending_pixels(sending_pixels),
      .sample_pixel(sample_pixel), .pixel_index(pixel_index), .pixel_data(oled_data), .cs(JB[0]), .sdin(JB[1]), 
@@ -61,7 +62,7 @@ module main(
     Top_Student sk (CLOCK, sw[4], btnC, btnU, pixel_index, oled_data1); 
     task4B tim (CLOCK, btnC, btnU, btnD, pixel_index, oled_data2); 
     task4C claire (CLOCK, btnC, btnU, pixel_index, oled_data3); 
-    task4D kashfy (CLOCK, btnC, btnL, btnR, btnD, btnU, sw, pixel_index, oled_data4); 
+    task4D kashfy (CLOCK, btnC, btnL, btnR, btnD, btnU, reset, pixel_index, oled_data4); 
     // draw group number when no task is enabled
     draw_grp_number draw_10 (.clk(CLOCK), .pixel_index(pixel_index), .oled_data(oled_data5));
 
@@ -120,12 +121,14 @@ module main(
             
             oled_data <= oled_data4;
             activity_state <= 1;
+            reset <= 0;
             
         end else if (activity_state == 0) begin
             oled_data <= oled_data5;
         end else begin
             oled_data <= 0;
             activity_state <= 0;
+            reset <= 1;
         end
     end
     
