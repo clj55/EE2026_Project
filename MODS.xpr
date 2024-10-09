@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="38" Path="C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.xpr">
+<Project Version="7" Minor="38" Path="C:/Users/cyber/Desktop/EE2026_Project/MODS.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="4c3086506e88427ca6f65a71a9035e44"/>
@@ -230,6 +230,13 @@
       </File>
       <File Path="$PPRDIR/archive_project_summary.txt"/>
       <File Path="$PSRCDIR/sources_1/new/task4B.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/draw_grp_number.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>

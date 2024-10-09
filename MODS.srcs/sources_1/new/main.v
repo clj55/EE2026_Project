@@ -48,6 +48,7 @@ module main(
     wire [15:0] oled_data2;
     wire [15:0] oled_data3;
     wire [15:0] oled_data4;
+    wire [15:0] oled_data5;
     
     reg seg_state = 0;
     reg activity_state = 0;
@@ -60,7 +61,9 @@ module main(
     Top_Student sk (CLOCK, sw[4], btnC, btnU, pixel_index, oled_data1); 
     task4B tim (CLOCK, btnC, btnU, btnD, pixel_index, oled_data2); 
     task4C claire (CLOCK, btnC, btnU, pixel_index, oled_data3); 
-    task4D kashfy (CLOCK, btnC, btnL, btnR, btnD, btnU, sw[4:0], pixel_index, oled_data4); 
+    task4D kashfy (CLOCK, btnC, btnL, btnR, btnD, btnU, sw, pixel_index, oled_data4); 
+    // draw group number when no task is enabled
+    draw_grp_number draw_10 (.clk(CLOCK), .pixel_index(pixel_index), .oled_data(oled_data5));
 
     flexible_clock clk6p25m (CLOCK, 7, clk625);
     
@@ -118,8 +121,10 @@ module main(
             oled_data <= oled_data4;
             activity_state <= 1;
             
+        end else if (activity_state == 0) begin
+            oled_data <= oled_data5;
         end else begin
-            oled_data <= 16'b0000000000000000;
+            oled_data <= 0;
             activity_state <= 0;
         end
     end
@@ -144,27 +149,6 @@ module main(
     //     end    
     // end
 
-    // border of 10px
-    // space between digits: 15px
-    // width of each white line: 15px
-    always @ (posedge clk1000) 
-    begin
-        // no task going on; display group number 10
-        if (activity_state == 0) begin
-            // draw the OLED screen to show '10'
-            if (x >= 10 && x < 10 + 15 && y >= 10 && y < 53) begin // number '1' in '10'
-                oled_data = 16'b11111_111111_11111;
-            end else if (x >= 10 + 15 + 15 && x < 10 + 15 + 15 + 45 && y >= 10 && y < 53) begin // white rectangloe for '0'
-                if (x >= 10 + 15 + 15 + 15 && x < 10 + 15 + 15 + 15 + 15 && y >= 10 + 15 && y < 53 - 15) begin // middle of '0' is black colour
-                    oled_data = 0;
-                end else begin
-                    oled_data = 16'b11111_111111_11111;; 
-                end
-            end else begin
-                oled_data = 0;
-            end
-        end
-    end
             
     
 endmodule

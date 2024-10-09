@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.runs/impl_1'
+HD_PWD='C:/Users/cyber/Desktop/EE2026_Project/MODS.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

@@ -1,4 +1,4 @@
-set_property SRC_FILE_INFO {cfile:C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/constrs_1/new/constr.xdc rfile:../../../MODS.srcs/constrs_1/new/constr.xdc id:1} [current_design]
+set_property SRC_FILE_INFO {cfile:C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/constrs_1/new/constr.xdc rfile:../../../MODS.srcs/constrs_1/new/constr.xdc id:1} [current_design]
 set_property src_info {type:XDC file:1 line:7 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict { PACKAGE_PIN W5   IOSTANDARD LVCMOS33 } [get_ports CLOCK]
 set_property src_info {type:XDC file:1 line:12 export:INPUT save:INPUT read:READ} [current_design]

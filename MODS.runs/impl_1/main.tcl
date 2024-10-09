@@ -60,7 +60,6 @@ proc step_failed { step } {
   close $ch
 }
 
-set_msg_config -id {Common 17-41} -limit 10000000
 
 start_step init_design
 set ACTIVE_STEP init_design
@@ -70,17 +69,17 @@ set rc [catch {
   create_project -in_memory -part xc7a35tcpg236-1
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
-  set_property webtalk.parent_dir C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.cache/wt [current_project]
-  set_property parent.project_path C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.xpr [current_project]
-  set_property ip_output_repo C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.cache/ip [current_project]
+  set_property webtalk.parent_dir C:/Users/cyber/Desktop/EE2026_Project/MODS.cache/wt [current_project]
+  set_property parent.project_path C:/Users/cyber/Desktop/EE2026_Project/MODS.xpr [current_project]
+  set_property ip_output_repo C:/Users/cyber/Desktop/EE2026_Project/MODS.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES XPM_MEMORY [current_project]
-  add_files -quiet C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.runs/synth_1/main.dcp
-  read_ip -quiet C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/ip/blk_mem_gen_inter/blk_mem_gen_inter.xci
-  read_ip -quiet C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/ip/blk_mem_gen_0_1/blk_mem_gen_0.xci
-  read_ip -quiet C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/ip/blk_mem_gen_img/blk_mem_gen_img.xci
-  read_ip -quiet C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/sources_1/ip/blk_mem_gen_const/blk_mem_gen_const.xci
-  read_xdc C:/Users/gskan/Downloads/MODS.xpr/MODS/MODS.srcs/constrs_1/new/constr.xdc
+  add_files -quiet C:/Users/cyber/Desktop/EE2026_Project/MODS.runs/synth_1/main.dcp
+  read_ip -quiet C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/ip/blk_mem_gen_inter/blk_mem_gen_inter.xci
+  read_ip -quiet C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/ip/blk_mem_gen_0_1/blk_mem_gen_0.xci
+  read_ip -quiet C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/ip/blk_mem_gen_img/blk_mem_gen_img.xci
+  read_ip -quiet C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/sources_1/ip/blk_mem_gen_const/blk_mem_gen_const.xci
+  read_xdc C:/Users/cyber/Desktop/EE2026_Project/MODS.srcs/constrs_1/new/constr.xdc
   link_design -top main -part xc7a35tcpg236-1
   close_msg_db -file init_design.pb
 } RESULT]

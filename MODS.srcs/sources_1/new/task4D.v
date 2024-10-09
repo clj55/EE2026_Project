@@ -21,7 +21,7 @@
 
 
 module task4D(
-    input clk, btnC, btnL, btnR, btnD, btnU, [4:0]sw,  
+    input clk, btnC, btnL, btnR, btnD, btnU, [15:0]sw,  
     input [12:0] pixel_index,
     output wire [15:0] oled_data
 );
@@ -32,6 +32,14 @@ wire [6:0] x;
 wire [6:0] y;
 wire [6:0] x_var;
 wire [6:0] y_var;
+wire [6:0] x_var_default;
+wire [6:0] y_var_default;
+
+//assign x_var_default = 0;
+//assign y_var_default = 0;
+
+//assign x_var = (sw == 16'b1000_0000_1011_0101) ? 0 : x_var;
+//assign y_var = (sw == 16'b1000_0000_1011_0101) ? 0 : y_var;  
 
 //reg [15:0] oled_colour;
 
@@ -51,6 +59,9 @@ assign y = pixel_index / 96;
     inputs: basys clock, m_value (the count limit of the clock)
     output: 6.25 MHz wire
 */
+
+
+
 
 // use pushbuttons to choose direction
 wire [6:0]x_vect;

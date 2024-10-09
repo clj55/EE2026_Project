@@ -1,8 +1,8 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date         : Tue Oct  8 02:43:09 2024
-| Host         : gskang running 64-bit major release  (build 9200)
+| Date         : Thu Oct 10 00:18:15 2024
+| Host         : Kashfy-yoga7 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file main_utilization_synth.rpt -pb main_utilization_synth.pb
 | Design       : main
 | Device       : 7a35tcpg236-1
@@ -30,11 +30,11 @@ Table of Contents
 +-------------------------+------+-------+-----------+-------+
 |        Site Type        | Used | Fixed | Available | Util% |
 +-------------------------+------+-------+-----------+-------+
-| Slice LUTs*             | 1005 |     0 |     20800 |  4.83 |
-|   LUT as Logic          | 1005 |     0 |     20800 |  4.83 |
+| Slice LUTs*             | 1089 |     0 |     20800 |  5.24 |
+|   LUT as Logic          | 1089 |     0 |     20800 |  5.24 |
 |   LUT as Memory         |    0 |     0 |      9600 |  0.00 |
-| Slice Registers         |  721 |     0 |     41600 |  1.73 |
-|   Register as Flip Flop |  721 |     0 |     41600 |  1.73 |
+| Slice Registers         |  685 |     0 |     41600 |  1.65 |
+|   Register as Flip Flop |  685 |     0 |     41600 |  1.65 |
 |   Register as Latch     |    0 |     0 |     41600 |  0.00 |
 | F7 Muxes                |    0 |     0 |     16300 |  0.00 |
 | F8 Muxes                |    0 |     0 |      8150 |  0.00 |
@@ -56,8 +56,8 @@ Table of Contents
 | 0     |          Yes |           - |            - |
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
-| 12    |          Yes |         Set |            - |
-| 709   |          Yes |       Reset |            - |
+| 16    |          Yes |         Set |            - |
+| 669   |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -150,20 +150,20 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| FDRE     |  709 |        Flop & Latch |
-| LUT6     |  339 |                 LUT |
-| LUT2     |  289 |                 LUT |
-| CARRY4   |  241 |          CarryLogic |
-| LUT3     |  192 |                 LUT |
-| LUT5     |  172 |                 LUT |
-| LUT4     |  134 |                 LUT |
-| OBUF     |   34 |                  IO |
-| LUT1     |   34 |                 LUT |
+| FDRE     |  669 |        Flop & Latch |
+| LUT6     |  355 |                 LUT |
+| LUT2     |  340 |                 LUT |
+| CARRY4   |  246 |          CarryLogic |
+| LUT3     |  204 |                 LUT |
+| LUT5     |  188 |                 LUT |
+| LUT4     |  141 |                 LUT |
+| LUT1     |   36 |                 LUT |
+| OBUF     |   23 |                  IO |
 | IBUF     |   22 |                  IO |
-| FDSE     |   12 |        Flop & Latch |
+| FDSE     |   16 |        Flop & Latch |
+| OBUFT    |   12 |                  IO |
 | DSP48E1  |    6 |    Block Arithmetic |
 | BUFG     |    5 |               Clock |
-| OBUFT    |    1 |                  IO |
 +----------+------+---------------------+
 
 
