@@ -1,0 +1,99 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
+| Date         : Thu Oct 10 01:34:08 2024
+| Host         : Computer running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file main_control_sets_placed.rpt
+| Design       : main
+| Device       : xc7a35t
+------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    30 |
+| Unused register locations in slices containing registers |    44 |
++----------------------------------------------------------+-------+
+
+
+2. Histogram
+------------
+
++--------+--------------+
+| Fanout | Control Sets |
++--------+--------------+
+|      2 |            2 |
+|      6 |            1 |
+|      8 |            2 |
+|     10 |            1 |
+|     12 |            1 |
+|    16+ |           23 |
++--------+--------------+
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |             248 |           62 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |             828 |          106 |
+| Yes          | No                    | No                     |             128 |           19 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |             168 |           24 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++------------------------------------------+---------------------------------------+-------------------------------------------+------------------+----------------+
+|               Clock Signal               |             Enable Signal             |              Set/Reset Signal             | Slice Load Count | Bel Load Count |
++------------------------------------------+---------------------------------------+-------------------------------------------+------------------+----------------+
+|  CLOCK_IBUF_BUFG                         | kashfy/choose_direction/x_vect__0_n_0 | btnC_IBUF                                 |                1 |              2 |
+| ~clk625_BUFG                             |                                       |                                           |                1 |              2 |
+|  claire/oneHzclk/clk                     |                                       |                                           |                1 |              6 |
+|  CLOCK_IBUF_BUFG                         | sk/oled_data[15]_i_1__2_n_0           |                                           |                2 |              8 |
+|  clk_0                                   |                                       |                                           |                3 |              8 |
+|  CLOCK_IBUF_BUFG                         | claire/ddd/y_green[5]_i_2_n_0         | claire/ddd/y_green[5]_i_1_n_0             |                2 |             10 |
+|  CLOCK_IBUF_BUFG                         | claire/ddd/x_green[6]_i_1_n_0         | claire/ddd/y_green[5]_i_1_n_0             |                4 |             12 |
+|  CLOCK_IBUF_BUFG                         | claire/ddd/x_red[7]_i_1_n_0           |                                           |                3 |             16 |
+|  CLOCK_IBUF_BUFG                         | claire/ddd/y_red[7]_i_2_n_0           | claire/ddd/y_red[7]_i_1_n_0               |                1 |             16 |
+|  clk                                     |                                       |                                           |                2 |             18 |
+|  kashfy/nolabel_line73/get_fps_clock/CLK |                                       |                                           |                5 |             32 |
+| ~clk625_BUFG                             |                                       | display/frame_counter[16]_i_1_n_0         |                5 |             34 |
+| ~clk625_BUFG                             | display/delay[0]_i_1_n_0              |                                           |                5 |             40 |
+|  ddd/counter_clk                         |                                       |                                           |                8 |             64 |
+|  CLOCK_IBUF_BUFG                         |                                       | clk10hz/clear                             |                8 |             64 |
+|  CLOCK_IBUF_BUFG                         |                                       | sk/clk1000hz/clear                        |                8 |             64 |
+|  CLOCK_IBUF_BUFG                         |                                       | clk2hz/clear                              |                8 |             64 |
+|  CLOCK_IBUF_BUFG                         |                                       | clk5hz/clear                              |                8 |             64 |
+|  CLOCK_IBUF_BUFG                         |                                       | clk6hz/clear                              |                8 |             64 |
+|  CLOCK_IBUF_BUFG                         |                                       | clk6p25m/clear                            |                8 |             64 |
+|  CLOCK_IBUF_BUFG                         |                                       | tim/b/clk1k/clear                         |                8 |             64 |
+|  CLOCK_IBUF_BUFG                         |                                       | claire/fiftyHzclk/COUNT[0]_i_1__1_n_0     |                8 |             64 |
+|  CLOCK_IBUF_BUFG                         |                                       | claire/oneHzclk/clear                     |                8 |             64 |
+|  CLOCK_IBUF_BUFG                         |                                       | claire/thirtyHzclk/COUNT[0]_i_1__0_n_0    |                8 |             64 |
+|  CLOCK_IBUF_BUFG                         |                                       | kashfy/nolabel_line73/get_fps_clock/clear |                8 |             64 |
+|  clk                                     | tim/b/sel                             | tim/b/count[0]_i_1__0_n_0                 |                8 |             64 |
+| ~clk625_BUFG                             | display/state                         |                                           |                9 |             64 |
+|  clk_0                                   | sk/counter[0]_i_2_n_0                 | sk/counter[0]_i_1_n_0                     |                8 |             64 |
+| ~clk625_BUFG                             |                                       | display/spi_word[39]_i_1_n_0              |               13 |             90 |
+|  CLOCK_IBUF_BUFG                         |                                       |                                           |               42 |            118 |
++------------------------------------------+---------------------------------------+-------------------------------------------+------------------+----------------+
+
+
