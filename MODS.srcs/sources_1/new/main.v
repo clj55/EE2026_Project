@@ -124,23 +124,46 @@ module main(
         end
     end
     
-    always @ (posedge clk1000)
+    
+    // always @ (posedge clk1000)
+    // begin
+    // // no task going on; display group number which idk lmao
+    //     if (activity_state == 0) begin
+    //         if (seg_state == 0) begin
+    //             an <= 4'b1101;
+    //             seg <= 7'b1000000;  
+    //             seg_state <= 1;             
+    //         end else if (seg_state == 1) begin
+    //             an <= 4'b1110;
+    //             seg <= 7'b0011001;
+    //             seg_state <= 0;
+    //         end
+    //     end else begin
+    //         an <= 4'b1111;
+    //         seg <= 7'b1111111;
+    //     end    
+    // end
+
+    // border of 10px
+    // space between digits: 15px
+    // width of each white line: 15px
+    always @ (posedge clk1000) 
     begin
-    // no task going on; display group number which idk lmao
+        // no task going on; display group number 10
         if (activity_state == 0) begin
-            if (seg_state == 0) begin
-                an <= 4'b1101;
-                seg <= 7'b1000000;  
-                seg_state <= 1;             
-            end else if (seg_state == 1) begin
-                an <= 4'b1110;
-                seg <= 7'b0011001;
-                seg_state <= 0;
+            // draw the OLED screen to show '10'
+            if (x >= 10 && x < 10 + 15 && y >= 10 && y < 53) begin // number '1' in '10'
+                oled_data = 16'b11111_111111_11111;
+            end else if (x >= 10 + 15 + 15 && x < 10 + 15 + 15 + 45 && y >= 10 && y < 53) begin
+                if (x >= 10 + 15 + 15 + 15 && x < 10 + 15 + 15 + 15 + 15 && y >= 10 + 15 && y < 53 - 15) begin
+                    oled_data = 16'b00000_000000_00000;
+                end
+                oled_data = 16'b11111_111111_11111;; 
+            end else begin
+                oled_data = 16'b11111_111111_11111;
             end
-        end else begin
-            an <= 4'b1111;
-            seg <= 7'b1111111;
-        end    
+        end
     end
+            
     
 endmodule
