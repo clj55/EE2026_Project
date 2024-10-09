@@ -60,7 +60,7 @@ module main(
            
     
     Top_Student sk (CLOCK, sw[4], btnC, btnU, pixel_index, oled_data1); 
-    task4B tim (CLOCK, btnC, btnU, btnD, pixel_index, oled_data2); 
+    task4B tim (CLOCK, btnC, btnU, btnD, pixel_index, reset, oled_data2); 
     task4C claire (CLOCK, btnC, btnU, pixel_index, oled_data3); 
     task4D kashfy (CLOCK, btnC, btnL, btnR, btnD, btnU, reset, pixel_index, oled_data4); 
     // draw group number when no task is enabled
@@ -98,6 +98,7 @@ module main(
             
             oled_data <= oled_data2;
             activity_state <= 1;
+            reset <= 0;
 
         end else if (sw == 16'b0100_0001_0001_0101)
         begin

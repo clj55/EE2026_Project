@@ -15,6 +15,7 @@ module task4B (
     input clock,
     input btnc, btnu, btnd, 
     input [12:0] pixel_index,
+    input reset,
     output wire [15:0] oled_data
     );
     
@@ -22,7 +23,7 @@ module task4B (
     taskb b(
         .pixel_index(pixel_index), 
         .btnc(btnc), .btnu(btnu), .btnd(btnd),
-        .clock(clock), .pixel_data(oled_data)
+        .clock(clock), .reset(reset), .pixel_data(oled_data)
         );
     
 endmodule
@@ -30,7 +31,7 @@ endmodule
 module taskb(
     input [12:0] pixel_index,
     input btnc, btnu, btnd, 
-    input clock,
+    input clock, reset,
     output reg [15:0] pixel_data
     );
     wire [6:0] x;
@@ -80,6 +81,11 @@ module taskb(
             end
             if (btnc || btnu || btnd) count <= 0;
         end   
+        if (reset) begin // reset all squares to white if reset flag is enabled
+            btncstate <= 0;
+            btnustate <= 0;
+            btndstate <= 0;
+        end
     end
     
     always @ (posedge clock) begin
