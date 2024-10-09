@@ -154,11 +154,12 @@ module main(
             // draw the OLED screen to show '10'
             if (x >= 10 && x < 10 + 15 && y >= 10 && y < 53) begin // number '1' in '10'
                 oled_data = 16'b11111_111111_11111;
-            end else if (x >= 10 + 15 + 15 && x < 10 + 15 + 15 + 45 && y >= 10 && y < 53) begin
-                if (x >= 10 + 15 + 15 + 15 && x < 10 + 15 + 15 + 15 + 15 && y >= 10 + 15 && y < 53 - 15) begin
+            end else if (x >= 10 + 15 + 15 && x < 10 + 15 + 15 + 45 && y >= 10 && y < 53) begin // white rectangloe for '0'
+                if (x >= 10 + 15 + 15 + 15 && x < 10 + 15 + 15 + 15 + 15 && y >= 10 + 15 && y < 53 - 15) begin // middle of '0' is black colour
                     oled_data = 0;
+                end else begin
+                    oled_data = 16'b11111_111111_11111;; 
                 end
-                oled_data = 16'b11111_111111_11111;; 
             end else begin
                 oled_data = 0;
             end
