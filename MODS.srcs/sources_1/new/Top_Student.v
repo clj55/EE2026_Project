@@ -12,12 +12,12 @@
 
 
 module Top_Student (
-    input enable,
     input CLOCK,
     input sw4,
     input btnC, btnU,
     input [12:0] pixel_index,
-    output reg [15:0] oled_data
+    output reg [15:0] oled_data,
+    input enable
 );
 
     wire clk625, clk1000;

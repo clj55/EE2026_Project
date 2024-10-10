@@ -1,8 +1,8 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date             : Thu Oct 10 01:07:39 2024
-| Host             : Kashfy-yoga7 running 64-bit major release  (build 9200)
+| Date             : Thu Oct 10 10:59:15 2024
+| Host             : Computer running 64-bit major release  (build 9200)
 | Command          : report_power -file main_power_routed.rpt -pb main_power_summary_routed.pb -rpx main_power_routed.rpx
 | Design           : main
 | Device           : xc7a35tcpg236-1
@@ -30,7 +30,7 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.092        |
+| Total On-Chip Power (W)  | 0.091        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
 | Dynamic (W)              | 0.020        |
@@ -53,17 +53,17 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.004 |        3 |       --- |             --- |
-| Slice Logic    |     0.001 |     2259 |       --- |             --- |
-|   LUT as Logic |     0.001 |     1075 |     20800 |            5.17 |
-|   CARRY4       |    <0.001 |      246 |      8150 |            3.02 |
-|   Register     |    <0.001 |      686 |     41600 |            1.65 |
+| Slice Logic    |     0.001 |     2342 |       --- |             --- |
+|   LUT as Logic |    <0.001 |     1107 |     20800 |            5.32 |
+|   CARRY4       |    <0.001 |      254 |      8150 |            3.12 |
+|   Register     |    <0.001 |      715 |     41600 |            1.72 |
 |   BUFG         |    <0.001 |        4 |        32 |           12.50 |
-|   Others       |     0.000 |       55 |       --- |             --- |
-| Signals        |     0.002 |     1773 |       --- |             --- |
+|   Others       |     0.000 |       53 |       --- |             --- |
+| Signals        |     0.002 |     1859 |       --- |             --- |
 | DSPs           |     0.000 |        6 |        90 |            6.67 |
 | I/O            |     0.013 |       57 |       106 |           53.77 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.092 |          |           |                 |
+| Total          |     0.091 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,7 +73,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.017 |       0.008 |      0.010 |
+| Vccint    |       1.000 |     0.017 |       0.007 |      0.010 |
 | Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |
 | Vcco33    |       3.300 |     0.005 |       0.004 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -151,7 +151,6 @@ Table of Contents
 |       redy           |    <0.001 |
 |       w              |    <0.001 |
 |     fiftyHzclk       |    <0.001 |
-|     oneHzclk         |    <0.001 |
 |     thirtyHzclk      |    <0.001 |
 |   clk10hz            |    <0.001 |
 |   clk2hz             |    <0.001 |
@@ -170,7 +169,7 @@ Table of Contents
 |   tim                |    <0.001 |
 |     b                |    <0.001 |
 |       clk1k          |    <0.001 |
-|       conv           |    <0.001 |
+|       conv           |     0.000 |
 +----------------------+-----------+
 
 

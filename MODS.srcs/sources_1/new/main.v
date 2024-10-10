@@ -59,9 +59,9 @@ module main(
      .sclk(JB[3]), .d_cn(JB[4]), .resn(JB[5]), .vccen(JB[6]), .pmoden(JB[7]));
            
     
-    Top_Student sk (CLOCK, sw[4], btnC, btnU, pixel_index, oled_data1); 
+    Top_Student sk (CLOCK, sw[4], btnC, btnU, pixel_index, oled_data1, !reset); 
     task4B tim (CLOCK, btnC, btnU, btnD, pixel_index, reset, oled_data2); 
-    task4C claire (CLOCK, btnC, btnU, pixel_index, oled_data3); 
+    task4C claire (CLOCK, btnC, btnU, pixel_index, oled_data3, !reset); 
     task4D kashfy (CLOCK, btnC, btnL, btnR, btnD, btnU, reset, pixel_index, oled_data4); 
     // draw group number when no task is enabled
     draw_grp_number draw_10 (.clk(CLOCK), .pixel_index(pixel_index), .oled_data(oled_data5));
@@ -85,6 +85,7 @@ module main(
             
             oled_data <= oled_data1;
             activity_state <= 1;
+            reset <= 0;
         
         end else if (sw == 16'b0010_0010_1001_0111)
         begin
@@ -110,6 +111,7 @@ module main(
             
             oled_data <= oled_data3;
             activity_state <= 1;
+            reset <= 0;
             
         end else if (sw == 16'b1000_0000_1011_0101)
         begin

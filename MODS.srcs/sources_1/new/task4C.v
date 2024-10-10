@@ -20,17 +20,17 @@ input enable
     wire clk1; wire clk30; wire clk50;
         
     //clocks
-    flexible_clk oneHzclk (.m(49_999_999), .in_clk(BASYS_CLOCK), .clk(clk1));
+    //flexible_clk oneHzclk (.m(49_999_999), .in_clk(BASYS_CLOCK), .clk(clk1));
     flexible_clk thirtyHzclk (.m(1_666_665), .in_clk(BASYS_CLOCK), .clk(clk30));
     flexible_clk fiftyHzclk (.m(999_999), .in_clk(BASYS_CLOCK), .clk(clk50));
     
     draw_oled ddd (.clk(BASYS_CLOCK), .pixel_index(p_index), .oled_data(oled_data), .btnC(btnC), .btnU(btnU),
-    .onehz(clk1), .thirtyhz(clk30), .fiftyhz(clk50), .enable(enable));
+     .thirtyhz(clk30), .fiftyhz(clk50), .enable(enable));
 endmodule
 
 module draw_oled(input clk, input [12:0] pixel_index, output reg [15:0] oled_data,
     input btnC, input btnU, input enable,
-    input onehz, input thirtyhz, input fiftyhz);
+     input thirtyhz, input fiftyhz);
     
     parameter BLACK_TOP = 15; 
     parameter BLACK_BOTTOM = 49;
@@ -60,7 +60,7 @@ module draw_oled(input clk, input [12:0] pixel_index, output reg [15:0] oled_dat
     
     assign counter_clk = (state <= 3) ? thirtyhz : fiftyhz;
 
-    count_wait w (.enable(waiting), .clk(onehz), .wait_done(wait_done));
+    count_wait w (.enable(waiting), .basys_clk(clk), .wait_done(wait_done));
     incrementer greenx (.enable(!waiting && (state == 1 || state == 7)), .increment(increment), .clk(counter_clk), .in_var(x_green), .out_var(outxgreen));
     incrementer greeny (.enable(!waiting && state == 2), .increment(increment), .clk(counter_clk), .in_var(y_green), .out_var(outygreen));
     incrementer redx (.enable(!waiting && (state == 3 || state == 5)), .increment(increment), .clk(counter_clk), .in_var(x_red), .out_var(outxred));
@@ -143,6 +143,7 @@ module draw_oled(input clk, input [12:0] pixel_index, output reg [15:0] oled_dat
                     x_green <= BLACK_SIDE; // reset x_green
                     if (y_red == 0) begin 
                         state <= 7;
+                        x_red <= BLACK_SIDE;
                     end else begin  
                         y_red <=  outyred; //y_red - 1
                     end
@@ -200,15 +201,18 @@ module incrementer (input enable, input increment, input clk, input [7:0]in_var,
 endmodule
 
 
-module count_wait (input enable, input clk, output reg wait_done);
-    reg [1:0]wait_count = 0;
-    always @(posedge clk) begin 
+module count_wait (input enable, input basys_clk, output reg wait_done);
+    reg [31:0]wait_count = 0;
+    reg [31:0] halfseconds = 0;
+    always @(posedge basys_clk) begin 
         if (enable) begin 
-            wait_count <= wait_count + 1;
-            wait_done <= (wait_count == 2) ? 1 : 0;
+            wait_count <= (wait_count == 49_999_999) ? 0 : wait_count + 1;
+            halfseconds <= (wait_count == 0) ? halfseconds + 1: halfseconds;
+            wait_done <= (halfseconds == 5) ? 1 : 0;
         end else begin 
-            wait_count <= 0;
+            wait_count <= 0;    
             wait_done <= 0;
+            halfseconds <= 0;   
         end
     end 
 endmodule
