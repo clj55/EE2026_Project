@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/cyber/Desktop/EE2026_Project/MODS.runs/blk_mem_gen_img_synth_1'
+HD_PWD='C:/Users/clair/EE2026_vivado/EE2026_Project/MODS.runs/blk_mem_gen_img_synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

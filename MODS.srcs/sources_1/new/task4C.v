@@ -14,7 +14,8 @@
 module task4C (
 input BASYS_CLOCK, input btnC, btnU, 
 input [12:0] p_index,
-output wire [15:0] oled_data
+output wire [15:0] oled_data, 
+input enable
 );      
     wire clk1; wire clk30; wire clk50;
         
@@ -23,18 +24,12 @@ output wire [15:0] oled_data
     flexible_clk thirtyHzclk (.m(1_666_665), .in_clk(BASYS_CLOCK), .clk(clk30));
     flexible_clk fiftyHzclk (.m(999_999), .in_clk(BASYS_CLOCK), .clk(clk50));
     
-    //Display, Mouse
-    
-//    MouseCtl mouse(.clk (BASYS_CLOCK), .ps2_clk(PS2Clk), .ps2_data(PS2data), 
-//    .value(23), .setx(50), .sety(50), .setmax_x(95), .setmax_y(63));
-
-    //custom
     draw_oled ddd (.clk(BASYS_CLOCK), .pixel_index(p_index), .oled_data(oled_data), .btnC(btnC), .btnU(btnU),
-    .onehz(clk1), .thirtyhz(clk30), .fiftyhz(clk50));
+    .onehz(clk1), .thirtyhz(clk30), .fiftyhz(clk50), .enable(enable));
 endmodule
 
 module draw_oled(input clk, input [12:0] pixel_index, output reg [15:0] oled_data,
-    input btnC, input btnU,
+    input btnC, input btnU, input enable,
     input onehz, input thirtyhz, input fiftyhz);
     
     parameter BLACK_TOP = 15; 
@@ -86,93 +81,109 @@ module draw_oled(input clk, input [12:0] pixel_index, output reg [15:0] oled_dat
     end
     
     always @(posedge clk) begin 
-       if (waiting) begin 
-        if (wait_done) begin 
-            waiting <= 0;
-        end
-       end 
- 
-       else begin
-            if (state == 0) begin
-                x_green <= SQUARE_SIZE;
-                y_green <= SQUARE_SIZE;
-                if (btnC) begin //wait for btnC press
-                    state <= 1;
-                end
-            end 
-            else if (state == 1) begin // green move right
-                increment <= 1;
-                if (x_green == MAX_X) begin 
-                    state <= 2;
-                    waiting <= 1;
+       if (enable) begin
+           if (waiting) begin 
+            if (wait_done) begin 
+                waiting <= 0;
+            end
+           end 
+     
+           else begin
+                if (state == 0) begin
+                    x_green <= SQUARE_SIZE;
+                    y_green <= SQUARE_SIZE;
+                    if (btnC) begin //wait for btnC press
+                        state <= 1;
+                    end
                 end 
-                else begin
-                    x_green <= outxgreen;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
-                end
-            end else if (state == 2) begin // green move down
-                if (y_green == MAX_Y) begin 
-                    state <= 3;
-                    waiting <= 1;
-                    y_red <= BLACK_BOTTOM;
-                    x_red <= BLACK_SIDE + 1;
-                end else begin        
-                    y_green <= outygreen; //y_green + 1               
-                end
-            // red first ------------------------------------------------------------------
-            end else if (state == 3) begin // green move left 
-                increment <= 0;
-                if (x_red == 0) begin 
-                    start <= 0;
-                    state <= 4;
-                    waiting <= 1;
-                end else begin  
-                    x_red <= outxred; // x_red - 1 
-                end
-            end else if (state == 4) begin // wait for user press btnU                  
-                x_red <= SQUARE_SIZE; //red square appear  
-                y_green <= BLACK_BOTTOM;
-                if (btnU) begin 
-                    state <= 5;
-                end
-            end else if (state == 5) begin // red move right
-                increment <= 1;
-                if (x_red == MAX_X) begin 
-                    state <= 6;
-                end else begin  
-                    x_red <= outxred; //x_red + 1
-                end
-            end else if (state == 6) begin // red move up
-                increment <= 0;
-                y_green <= SQUARE_SIZE; //reset y_green
-                x_green <= BLACK_SIDE; // reset x_green
-                if (y_red == 0) begin 
-                    state <= 7;
-                end else begin  
-                    y_red <=  outyred; //y_red - 1
-                end
-            // green first ------------------------------------------
-            end else if (state == 7) begin // red move left
-                increment <= 0;
-                if (x_green == 0) begin 
-                    state <= 0;
-                end else begin
-                   x_green <=  outxgreen; //x_green - 1
+                else if (state == 1) begin // green move right
+                    increment <= 1;
+                    if (x_green == MAX_X) begin 
+                        state <= 2;
+                        waiting <= 1;
+                    end 
+                    else begin
+                        x_green <= outxgreen;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+                    end
+                end else if (state == 2) begin // green move down
+                    if (y_green == MAX_Y) begin 
+                        state <= 3;
+                        waiting <= 1;
+                        y_red <= BLACK_BOTTOM;
+                        x_red <= BLACK_SIDE + 1;
+                    end else begin        
+                        y_green <= outygreen; //y_green + 1               
+                    end
+                // red first ------------------------------------------------------------------
+                end else if (state == 3) begin // green move left 
+                    increment <= 0;
+                    if (x_red == 0) begin 
+                        start <= 0;
+                        state <= 4;
+                        waiting <= 1;
+                    end else begin  
+                        x_red <= outxred; // x_red - 1 
+                    end
+                end else if (state == 4) begin // wait for user press btnU                  
+                    x_red <= SQUARE_SIZE; //red square appear  
+                    y_green <= BLACK_BOTTOM;
+                    if (btnU) begin 
+                        state <= 5;
+                    end
+                end else if (state == 5) begin // red move right
+                    increment <= 1;
+                    if (x_red == MAX_X) begin 
+                        state <= 6;
+                    end else begin  
+                        x_red <= outxred; //x_red + 1
+                    end
+                end else if (state == 6) begin // red move up
+                    increment <= 0;
+                    y_green <= SQUARE_SIZE; //reset y_green
+                    x_green <= BLACK_SIDE; // reset x_green
+                    if (y_red == 0) begin 
+                        state <= 7;
+                    end else begin  
+                        y_red <=  outyred; //y_red - 1
+                    end
+                // green first ------------------------------------------
+                end else if (state == 7) begin // red move left
+                    increment <= 0;
+                    if (x_green == 0) begin 
+                        state <= 0;
+                    end else begin
+                       x_green <=  outxgreen; //x_green - 1
+                    end 
                 end 
-            end 
-       end 
-    
-        if ((x <= BLACK_SIDE) && (y >= BLACK_TOP && y <= BLACK_BOTTOM)) begin //Black Rectangle
-            oled_data <= 0;
-        end
+           end 
         
-        else if (draw_first) begin 
-            oled_data <= first_colour;
-        end
+            if ((x <= BLACK_SIDE) && (y >= BLACK_TOP && y <= BLACK_BOTTOM)) begin //Black Rectangle
+                oled_data <= 0;
+            end
+            
+            else if (draw_first) begin 
+                oled_data <= first_colour;
+            end
+            else begin 
+                oled_data <= else_colour;
+    //              oled_data <= 16'h07E0;
+            end
+        end 
+    
         else begin 
-            oled_data <= else_colour;
-//              oled_data <= 16'h07E0;
-        end
-    end 
+            state <= 0; //stop, green right, green down, red right, red up 
+            x_green <= SQUARE_SIZE; // x right
+            y_green <= BLACK_TOP; // y bottom
+            x_red <= BLACK_SIDE;  // x right
+            y_red <= BLACK_BOTTOM; // y top 
+            wait_count <= 0;
+            waiting <= 0;
+            start <= 1;
+            oled_data <= 0;
+            increment <= 1;
+            in_var = SQUARE_SIZE;
+        end 
+    end
     
 
 endmodule 

@@ -12,6 +12,7 @@
 
 
 module Top_Student (
+    input enable,
     input CLOCK,
     input sw4,
     input btnC, btnU,
@@ -26,10 +27,10 @@ module Top_Student (
     
     assign x = pixel_index % 96;
     assign y = pixel_index / 96;
+
     
     always @ (posedge CLOCK) 
     begin 
-
         if (state == 0) 
         begin
             if (~btnU_pressed)
@@ -208,13 +209,16 @@ module Top_Student (
         begin
             oled_data <= 16'b1111100000000000;
         end
+        
     end
     
+        
     flexible_clock clk1000hz (CLOCK, 49_999, clk1000);
     reg [31:0] counter = 0;
     
     always @ (posedge clk1000)
     begin
+        if (enable) begin
         if (counter != 32'hFFFFFFFF) counter <= counter + 1;
         // if counter >= 5000, and buttons are not pressed
         
@@ -233,5 +237,10 @@ module Top_Student (
         end 
         
         if (btnU || btnC) counter <= 0;
+        end
+        else begin 
+            state <= 0;
+            btnU_pressed <= 0; 
+        end
     end
 endmodule
