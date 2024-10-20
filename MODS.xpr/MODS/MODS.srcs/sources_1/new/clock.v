@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module flexy_clk(input [31:0] m, input in_clk, output reg clk);
+module flexy_clk(input in_clk, input [31:0] m, output reg clk);
     reg [31:0] COUNT;
     initial begin 
         COUNT = 0;
