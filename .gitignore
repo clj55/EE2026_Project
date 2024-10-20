@@ -2,3 +2,4 @@
 *.cache
 *.sim
 *.log
+*.str

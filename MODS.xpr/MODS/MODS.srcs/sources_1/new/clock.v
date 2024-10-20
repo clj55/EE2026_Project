@@ -1,22 +1,25 @@
 `timescale 1ns / 1ps
-
 //////////////////////////////////////////////////////////////////////////////////
-//
-//  FILL IN THE FOLLOWING INFORMATION:
-//  STUDENT A NAME: 
-//  STUDENT B NAME:
-//  STUDENT C NAME: 
-//  STUDENT D NAME:  
-//
+// Company: 
+// Engineer: 
+// 
+// Create Date: 20.10.2024 16:49:47
+// Design Name: 
+// Module Name: clock
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
 //////////////////////////////////////////////////////////////////////////////////
 
-
-module Top_Student (input BASYS_CLOCK);      
-    wire sixp25Mhz;
-    flexible_clk sixp25MHzclk (.m(7), .in_clk(BASYS_CLOCK), .clk(sixp25Mhz));
-endmodule
-
-module flexible_clk(input [31:0] m, input in_clk, output reg clk);
+module flexy_clk(input [31:0] m, input in_clk, output reg clk);
     reg [31:0] COUNT;
     initial begin 
         COUNT = 0;
