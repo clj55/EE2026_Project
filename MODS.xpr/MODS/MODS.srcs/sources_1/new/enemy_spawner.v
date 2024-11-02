@@ -23,7 +23,7 @@
 module enemy_spawner #(parameter MAX_NUM = 15) (input clk, input spawning, input spawn_type, input reset,
 output reg [3:0] spawned_small, output reg [3:0] spawned_big, 
 output reg [1:0] enemies [0:MAX_NUM],
-input [2:0] healths [0:MAX_NUM]
+input [2:0] healths [0:MAX_NUM], input [MAX_NUM:0] resetted_xy
 //,output [3:0] spawned_big, input paused
     );
     
@@ -46,8 +46,8 @@ input [2:0] healths [0:MAX_NUM]
                 spawned_big <= 0;
             end else begin
                 if (spawning) begin 
-                    for (integer i = 0; i <= MAX_NUM 
-                    && healths[j] != 0; i = i + 1) begin 
+                //healths[j] != 0 should be true when resetted_xy = 1
+                    for (integer i = 0; i <= MAX_NUM && resetted_xy[j] == 0; i = i + 1) begin 
                         j = (j == MAX_NUM) ? 0 : j + 1;
                     end
                     if (spawn_type == 0) begin 

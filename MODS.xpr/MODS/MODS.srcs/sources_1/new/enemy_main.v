@@ -20,12 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module enemy_main #(parameter MAX_ENEMIES = 15, parameter ENEMY_SIZE = 8 ) 
+module enemy_main #(parameter MAX_ENEMIES = 15, parameter ENEMY_SIZE = 8, parameter NUM_PLATFORMS = 3) 
 (input clk, output [2:0] enemy_health [0:MAX_ENEMIES], 
 output[7:0]enemy_xref [MAX_ENEMIES:0], output [7:0]enemy_yref [MAX_ENEMIES:0],
-input [7:0]platform_width, input [7:0]platform_x, input [7:0]platform_y,
+input [7:0]platform_width, input [7:0]platform_x[0:NUM_PLATFORMS], input [7:0]platform_y[0:NUM_PLATFORMS],
 input [7:0]spawn1, input [7:0]spawn2,
-input enemyprojclk, input [2:0] proj_d, input [MAX_ENEMIES:0] enemy_hit
+input enemyprojclk, input [2:0] proj_d, input [MAX_ENEMIES:0] enemy_hit,
+output [MAX_ENEMIES:0] angry
     );
     wire maxed;
  
@@ -35,24 +36,20 @@ input enemyprojclk, input [2:0] proj_d, input [MAX_ENEMIES:0] enemy_hit
    
     enemy_maxcheck #(.MAX_NUM(MAX_ENEMIES)) maxcheck(.clk(clk), .enemies(enemy_health), .maxed(maxed));
     
-    wire [1:0] enemy_spawn [0:MAX_ENEMIES]; 
+    wire [1:0] enemy_spawn [0:MAX_ENEMIES];  wire [MAX_ENEMIES:0] resetted_xy; 
     enemy_spawner  #(.MAX_NUM(MAX_ENEMIES)) spawner(.clk(clk), .spawning(spawning), .spawn_type(spawn_type), .reset(reset_spawn),
     .spawned_small (spawned_small), .spawned_big (spawned_big),
-    .enemies(enemy_spawn), .healths(enemy_health)
-    //,output [3:0] spawned_big, input paused
+    .enemies(enemy_spawn), .healths(enemy_health), .resetted_xy(resetted_xy)
+    //,input paused
         );
-    
-    wire [MAX_ENEMIES:0] reset_xy; 
     enemy_health #(.MAX_NUM(MAX_ENEMIES)) health (.clk(enemyprojclk), .healths(enemy_health), .spawner(enemy_spawn), 
-    .reset_xy(reset_xy), .x(enemy_xref), .y(enemy_yref),
-    .proj_d(proj_d), .enemy_hit(enemy_hit));
+    .x(enemy_xref), .y(enemy_yref),
+    .proj_d(proj_d), .enemy_hit(enemy_hit), .angry(angry));
     
     enemy_movement #(.MAX_NUM_ENEMIES(MAX_ENEMIES), .size(ENEMY_SIZE)) move (.clk(clk), .spawn1(spawn1),  .spawn2(spawn2), 
-             .activated_enemy(enemy_health), .xref(enemy_xref), .yref(enemy_yref), .reset_xy(reset_xy),
-             .platform_width(platform_width), .x_obs(platform_x), .y_obs(platform_y));
+             .healths(enemy_health), .xref(enemy_xref), .yref(enemy_yref), .resetted_xy(resetted_xy),
+             .platform_width(platform_width), .x_obs(platform_x), .y_obs(platform_y),
+             .angry(angry));
         
-  
-        
-        
-        
+   
 endmodule
