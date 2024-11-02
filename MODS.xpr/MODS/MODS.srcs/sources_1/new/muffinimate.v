@@ -39,9 +39,15 @@ module muffinimate(
     reg start;
     reg stop_falling;
     
+    wire [11:0] rng96; 
+    wire [11:0] rng64;
+    LFSR_random rng1 (.CLOCK(clk), .rst(reset), .n(96 - sq_width), .random(rng96));
+    LFSR_random rng2 (.CLOCK(clk), .rst(reset), .n(64 - sq_height), .random(rng64));
+
+    
     initial begin
-        x_var = x_start;
-        y_var = y_start;
+        x_var = rng96 % (96 - sq_width);
+        y_var = rng64 % (64 - sq_height);
         // for some reason x_var and y_var cant take values of x_start and y_start... values must be written dirctly in this initial block
         center_sq_colour = 16'b11111_000000_00000;
           
@@ -58,9 +64,9 @@ module muffinimate(
    // assume time taken for y to fall through screen is 30 clock cycles (use 64 instead to account for terminal velocity)
    
     always @ (posedge fps_clock) begin
-        if (reset || start) begin
-            x_var = x_start;
-            y_var = y_start;
+        if (reset || start || hit_muff) begin
+            x_var = rng96;
+            y_var = rng64;
             center_sq_colour = 16'b11111_000000_00000;
             falling = 0;
             x_increment = 0;
@@ -111,8 +117,7 @@ module muffinimate(
             end else if ((y_var + sq_height + y_increment >= y_platform4 && y_var + sq_height < y_platform4 + height_platform4) && (x_var + sq_width > x_platform4 && x_var - 1 < x_platform4 + width_platform4) && (falling > 0 && falling < 64)) begin 
                 y_increment = 1; // falling counter resets
             end
-           
-    
+               
             y_var = y_var + y_increment;
             
             if (y_increment == 0) begin
