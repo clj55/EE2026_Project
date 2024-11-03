@@ -26,7 +26,7 @@ output[7:0]enemy_xref [MAX_ENEMIES:0], output [7:0]enemy_yref [MAX_ENEMIES:0],
 input [7:0]platform_width, input [7:0]platform_x[0:NUM_PLATFORMS], input [7:0]platform_y[0:NUM_PLATFORMS],
 input [7:0]spawn1, input [7:0]spawn2,
 input enemyprojclk, input [2:0] proj_d, input [MAX_ENEMIES:0] enemy_hit,
-output [MAX_ENEMIES:0] angry
+output [MAX_ENEMIES:0] angry, input rando_sig
     );
     wire maxed;
  
@@ -46,10 +46,12 @@ output [MAX_ENEMIES:0] angry
     .x(enemy_xref), .y(enemy_yref),
     .proj_d(proj_d), .enemy_hit(enemy_hit), .angry(angry));
     
-    enemy_movement #(.MAX_NUM_ENEMIES(MAX_ENEMIES), .size(ENEMY_SIZE)) move (.clk(clk), .spawn1(spawn1),  .spawn2(spawn2), 
+    enemy_movement #(.MAX_NUM_ENEMIES(MAX_ENEMIES), .size(ENEMY_SIZE), .NUM_PLATFORMS(NUM_PLATFORMS)) move (.clk(clk), .spawn1(spawn1),  .spawn2(spawn2), 
              .healths(enemy_health), .xref(enemy_xref), .yref(enemy_yref), .resetted_xy(resetted_xy),
              .platform_width(platform_width), .x_obs(platform_x), .y_obs(platform_y),
-             .angry(angry));
+             .angry(angry)
+//             .rando_sig(rando_sig)
+             );
         
    
 endmodule

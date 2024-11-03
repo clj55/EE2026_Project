@@ -27,6 +27,7 @@ module enemy_movement #(parameter MAX_NUM_ENEMIES = 15, parameter size = 8, para
 input [7:0] platform_width, input [7:0] x_obs [0:NUM_PLATFORMS], input [7:0] y_obs [0:NUM_PLATFORMS],
 output reg [7:0] xref [0: MAX_NUM_ENEMIES]  , output reg [7:0] yref [0: MAX_NUM_ENEMIES],
 output [MAX_NUM_ENEMIES:0]resetted_xy, output reg [MAX_NUM_ENEMIES:0]angry
+//input rando_sig
 );
     wire normalhz; wire fasthz; wire fps_clock;
     reg [0:MAX_NUM_ENEMIES] direction; //0: left 1: right
@@ -36,7 +37,6 @@ output [MAX_NUM_ENEMIES:0]resetted_xy, output reg [MAX_NUM_ENEMIES:0]angry
     reg [1:0] x_inc;
     
     flexy_clk walk_clk (clk, 6_999_999, normalhz); //6_999_999
-    flexy_clk fast_clk (clk, 249_999, fasthz); //249_999
     flexy_clk get_fps_clock (clk, 1_249_999, fps_clock); // 1_249_999
     integer i; integer j;
 
@@ -48,70 +48,62 @@ output [MAX_NUM_ENEMIES:0]resetted_xy, output reg [MAX_NUM_ENEMIES:0]angry
            y_increment[i] <= 0;
         end 
         x_inc = 1;
-        direction = 1;
+        direction = 0;
         angry = 0;
     end
     
     reg [MAX_NUM_ENEMIES:0] resettedy = 0;
     reg [MAX_NUM_ENEMIES:0] resettedx = 0;
     assign resetted_xy = resettedy & resettedx;
-    wire spawnchooser;
-    LCG rando(.clk(clk), .max(1), .n(spawnchooser));
+    wire spawnchooser; wire directionchooser;
+    LFSR_random #(.seed(23)) spawnrand(.CLOCK(clk), .n(2), .rst(0), .random(spawnchooser));
+    LFSR_random #(.seed(43)) dirrand(.CLOCK(clk), .n(2), .rst(0), .random(directionchooser));
     
     always @(posedge fps_clock) begin //need to implement gravity       
         for (i = 0; i <= MAX_NUM_ENEMIES; i = i + 1) begin
-//            if (reset_xy[i] != resettedy[i]) begin 
-//                yref[i] = 0;
-//                resettedy[i] = reset_xy[i];
-//            end
             falling[i] <= (is_falling[i]) ? falling[i] + 1 : 0; // falling counter will count continuously, will reset when y is stationary   
             if (healths[i] == 0) begin 
                 yref[i] <= 0;
                 resettedy[i] <= 1;
                 angry[i] <= 0;
-            end else begin
+            end else if (yref[i] >= 103) begin //fall into pit 
+                is_falling[i] = 0;
+                yref[i] <= 0;
+                angry[i] <= 1; 
+            end else begin 
                 resettedy[i] <= 0;
-                if (yref[i] >= 64) begin 
-                    is_falling[i] = 0;
-                    yref[i] <= 0;
-                    angry[i] <= 1;
-                end
-                else begin 
-                    is_falling[i] = 1;
-                    y_increment[i] = (falling[i] < 64) ? 1 + falling[i] / 3 : y_increment[i]; 
-                    for (j = 0; j <= NUM_PLATFORMS && is_falling[i]; j++) begin 
-                        //obstacle
-                        if ((xref[i] <= x_obs[j] + platform_width) &&  (xref[i] + size >= x_obs[j]) && (yref[i] + size == y_obs[j])) begin 
-                            is_falling[i] = 0;
-                            y_increment[i] = 0;
-                        //slowing down
-                        end else if ((xref[i] <= x_obs[j] + platform_width) &&  (xref[i] + size >= x_obs[j]) && 
-                            yref[i] + size + y_increment[i] >= y_obs[j] &&  yref[i] < y_obs[j])  begin
-                            y_increment[i] = 1;
-                        end 
-                    end                 
-                    yref[i] <= yref[i] + y_increment[i];
-               end 
-            end 
+                is_falling[i] = 1;
+                y_increment[i] = (falling[i] < 64) ? 1 + falling[i] / 3 : y_increment[i]; 
+                for (j = 0; j <= NUM_PLATFORMS && is_falling[i]; j++) begin 
+                    //obstacle
+                    if ((xref[i] <= x_obs[j] + platform_width) &&  (xref[i] + size >= x_obs[j]) && (yref[i] + size == y_obs[j])) begin 
+                        is_falling[i] = 0;
+                        y_increment[i] = 0;
+                    //slowing down
+                    end else if ((xref[i] <= x_obs[j] + platform_width) &&  (xref[i] + size >= x_obs[j]) && 
+                        yref[i] + size + y_increment[i] >= y_obs[j] &&  yref[i] < y_obs[j])  begin
+                        y_increment[i] = 1;
+                    end 
+                end                 
+                yref[i] <= yref[i] + y_increment[i];
+           end 
         end     
     end   
     
     always @(posedge normalhz) begin 
         for (i = 0; i <= MAX_NUM_ENEMIES; i = i + 1) begin
-//            if (reset_xy[i] != resettedx[i]) begin 
-//                xref[i] = spawn1;
-//                resettedx[i] = reset_xy[i];
-//            end
             if (healths[i] == 0) begin //reset xy if dead
                 xref[i] <= (spawnchooser) ? spawn1 : spawn2; 
+                direction[i] <= (directionchooser) ? 0 : 1;
                 resettedx[i] <= 1;
-            end else if (yref[i] >= 64) begin
+            end else if (yref[i] >= 64) begin  //fall into pit 
                 xref[i] <= (spawnchooser) ? spawn1 : spawn2; 
-            end else begin
+                direction[i] <= (directionchooser) ? 0 : 1;
+            end else begin //normal move left and right
                 resettedx[i] <= 0;
-                if (xref[i] == 96 - size) begin
+                if (xref[i] >= 95 - size) begin
                     direction[i] = 0;
-                end else if (xref[i] == 0) begin
+                end else if (xref[i] <= 1) begin
                     direction[i] = 1;
                 end
                 x_inc = (angry[i]) ? 2 : 1;

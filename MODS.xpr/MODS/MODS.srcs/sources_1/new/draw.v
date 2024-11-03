@@ -20,9 +20,9 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module draw(input clk, output [7:0] JB
+module draw(input clk, output [7:0] JB, input btnC
 );
-    parameter MAX_ENEMIES = 15; parameter ENEMY_SIZE = 8; parameter NUM_PLATFORMS = 3;
+    parameter MAX_ENEMIES = 3; parameter ENEMY_SIZE = 8; parameter NUM_PLATFORMS = 4; //all of this should be the number you want -1
     parameter MAX_PROJ = 2;
     wire sending_pixels; wire sample_pixel; wire frame_begin; wire [12:0] pixel_index; 
     reg [15:0] oled_data = 16'b1111111111111111;
@@ -37,8 +37,8 @@ module draw(input clk, output [7:0] JB
     reg [7:0]enemy_spawn2 = 80; // x coordinate
     wire [7:0]platform_width; wire [7:0]platform_x[0:NUM_PLATFORMS]; wire [7:0]platform_y[0:NUM_PLATFORMS]; 
     assign platform_width = 30;
-    assign {platform_x[0], platform_x[1], platform_x[2], platform_x[3]} = {8'd0,8'd30,8'd30,8'd60} ;
-    assign {platform_y[0], platform_y[1], platform_y[2], platform_y[3]} = {8'd40,8'd20,8'd60,8'd40} ;
+    assign {platform_x[0], platform_x[1], platform_x[2], platform_x[3], platform_x[4]} = {8'd0,8'd60,8'd30,8'd0, 8'd60} ;
+    assign {platform_y[0], platform_y[1], platform_y[2], platform_y[3], platform_y[4]} = {8'd20,8'd20,8'd40,8'd60,8'd60} ;
     
     wire [15:0]oled_data_map;
     draw_map #(.NUM_PLATFORMS(NUM_PLATFORMS))bg (.p_index(pixel_index), .oled_data(oled_data_map), 
@@ -63,7 +63,9 @@ module draw(input clk, output [7:0] JB
     .platform_width(platform_width), .platform_x(platform_x), .platform_y(platform_y), 
     .spawn1(enemy_spawn1), .spawn2(enemy_spawn2),
     .enemyprojclk(enemyprojclk), .proj_d(proj_d), .enemy_hit(enemy_hit),
-    .angry(angry));
+    .angry(angry)
+    ,.rando_sig(btnC)
+    );
     
     wire [15:0]oled_data_enemy;
     draw_enemy #(.MAX_NUM_ENEMIES(MAX_ENEMIES), .size(ENEMY_SIZE)) drawe (.p_index(pixel_index), 
