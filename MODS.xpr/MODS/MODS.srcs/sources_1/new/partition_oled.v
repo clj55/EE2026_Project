@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 03.10.2024 16:33:21
+// Create Date: 03.10.2024 16:35:52
 // Design Name: 
-// Module Name: paint_flag
+// Module Name: partition_oled
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,9 +20,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module paint_flag(
-    input clk, [4:0]sw, [6:0]x, [6:0]y,
-    output reg [15:0] oled_data
+module partition_oled(
+    input 
+    output [6:0]x, [6:0]y
     );
-    
 endmodule

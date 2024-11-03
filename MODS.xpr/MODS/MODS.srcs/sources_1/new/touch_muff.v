@@ -29,9 +29,9 @@ module touch_muff(
     wire damage_clk;
     flexy_clock(.clk(clk), .m_value(1_249_999), .slow_clk(damage_clk)); // every 1ms
     
+    localparam N = 5; // number of characters    
     wire [11:0]random_counter; // count from 0 to 4
-    
-    LFSR_random rng (.CLOCK(clk), .rst(reset), .n(3), .random(random_counter));
+    LFSR_random rng (.CLOCK(clk), .rst(reset), .n(N), .random(random_counter));
     
     initial begin
         muff_count = 0;
@@ -43,9 +43,9 @@ module touch_muff(
             muff_count = 0;
         end
         
-        if (hit_muff) begin
+        if (hit_muff) begin            
             muff_count = muff_count + 1;
-            char_no = random_counter % 3;      
+            char_no = ((char_no + ((random_counter + 1) % (N - 1))) + 1) % N;        
         end
     end
     
