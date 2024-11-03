@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module muffinimate2#(parameter NUM_PLATFORMS = 4)(
+module muffinimate2 #(parameter NUM_PLATFORMS = 4)(
     input clk, 
     [6:0]x_start, [6:0]y_start, [6:0]x_vect, [6:0]y_vect, [6:0]sq_width, [6:0]sq_height,
     [6:0]x_hero, [6:0]y_hero, [6:0]width_hero, [6:0]height_hero, 
