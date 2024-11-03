@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module enemy_maxcheck #(parameter MAX_NUM = 15) (input clk, input [2:0] enemies [0:MAX_NUM], output reg maxed);
+module enemy_maxcheck #(parameter MAX_NUM = 15) (input clk, input [3:0] enemies [0:MAX_NUM], output reg maxed);
     initial begin 
         maxed = 0;
     end

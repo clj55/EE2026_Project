@@ -50,14 +50,14 @@ module draw(input clk, output [7:0] JB, input btnD, input btnC
     wire fps_clock;
     flexy_clock get_fps_clock (.clk(clk), .m_value(1_249_999), .slow_clk(fps_clock)); //1_249_999
     
-    wire [2:0]enemies [MAX_ENEMIES:0]; wire [6:0]enemy_xref [MAX_ENEMIES:0]; wire [6:0]enemy_yref [MAX_ENEMIES:0];
+    wire [3:0]enemies [MAX_ENEMIES:0]; wire [6:0]enemy_xref [MAX_ENEMIES:0]; wire [6:0]enemy_yref [MAX_ENEMIES:0];
     wire [2:0] proj_d; wire [MAX_ENEMIES:0] enemy_hit;
     
     wire [6:0] proj_x [0:MAX_PROJ]; wire [6:0] proj_y [0:MAX_PROJ]; 
     wire [2:0] proj_h; wire [6:0] proj_w; wire [MAX_PROJ:0]active_proj;
     projectile_main #(.MAX_PROJ(MAX_PROJ), .MAX_ENEMIES(MAX_ENEMIES), .NUM_PLATFORMS(NUM_PLATFORMS), .ENEMY_SIZE(ENEMY_SIZE))  projectiles
     (.clk(enemyprojclk), .btnD(btnD), .reset(btnC), .fps_clock(fps_clock),
-    .char_x(10), .char_y(5), .char_xvect(1), .char_width(8), .char_height(8), .char_no(0),
+    .char_x(45), .char_y(5), .char_xvect(1), .char_width(8), .char_height(8), .char_no(0),
     .platform_x(platform_x), .platform_y(platform_y), .platform_h(platform_height), .platform_w(platform_width),
     .enemy_x(enemy_xref), .enemy_y(enemy_yref), .enemy_hit(enemy_hit), .proj_d(proj_d),
       .proj_x(proj_x), .proj_y(proj_y), .proj_h(proj_h), .proj_w(proj_w), 
@@ -122,7 +122,7 @@ endmodule
 
 
 module draw_enemy #(parameter MAX_NUM_ENEMIES = 15, parameter size = 8)(input [12:0] p_index, 
-input [2:0] enemies [0:MAX_NUM_ENEMIES], input [MAX_NUM_ENEMIES:0]angry,
+input [3:0] enemies [0:MAX_NUM_ENEMIES], input [MAX_NUM_ENEMIES:0]angry,
 input [6:0] xref [0:MAX_NUM_ENEMIES], input [6:0] yref [0:MAX_NUM_ENEMIES],
 output reg [15:0] oled_data);
     integer i;
@@ -138,20 +138,24 @@ output reg [15:0] oled_data);
             if (x >= (xref[i]) && x < (xref[i] + size) && y >= (yref[i]) && y < (yref[i] + size)) begin  // Set all elements to the same value
                 if (!angry[i]) begin
                     case (enemies[i]) 
-                        1: oled_data <= 16'h07E0; //green
-                        2: oled_data <= 16'h07EA; //greenish blue?
-                        3: oled_data <= 16'h07E0; //blue
-                        4: oled_data <= 16'hA81F; //bluish purple ?
-                        5: oled_data <= 16'hF81F; //purple
+                        1: oled_data = 16'h07E5; // green
+                        2: oled_data = 16'h2758; // marine
+                        3: oled_data = 16'h043F; // blue
+                        4: oled_data = 16'h301F; // darkblue
+                        5: oled_data = 16'hB018; // purp!
+                        6: oled_data <= 16'b1111100000000000;  //red
+                        7: oled_data <= 16'b1111111111100000;  //yellow
                         default: oled_data <= 16'hFFFF;
                     endcase
                 end else begin 
                     case (enemies[i])
-                        1: oled_data <= 16'hF800; //red
-                        2: oled_data <= 16'hFD40; //orange
-                        3: oled_data <= 16'hFD4F; //dark yellow??
-                        4: oled_data <= 16'h07E0; //yellow
-                        5: oled_data <= 16'hA7E0; //yellowish green??
+                        1: oled_data = 16'hE720; // dirty yellow
+                        2: oled_data = 16'hE600; // dark yellow
+                        3: oled_data = 16'hE4E0; // dark orange
+                        4: oled_data = 16'hC2A0; // brown
+                        5: oled_data = 16'hC800; // RED (but darker)
+                        6: oled_data <= 16'b1111100000000000; //purple
+                        7: oled_data <= 16'b1111111111100000;  //yellow
                         default: oled_data<= 16'hFFFF;
                     endcase
                 end

@@ -22,8 +22,7 @@
 
 module enemy_spawner #(parameter MAX_NUM = 15) (input clk, input spawning, input spawn_type, input reset,
 output reg [3:0] spawned_small, output reg [3:0] spawned_big, 
-output reg [1:0] enemies [0:MAX_NUM],
-input [2:0] healths [0:MAX_NUM], input [MAX_NUM:0] resetted_xy
+output reg [1:0] enemies [0:MAX_NUM],input [MAX_NUM:0] resetted_xy
 //,output [3:0] spawned_big, input paused
     );
     

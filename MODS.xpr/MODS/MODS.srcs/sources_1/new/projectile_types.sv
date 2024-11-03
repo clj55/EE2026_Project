@@ -18,6 +18,79 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
+module mine #(parameter MAX_PROJ = 2, parameter NUM_PLATFORMS = 3) (
+    input clk, [MAX_PROJ:0]active, [MAX_PROJ:0] setmine,
+    [6:0]char_x, [6:0]char_y, [6:0]sq_width, [6:0]sq_height,
+    output reg [6:0] proj_x [0:MAX_PROJ], output reg [6:0] proj_y [0:MAX_PROJ],  reg [6:0]proj_w, reg[6:0]proj_h,
+    input [6:0]platform_x[0:NUM_PLATFORMS], [6:0]platform_y[0:NUM_PLATFORMS], [6:0]platform_h, [6:0]platform_w,
+    output reg mine_setted
+    );
+    // x_ref and y_ref: coordinates of player    // x_vect and y_vect: direction player moving in 
+    // sq_width and sq_height: height of player    // char_no: current player selected
+    // x_var and y_var: coordinates of projectile    
+    wire [6:0] launchpt_x;
+    wire [6:0] launchpt_y;
+    reg [6:0] y_increment [0:MAX_PROJ];    
+    reg [31:0] falling [0:MAX_PROJ];
+    reg [MAX_PROJ:0] stop_falling ; // A flag indicating whether the muffin has landed on a surface    
+    
+    integer i; 
+    initial begin        
+        i = 0; 
+        proj_w = 5;
+        proj_h = 5;        
+        
+        for (integer i = 0; i <= MAX_PROJ; i++) begin
+            y_increment[i] = 0;
+            falling[i] = 0;
+            proj_x[i] = 127;
+            proj_y[i] = 0;
+            stop_falling[i] = 1;
+            mine_setted = 0;
+        end
+    end
+        
+    assign launchpt_x = char_x + sq_width/2;    
+    assign launchpt_y = char_y + ((sq_height - proj_h) / 2);
+    
+    always @ (posedge clk) begin
+        mine_setted = 0;
+        for (i = 0; i <= MAX_PROJ; i++) begin
+            if (active[i] == 0) begin
+                proj_x[i] = 127;
+                stop_falling[i] = 1;                    
+            end
+            else if (setmine[i]) begin //or resetted location 
+                mine_setted = 1;      
+                proj_x[i] = launchpt_x;
+                proj_y[i] = launchpt_y;
+                y_increment[i] = 0;
+                stop_falling[i] = 0;            
+                falling[i] = 0;          
+            end else if (!stop_falling[i]) begin 
+                if (falling[i] < 64) y_increment[i] = 1 + falling[i] / 3;             
+                falling[i] = falling[i] + 1; // falling counter will count continuously, will reset when y is stationary                        
+                
+                for (integer j = 0; j <= NUM_PLATFORMS; j++) begin 
+                    if ((proj_y[i]+ proj_h == platform_y[j]) && (proj_x[i] + proj_w > platform_x[j] 
+                    && proj_x[i] - 1 <  platform_x[j] + platform_w) && (falling[i] >= 0 && falling[i] < 64)) begin                 
+                        y_increment[i] = 0;
+                    //slow down
+                    end else if ((proj_x[i] <= platform_x[j] + platform_w) &&  (proj_x[i] + sq_width >= platform_x[j]) && 
+                        proj_y[i] + sq_height + y_increment[i] >= platform_y[j] &&  proj_y[i] < platform_y[j])  begin
+                        y_increment[i] = 1;
+                    end 
+                end
+                if (y_increment[i] == 0) begin
+                    stop_falling[i] = 1;            
+                end else begin 
+                    proj_y[i] = proj_y[i]+ y_increment[i];
+                end
+            end           
+        end
+    end
+    
+endmodule
 
 module laser (
     input clk, active,
@@ -53,7 +126,7 @@ module laser (
 endmodule
 
 module parab_shot #(parameter MAX_PROJ = 2) (
-    input clk, btnD, [MAX_PROJ:0]active,
+    input clk, [MAX_PROJ:0]active,
     [6:0]char_x, [6:0]char_y, [6:0]char_xvect, [6:0]sq_width, [6:0]sq_height,
     output reg [6:0] proj_x [0:MAX_PROJ], output reg [6:0] proj_y [0:MAX_PROJ],  reg [6:0]proj_w, reg[6:0]proj_h
     );

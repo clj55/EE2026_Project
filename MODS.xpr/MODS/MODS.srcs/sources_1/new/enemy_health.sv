@@ -21,7 +21,7 @@
 
 
 module enemy_health #(parameter MAX_NUM = 15, parameter MAX_PROJ = 3)
-(input clk, output reg [2:0] healths [0:MAX_NUM],
+(input clk, output reg [3:0] healths [0:MAX_NUM],
 input [1:0] spawner [0:MAX_NUM], 
 input [6:0]x [0: MAX_NUM], input [6:0]y[0: MAX_NUM],
 input [2:0] proj_d, input [MAX_NUM:0]enemy_hit, input [MAX_NUM:0]angry
@@ -45,11 +45,11 @@ input [2:0] proj_d, input [MAX_NUM:0]enemy_hit, input [MAX_NUM:0]angry
                 
             end else begin  
                 if (enemy_hit[i]) begin // check projectile hit 
-                    healths[i] = healths[i] - proj_d;
+                    healths[i] = (healths[i] > proj_d) ? 0 : healths[i] - proj_d;
                 end 
                 if (angry[i] && !alrangry[i]) begin 
                     alrangry[i] <= 1;
-                    healths[i] = ((healths[i] + 2) >= 5) ? 5 : healths[i] + 2;
+                    healths[i] = (healths[i] + 2 >= 5) ? 5 : healths[i] + 2;
                 end              
             end
         end

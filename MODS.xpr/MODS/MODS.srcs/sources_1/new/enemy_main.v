@@ -21,7 +21,7 @@
 
 
 module enemy_main #(parameter MAX_ENEMIES = 15, parameter ENEMY_SIZE = 8, parameter NUM_PLATFORMS = 3) 
-(input clk, output [2:0] enemy_health [0:MAX_ENEMIES], 
+(input clk, output [3:0] enemy_health [0:MAX_ENEMIES], 
 output[6:0]enemy_xref [MAX_ENEMIES:0], output [6:0]enemy_yref [MAX_ENEMIES:0],
 input [6:0]platform_width, input [6:0]platform_x[0:NUM_PLATFORMS], input [6:0]platform_y[0:NUM_PLATFORMS],
 input [6:0]spawn1, input [6:0]spawn2,
@@ -40,7 +40,7 @@ output [MAX_ENEMIES:0] angry
     wire [1:0] enemy_spawn [0:MAX_ENEMIES];  wire [MAX_ENEMIES:0] resetted_xy; 
     enemy_spawner  #(.MAX_NUM(MAX_ENEMIES)) spawner(.clk(clk), .spawning(spawning), .spawn_type(spawn_type), .reset(reset_spawn),
     .spawned_small (spawned_small), .spawned_big (spawned_big),
-    .enemies(enemy_spawn), .healths(enemy_health), .resetted_xy(resetted_xy)
+    .enemies(enemy_spawn), .resetted_xy(resetted_xy)
     //,input paused
         );
     enemy_health #(.MAX_NUM(MAX_ENEMIES)) health (.clk(enemyprojclk), .healths(enemy_health), .spawner(enemy_spawn), 
