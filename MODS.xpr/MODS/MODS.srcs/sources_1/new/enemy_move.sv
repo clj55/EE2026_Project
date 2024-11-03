@@ -57,8 +57,8 @@ output [MAX_NUM_ENEMIES:0]resetted_xy, output reg [MAX_NUM_ENEMIES:0]angry
     reg [MAX_NUM_ENEMIES:0] resettedx = 0;
     assign resetted_xy = resettedy & resettedx;
     wire spawnchooser; wire directionchooser;
-    LFSR_random #(.seed(23)) spawnrand(.CLOCK(clk), .n(2), .rst(0), .random(spawnchooser));
-    LFSR_random #(.seed(43)) dirrand(.CLOCK(clk), .n(2), .rst(0), .random(directionchooser));
+    LFSR_random #(.LFSR(23)) spawnrand(.CLOCK(clk), .n(2), .rst(0), .random(spawnchooser));
+    LFSR_random #(.LFSR(43)) dirrand(.CLOCK(clk), .n(2), .rst(0), .random(directionchooser));
     
     always @(posedge fps_clock) begin //need to implement gravity       
         for (i = 0; i <= MAX_NUM_ENEMIES; i = i + 1) begin
