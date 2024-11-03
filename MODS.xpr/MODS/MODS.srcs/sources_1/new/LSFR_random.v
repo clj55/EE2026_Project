@@ -40,6 +40,6 @@ module LFSR_random #(parameter seed = 23) (
     end
 
     // Assign LFSR output to random number
-    assign random = lfsr % n;
+    assign random = lfsr % n + 1;
 
 endmodule

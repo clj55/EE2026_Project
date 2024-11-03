@@ -45,7 +45,7 @@ module touch_muff(
         
         if (hit_muff) begin            
             muff_count = muff_count + 1;
-            char_no = ((char_no + (random_counter % (N - 1))) + 1) % N;        
+            char_no = ((char_no + ((random_counter + 1) % (N - 1))) + 1) % N;        
         end
     end
     

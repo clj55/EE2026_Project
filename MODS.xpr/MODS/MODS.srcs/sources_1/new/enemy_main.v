@@ -23,7 +23,7 @@
 module enemy_main #(parameter MAX_ENEMIES = 15, parameter ENEMY_SIZE = 8, parameter NUM_PLATFORMS = 3) 
 (input clk, output [2:0] enemy_health [0:MAX_ENEMIES], 
 output[6:0]enemy_xref [MAX_ENEMIES:0], output [6:0]enemy_yref [MAX_ENEMIES:0],
-input [6:0]platform_width, input [6:0]platform_x[0:NUM_PLATFORMS], input [6:0]platform_y[0:NUM_PLATFORMS],
+input [6:0]platform_width[0:NUM_PLATFORMS], input [6:0]platform_x[0:NUM_PLATFORMS], input [6:0]platform_y[0:NUM_PLATFORMS],
 input [6:0]spawn1, input [6:0]spawn2,
 input enemyprojclk, input [2:0] proj_d, input [MAX_ENEMIES:0] enemy_hit,
 output [MAX_ENEMIES:0] angry 

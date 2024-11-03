@@ -163,6 +163,21 @@ muffinimate2 animate_muffin (.clk(clk),
         .reset(reset),
         .x_var(x_muff), .y_var(y_muff), .center_sq_colour(center_sq_colour), .hit_muff(hit_muff));
 
+
+// Timothy's drawing module
+
+pixel_control pixycont (
+        .x(x), .y(y), 
+        .clock(clk), .btnU(btnU), .btnL(btnL), .btnR(btnR),
+        .xref_std(x_var), .yref_std(y_var), .stnum(char_no), .faceleft(facing), .vertical_movement(is_y_stat),
+        .xref_e(enemy_xref), .yref_e(enemy_yref), .enemy_health(enemies), .angry(angry),
+        .xref_muffin(x_muff), .yref_muffin(y_muff),
+        .pixel_data(oled_data)
+        );
+
+
+
+
 wire clk6p25m;
 flexy_clock clk_6p25MHz (.clk(clk), .m_value(7), .slow_clk(clk6p25m));
 // 3.A1: instantiate Oled_Display

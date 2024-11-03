@@ -24,7 +24,7 @@
 
 module enemy_movement #(parameter MAX_NUM_ENEMIES = 15, parameter size = 8, parameter NUM_PLATFORMS = 3)
 (input clk, input [6:0]spawn1,  input [6:0]spawn2, input[2:0]healths [0: MAX_NUM_ENEMIES], 
-input [6:0] platform_width, input [6:0] x_obs [0:NUM_PLATFORMS], input [6:0] y_obs [0:NUM_PLATFORMS],
+input [6:0] platform_width[0:NUM_PLATFORMS], input [6:0] x_obs [0:NUM_PLATFORMS], input [6:0] y_obs [0:NUM_PLATFORMS],
 output reg [6:0] xref [0: MAX_NUM_ENEMIES]  , output reg [6:0] yref [0: MAX_NUM_ENEMIES],
 output [MAX_NUM_ENEMIES:0]resetted_xy, output reg [MAX_NUM_ENEMIES:0]angry
 //input rando_sig
@@ -77,11 +77,11 @@ output [MAX_NUM_ENEMIES:0]resetted_xy, output reg [MAX_NUM_ENEMIES:0]angry
                 y_increment[i] = (falling[i] < 64) ? 1 + falling[i] / 3 : y_increment[i]; 
                 for (j = 0; j <= NUM_PLATFORMS && is_falling[i]; j++) begin 
                     //obstacle
-                    if ((xref[i] <= x_obs[j] + platform_width) &&  (xref[i] + size >= x_obs[j]) && (yref[i] + size == y_obs[j])) begin 
+                    if ((xref[i] <= x_obs[j] + platform_width[j]) &&  (xref[i] + size >= x_obs[j]) && (yref[i] + size == y_obs[j])) begin 
                         is_falling[i] = 0;
                         y_increment[i] = 0;
                     //slowing down
-                    end else if ((xref[i] <= x_obs[j] + platform_width) &&  (xref[i] + size >= x_obs[j]) && 
+                    end else if ((xref[i] <= x_obs[j] + platform_width[j]) &&  (xref[i] + size >= x_obs[j]) && 
                         yref[i] + size + y_increment[i] >= y_obs[j] &&  yref[i] < y_obs[j])  begin
                         y_increment[i] = 1;
                     end 
