@@ -26,7 +26,7 @@ NUM_PLATFORMS = 3)
 [6:0]char_x, [6:0]char_y, [6:0]char_xvect, 
 [6:0]char_width, [6:0]char_height, [2:0]char_no,
  input [6:0]platform_x[0:NUM_PLATFORMS], [6:0]platform_y[0:NUM_PLATFORMS], 
- [6:0]platform_h, [6:0]platform_w,
+ [6:0]platform_h, [6:0]platform_w[0:NUM_PLATFORMS],
  input [6:0] enemy_x[0:MAX_ENEMIES], input [6:0] enemy_y [0:MAX_ENEMIES], 
  output reg [6:0] proj_x [0:MAX_PROJ], output reg [6:0] proj_y [0:MAX_PROJ], 
  output reg [6:0] proj_h, output reg [6:0] proj_w, output reg [MAX_PROJ:0]active,
@@ -92,7 +92,7 @@ NUM_PLATFORMS = 3)
                             if (proj_x[i] + proj_w == platform_x[k] && (proj_y[i] + proj_h > platform_y[k]
                             && proj_y[i] < platform_y[k] + proj_h)) begin //left of platform 
                               active[i] = 0;
-                            end else if (proj_x[i] == platform_x[k] + platform_w 
+                            end else if (proj_x[i] == platform_x[k] + platform_w[k] 
                             && (proj_y[i] + proj_h > platform_y[k] && proj_y[i] < platform_y[k] + platform_h)) begin 
                               active[i] = 0;
                             end

@@ -21,8 +21,8 @@
 module mine #(parameter MAX_PROJ = 2, parameter NUM_PLATFORMS = 3) (
     input clk, [MAX_PROJ:0]active, [MAX_PROJ:0] setmine,
     [6:0]char_x, [6:0]char_y, [6:0]sq_width, [6:0]sq_height,
-    output reg [6:0] proj_x [0:MAX_PROJ], output reg [6:0] proj_y [0:MAX_PROJ],  reg [6:0]proj_w, reg[6:0]proj_h,
-    input [6:0]platform_x[0:NUM_PLATFORMS], [6:0]platform_y[0:NUM_PLATFORMS], [6:0]platform_h, [6:0]platform_w,
+    output reg [6:0] proj_x [0:MAX_PROJ], output reg [6:0] proj_y [0:MAX_PROJ],  reg [6:0]proj_w, reg[6:0]proj_h, 
+    input [6:0]platform_x[0:NUM_PLATFORMS], [6:0]platform_y[0:NUM_PLATFORMS], [6:0]platform_h, [6:0]platform_w[0:NUM_PLATFORMS],
     output reg mine_setted
     );
     // x_ref and y_ref: coordinates of player    // x_vect and y_vect: direction player moving in 
@@ -73,10 +73,10 @@ module mine #(parameter MAX_PROJ = 2, parameter NUM_PLATFORMS = 3) (
                 
                 for (integer j = 0; j <= NUM_PLATFORMS; j++) begin 
                     if ((proj_y[i]+ proj_h == platform_y[j]) && (proj_x[i] + proj_w > platform_x[j] 
-                    && proj_x[i] - 1 <  platform_x[j] + platform_w) && (falling[i] >= 0 && falling[i] < 64)) begin                 
+                    && proj_x[i] - 1 <  platform_x[j] + platform_w[j]) && (falling[i] >= 0 && falling[i] < 64)) begin                 
                         y_increment[i] = 0;
                     //slow down
-                    end else if ((proj_x[i] <= platform_x[j] + platform_w) &&  (proj_x[i] + sq_width >= platform_x[j]) && 
+                    end else if ((proj_x[i] <= platform_x[j] + platform_w[j]) &&  (proj_x[i] + sq_width >= platform_x[j]) && 
                         proj_y[i] + sq_height + y_increment[i] >= platform_y[j] &&  proj_y[i] < platform_y[j])  begin
                         y_increment[i] = 1;
                     end 
