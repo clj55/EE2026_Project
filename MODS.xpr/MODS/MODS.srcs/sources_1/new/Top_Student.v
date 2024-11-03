@@ -13,6 +13,8 @@
 
 module Top_Student (
     input clk, btnC, btnL, btnR, btnD, btnU, [4:0]sw,  
+    output [6:0] seg, 
+    output [3:0] an,
     output [7:0]JC, [2:0]led
     );
     
@@ -101,8 +103,11 @@ animate animate_hero (.clk(clk),
 wire hit;
 wire hit_muff;
 wire [2:0]char_no;
+wire [31:0]muff_count;
+
 hero_damage(.clk(clk), .hit(hit), .reset(reset), .LED(led));
-touch_muff(.clk(clk), .hit_muff(hit_muff), .start_muff(0), .reset(reset), .char_no(char_no));
+
+touch_muff(.clk(clk), .hit_muff(hit_muff), .start_muff(0), .reset(reset), .char_no(char_no), .muff_count(muff_count));
 
 wire proj_move;
 wire proj_hit_enemy;
@@ -157,6 +162,8 @@ make_square draw_sq (.clk(clk), .x(x), .y(y), .sprite_no(sprite_no), .char_no(ch
 //        .x_platform4(55), .y_platform4(58), .width_platform4(39), .height_platform4(5),
         .x_platform(x_platform), .y_platform(y_platform), .width_platform(width_platform), .height_platform(height_platform),
         .platform_colour(16'b00000_111111_00000), .bg_colour(0), .oled_data(oled_data));
+
+seven_seg_display display (.n(muff_count), .CLOCK(clk), .an(an), .seg(seg));        
 
 // 3.A1: instantiate Oled_Display
 Oled_Display Q3A1 (.clk(clk6p25m), .reset(0), .frame_begin(frame_begin), .sending_pixels(sending_pixels),
