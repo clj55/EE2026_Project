@@ -37,7 +37,7 @@ output [MAX_NUM_ENEMIES:0]resetted_xy, output reg [MAX_NUM_ENEMIES:0]angry
     reg [1:0] x_inc;
     
     flexy_clk walk_clk (clk, 6_999_999, normalhz); //6_999_999
-    flexy_clk get_fps_clock (clk,  1_249_999, fps_clock); // 1_249_999
+    flexy_clk get_fps_clock (clk, 1_249_999, fps_clock); // 1_249_999
     integer i; integer j;
 
     initial begin 

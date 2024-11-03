@@ -138,22 +138,22 @@ output reg [15:0] oled_data);
             if (x >= (xref[i]) && x < (xref[i] + size) && y >= (yref[i]) && y < (yref[i] + size)) begin  // Set all elements to the same value
                 if (!angry[i]) begin
                     case (enemies[i]) 
-                        1: oled_data = 16'h07E5; // green
-                        2: oled_data = 16'h2758; // marine
-                        3: oled_data = 16'h043F; // blue
-                        4: oled_data = 16'h301F; // darkblue
-                        5: oled_data = 16'hB018; // purp!
+                        1: oled_data <= 16'h07E5; // green
+                        2: oled_data <= 16'h2758; // marine
+                        3: oled_data <= 16'h043F; // blue
+                        4: oled_data <= 16'h301F; // darkblue
+                        5: oled_data <= 16'hB018; // purp!
                         6: oled_data <= 16'b1111100000000000;  //red
                         7: oled_data <= 16'b1111111111100000;  //yellow
                         default: oled_data <= 16'hFFFF;
                     endcase
                 end else begin 
                     case (enemies[i])
-                        1: oled_data = 16'hE720; // dirty yellow
-                        2: oled_data = 16'hE600; // dark yellow
-                        3: oled_data = 16'hE4E0; // dark orange
-                        4: oled_data = 16'hC2A0; // brown
-                        5: oled_data = 16'hC800; // RED (but darker)
+                        1: oled_data <= 16'hE720; // dirty yellow
+                        2: oled_data <= 16'hE600; // dark yellow
+                        3: oled_data <= 16'hE4E0; // dark orange
+                        4: oled_data <= 16'hC2A0; // brown
+                        5: oled_data <= 16'hC800; // RED (but darker)
                         6: oled_data <= 16'b1111100000000000; //purple
                         7: oled_data <= 16'b1111111111100000;  //yellow
                         default: oled_data<= 16'hFFFF;

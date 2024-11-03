@@ -45,7 +45,7 @@ input [2:0] proj_d, input [MAX_NUM:0]enemy_hit, input [MAX_NUM:0]angry
                 
             end else begin  
                 if (enemy_hit[i]) begin // check projectile hit 
-                    healths[i] = (healths[i] > proj_d) ? 0 : healths[i] - proj_d;
+                    healths[i] = (healths[i] < proj_d) ? 0 : healths[i] - proj_d;
                 end 
                 if (angry[i] && !alrangry[i]) begin 
                     alrangry[i] <= 1;
