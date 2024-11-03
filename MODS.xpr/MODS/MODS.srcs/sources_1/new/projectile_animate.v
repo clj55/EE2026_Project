@@ -68,7 +68,7 @@ module projectile_animate(
     wire proj_hit_enemy5;
 
 
-    single_shot(.clk(clk), .btnD(btnD), 
+    single_shotxx(.clk(clk), .btnD(btnD), 
         .x_ref(x_ref), .y_ref(y_ref), .x_vect(x_vect), .y_vect(y_vect), .sq_width(sq_width), .sq_height(sq_height),
         
         .x_platform1(x_platform1), .y_platform1(y_platform1), .width_platform1(width_platform1), .height_platform1(height_platform1),
@@ -263,7 +263,7 @@ module poison_bottle(    input CLOCK, btnD,
 endmodule
 
 
-module parab_shot(
+module parab_shotxx(
     input clk, btnD,
     [6:0]x_ref, [6:0]y_ref, [6:0]x_vect, [6:0]y_vect, [6:0]sq_width, [6:0]sq_height, 
     
@@ -659,7 +659,7 @@ module laser_shot2(
 
 endmodule
 
-module single_shot(
+module single_shotxx(
     input clk, btnD,
     [6:0]x_ref, [6:0]y_ref, [6:0]x_vect, [6:0]y_vect, [6:0]sq_width, [6:0]sq_height, 
     

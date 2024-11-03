@@ -20,10 +20,10 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module draw(input clk, output [7:0] JB, input btnC
+module draw(input clk, output [7:0] JB, input btnD, input btnC
 );
     parameter MAX_ENEMIES = 3; parameter ENEMY_SIZE = 8; parameter NUM_PLATFORMS = 4; //all of this should be the number you want -1
-    parameter MAX_PROJ = 2;
+    parameter MAX_PROJ = 5;
     wire sending_pixels; wire sample_pixel; wire frame_begin; wire [12:0] pixel_index; 
     reg [15:0] oled_data = 16'b1111111111111111;
     
@@ -33,29 +33,35 @@ module draw(input clk, output [7:0] JB, input btnC
 .sample_pixel(sample_pixel), .pixel_index(pixel_index), .pixel_data(oled_data), .cs(JB[0]), .sdin(JB[1]), 
 .sclk(JB[3]), .d_cn(JB[4]), .resn(JB[5]), .vccen(JB[6]), .pmoden(JB[7])); 
     
-    reg [7:0]enemy_spawn1 = 15; // x coordinate
-    reg [7:0]enemy_spawn2 = 80; // x coordinate
-    wire [7:0]platform_width; wire [7:0]platform_x[0:NUM_PLATFORMS]; wire [7:0]platform_y[0:NUM_PLATFORMS]; 
-    assign platform_width = 30;
-    assign {platform_x[0], platform_x[1], platform_x[2], platform_x[3], platform_x[4]} = {8'd0,8'd60,8'd30,8'd0, 8'd60} ;
-    assign {platform_y[0], platform_y[1], platform_y[2], platform_y[3], platform_y[4]} = {8'd20,8'd20,8'd40,8'd60,8'd60} ;
+    reg [6:0]enemy_spawn1 = 15; // x coordinate
+    reg [6:0]enemy_spawn2 = 80; // x coordinate
+    wire [6:0]platform_width; wire [6:0]platform_height; 
+    wire [6:0]platform_x[0:NUM_PLATFORMS]; wire [6:0]platform_y[0:NUM_PLATFORMS]; 
+    assign platform_width = 30; assign platform_height = 3;
+    assign {platform_x[0], platform_x[1], platform_x[2], platform_x[3], platform_x[4]} = {7'd0,7'd60,7'd30,7'd0, 7'd60} ;
+    assign {platform_y[0], platform_y[1], platform_y[2], platform_y[3], platform_y[4]} = {7'd20,7'd20,7'd40,7'd60,7'd60} ;
     
     wire [15:0]oled_data_map;
     draw_map #(.NUM_PLATFORMS(NUM_PLATFORMS))bg (.p_index(pixel_index), .oled_data(oled_data_map), 
-    .platform_width(platform_width), .platform_x(platform_x),  .platform_y(platform_y));
+    .platform_width(platform_width), .platform_height(platform_height), .platform_x(platform_x),  .platform_y(platform_y));
     
     wire enemyprojclk;
     flexy_clk interactionclk (clk, 624_999, enemyprojclk); //624_999
+    wire fps_clock;
+    flexy_clock get_fps_clock (.clk(clk), .m_value(1_249_999), .slow_clk(fps_clock)); //1_249_999
     
-    wire [2:0]enemies [MAX_ENEMIES:0]; wire [7:0]enemy_xref [MAX_ENEMIES:0]; wire [7:0]enemy_yref [MAX_ENEMIES:0];
+    wire [2:0]enemies [MAX_ENEMIES:0]; wire [6:0]enemy_xref [MAX_ENEMIES:0]; wire [6:0]enemy_yref [MAX_ENEMIES:0];
     wire [2:0] proj_d; wire [MAX_ENEMIES:0] enemy_hit;
     
-    wire [7:0] proj_x [0:MAX_PROJ]; wire [7:0] proj_y [0:MAX_PROJ]; 
+    wire [6:0] proj_x [0:MAX_PROJ]; wire [6:0] proj_y [0:MAX_PROJ]; 
     wire [2:0] proj_h; wire [6:0] proj_w; wire [MAX_PROJ:0]active_proj;
-    projectile_main #(.MAX_PROJ(MAX_PROJ), .MAX_ENEMIES(MAX_ENEMIES))  projectiles
-    (.clk(enemyprojclk), .enemy_x(enemy_xref), .enemy_y(enemy_yref),
+    projectile_main #(.MAX_PROJ(MAX_PROJ), .MAX_ENEMIES(MAX_ENEMIES), .NUM_PLATFORMS(NUM_PLATFORMS), .ENEMY_SIZE(ENEMY_SIZE))  projectiles
+    (.clk(enemyprojclk), .btnD(btnD), .reset(btnC), .fps_clock(fps_clock),
+    .char_x(10), .char_y(5), .char_xvect(1), .char_width(8), .char_height(8), .char_no(0),
+    .platform_x(platform_x), .platform_y(platform_y), .platform_h(platform_height), .platform_w(platform_width),
+    .enemy_x(enemy_xref), .enemy_y(enemy_yref), .enemy_hit(enemy_hit), .proj_d(proj_d),
       .proj_x(proj_x), .proj_y(proj_y), .proj_h(proj_h), .proj_w(proj_w), 
-      .active(active_proj), .proj_d(proj_d), .enemy_hit(enemy_hit));
+      .active(active_proj));
     
     wire [MAX_ENEMIES:0] angry;
     enemy_main #(.MAX_ENEMIES(MAX_ENEMIES), .ENEMY_SIZE(ENEMY_SIZE), .NUM_PLATFORMS(NUM_PLATFORMS)) em(
@@ -64,7 +70,7 @@ module draw(input clk, output [7:0] JB, input btnC
     .spawn1(enemy_spawn1), .spawn2(enemy_spawn2),
     .enemyprojclk(enemyprojclk), .proj_d(proj_d), .enemy_hit(enemy_hit),
     .angry(angry)
-    ,.rando_sig(btnC)
+//    ,.rando_sig(btnC)
     );
     
     wire [15:0]oled_data_enemy;
@@ -93,12 +99,12 @@ endmodule
 
 module draw_proj #(parameter MAX_NUM = 5)(input [12:0] p_index, 
 input [MAX_NUM:0] active_proj, 
-input [7:0] xref [0:MAX_NUM] , input [7:0] yref [0:MAX_NUM],
+input [6:0] xref [0:MAX_NUM] , input [6:0] yref [0:MAX_NUM],
 input [2:0] h, input [6:0] w,
 output reg [15:0] oled_data);
     integer i;
-    wire [7:0]x = p_index % 96;
-    wire [7:0]y = p_index / 96;
+    wire [6:0]x = p_index % 96;
+    wire [6:0]y = p_index / 96;
     initial begin 
         oled_data = 1;
     end
@@ -117,11 +123,11 @@ endmodule
 
 module draw_enemy #(parameter MAX_NUM_ENEMIES = 15, parameter size = 8)(input [12:0] p_index, 
 input [2:0] enemies [0:MAX_NUM_ENEMIES], input [MAX_NUM_ENEMIES:0]angry,
-input [7:0] xref [0:MAX_NUM_ENEMIES], input [7:0] yref [0:MAX_NUM_ENEMIES],
+input [6:0] xref [0:MAX_NUM_ENEMIES], input [6:0] yref [0:MAX_NUM_ENEMIES],
 output reg [15:0] oled_data);
     integer i;
-    wire [7:0]x = p_index % 96;
-    wire [7:0]y = p_index / 96;
+    wire [6:0]x = p_index % 96;
+    wire [6:0]y = p_index / 96;
     initial begin 
         oled_data = 1;
     end
@@ -137,6 +143,7 @@ output reg [15:0] oled_data);
                         3: oled_data <= 16'h07E0; //blue
                         4: oled_data <= 16'hA81F; //bluish purple ?
                         5: oled_data <= 16'hF81F; //purple
+                        default: oled_data <= 16'hFFFF;
                     endcase
                 end else begin 
                     case (enemies[i])
@@ -145,6 +152,7 @@ output reg [15:0] oled_data);
                         3: oled_data <= 16'hFD4F; //dark yellow??
                         4: oled_data <= 16'h07E0; //yellow
                         5: oled_data <= 16'hA7E0; //yellowish green??
+                        default: oled_data<= 16'hFFFF;
                     endcase
                 end
              end
@@ -153,16 +161,17 @@ output reg [15:0] oled_data);
     end 
 endmodule 
 
-module draw_map #(parameter NUM_PLATFORMS = 3) (input [12:0] p_index, input [7:0]platform_width, 
-input [7:0]platform_x[0:NUM_PLATFORMS],  input[7:0]platform_y[0:NUM_PLATFORMS],
+module draw_map #(parameter NUM_PLATFORMS = 3) (input [12:0] p_index, 
+input [6:0]platform_width, input [6:0] platform_height,
+input [6:0]platform_x[0:NUM_PLATFORMS],  input[6:0]platform_y[0:NUM_PLATFORMS],
 output reg [15:0] oled_data);
-    wire [7:0] x; wire [7:0] y;
+    wire [6:0] x; wire [6:0] y;
     assign x = p_index % 96;
     assign y = p_index / 96;
     always @(p_index) begin 
         oled_data <= 0;
         for (integer j = 0; j <= NUM_PLATFORMS; j++) begin
-            if ((y >= platform_y[j] && y <= platform_y[j] + 3) && (x >= platform_x[j] && x <= platform_x[j] + platform_width)) begin
+            if ((y >= platform_y[j] && y <= platform_y[j] + platform_height) && (x >= platform_x[j] && x <= platform_x[j] + platform_width)) begin
                 oled_data <= 16'b1111100000000000; 
             end
         end

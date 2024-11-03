@@ -28,7 +28,7 @@ input [2:0] healths [0:MAX_NUM], input [MAX_NUM:0] resetted_xy
     );
     
     wire spawnhz;
-    flexy_clk spawnclk(clk, 99_999_999  , spawnhz); //99_999_999
+    flexy_clk spawnclk(clk, 99_999_999, spawnhz); //99_999_999
     integer j = 0;
     initial begin 
         spawned_small = 0;

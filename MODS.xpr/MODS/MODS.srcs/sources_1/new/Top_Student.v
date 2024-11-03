@@ -61,8 +61,8 @@ assign y = pixel_index / 96;
 */
 wire clk6p25m;
 flexy_clock clk_6p25MHz (.clk(clk), .m_value(7), .slow_clk(clk6p25m));
-wire clk25m;
-flexy_clock clk_25MHz (.clk(clk), .m_value(7), .slow_clk(clk25m));
+//wire clk25m;
+//flexy_clock clk_25MHz (.clk(clk), .m_value(7), .slow_clk(clk25m));
 
 // use pushbuttons to choose direction
 wire [6:0]x_vect;

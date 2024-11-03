@@ -23,9 +23,9 @@
 
 
 module enemy_movement #(parameter MAX_NUM_ENEMIES = 15, parameter size = 8, parameter NUM_PLATFORMS = 3)
-(input clk, input [7:0]spawn1,  input [7:0]spawn2, input[2:0]healths [0: MAX_NUM_ENEMIES], 
-input [7:0] platform_width, input [7:0] x_obs [0:NUM_PLATFORMS], input [7:0] y_obs [0:NUM_PLATFORMS],
-output reg [7:0] xref [0: MAX_NUM_ENEMIES]  , output reg [7:0] yref [0: MAX_NUM_ENEMIES],
+(input clk, input [6:0]spawn1,  input [6:0]spawn2, input[2:0]healths [0: MAX_NUM_ENEMIES], 
+input [6:0] platform_width, input [6:0] x_obs [0:NUM_PLATFORMS], input [6:0] y_obs [0:NUM_PLATFORMS],
+output reg [6:0] xref [0: MAX_NUM_ENEMIES]  , output reg [6:0] yref [0: MAX_NUM_ENEMIES],
 output [MAX_NUM_ENEMIES:0]resetted_xy, output reg [MAX_NUM_ENEMIES:0]angry
 //input rando_sig
 );
@@ -37,10 +37,11 @@ output [MAX_NUM_ENEMIES:0]resetted_xy, output reg [MAX_NUM_ENEMIES:0]angry
     reg [1:0] x_inc;
     
     flexy_clk walk_clk (clk, 6_999_999, normalhz); //6_999_999
-    flexy_clk get_fps_clock (clk, 1_249_999, fps_clock); // 1_249_999
+    flexy_clk get_fps_clock (clk,  1_249_999, fps_clock); // 1_249_999
     integer i; integer j;
 
     initial begin 
+        j = 0;
         for (i = 0; i <= MAX_NUM_ENEMIES; i = i + 1) begin
            xref[i] <= 15;  // spawn location
            yref[i] <= 0;

@@ -23,11 +23,20 @@
 module draw_sim(
 
     );
-    reg clk;
+    reg clk; reg btnC; reg btnD;
     wire [7:0]JB;
-    draw dut (.clk(clk), .JB(JB));
+    draw dut (.clk(clk), .JB(JB), .btnC(btnC), .btnD(btnD));
     initial begin 
         clk = 0;
+        btnC = 1;
+        btnD = 0;
+        #200; btnC = 0;
+        #5000; btnD = 1;
+        #20; btnD = 0;
+        #5000; btnD = 1;
+        #20; btnD = 0;
+//        #500; btnC = 1;
+//        #500; btnC = 0;
     end 
     always begin 
         #5; clk = ~clk;
