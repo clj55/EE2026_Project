@@ -21,17 +21,17 @@
 
 // systemverilog file
 
-module pixel_control(
+module pixel_control #(parameter MAX_ENEMIES = 14)(
     input [6:0] x, [6:0] y,
     input clock, btnU, btnL, btnR,
     input [6:0] xref_std, input [6:0] yref_std, 
     input faceleft, input vertical_movement, // y stationary: vert_movement == 1
-    input [6:0] xref_e [0:14], input [6:0] yref_e [0:14], input [2:0] enemy_health [0:14], input [14:0] angry,
+    input [6:0] xref_e [0:MAX_ENEMIES], input [6:0] yref_e [0:MAX_ENEMIES], 
+    input [3:0] enemy_health [0:MAX_ENEMIES], input [MAX_ENEMIES:0] angry,
     input [6:0] xref_muffin, [6:0] yref_muffin,
     input [2:0] stnum,
     output reg [15:0] pixel_data
     );
-    parameter MAX_ENEMIES = 14; 
     reg [12:0] pixel_index;
     wire [15:0] s_oled;
     wire [15:0] m_oled;

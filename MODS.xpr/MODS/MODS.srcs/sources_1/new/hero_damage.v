@@ -21,7 +21,7 @@
 
 
 module hero_damage(
-    input clk, hit, reset,
+    input clk, hit, reset, pause,
     output reg [2:0]LED
     );
     
@@ -38,20 +38,22 @@ module hero_damage(
     flexy_clock get_fps_clock (.clk(clk), .m_value(1_249_999), .slow_clk(fps_clock));
     
     always @ (posedge fps_clock) begin
-        if (reset) begin
-            LED = 3'b111;
-            counter = 0;
-        end
-    
-        if (counter == 0) begin
-            if (hit) begin
-                LED = LED >> 1;
+        if (!pause) begin
+            if (reset) begin
+                LED = 3'b111;
+                counter = 0;
+            end
+        
+            if (counter == 0) begin
+                if (hit) begin
+                    LED = LED >> 1;
+                    counter = counter + 1;
+                end
+            end else if (counter == 40) begin // should have 1 second cooldown
+                counter = 0;
+            end else begin
                 counter = counter + 1;
             end
-        end else if (counter == 40) begin // should have 1 second cooldown
-            counter = 0;
-        end else begin
-            counter = counter + 1;
         end
     end
     

@@ -126,7 +126,7 @@ module laser (
 endmodule
 
 module parab_shot #(parameter MAX_PROJ = 2) (
-    input clk, [MAX_PROJ:0]active,
+    input clk, [MAX_PROJ:0]active, input paused,
     [6:0]char_x, [6:0]char_y, [6:0]char_xvect, [6:0]sq_width, [6:0]sq_height,
     output reg [6:0] proj_x [0:MAX_PROJ], output reg [6:0] proj_y [0:MAX_PROJ],  reg [6:0]proj_w, reg[6:0]proj_h
     );
@@ -170,32 +170,34 @@ module parab_shot #(parameter MAX_PROJ = 2) (
                 x_increment[i] = 0;
                 y_increment[i] = 0;
                 proj_x[i] <= 127;
-            end else if (proj_x[i] == 127) begin // first launched
-                x_increment[i] = char_xvect;
-                if (char_xvect == 1) begin // facing right, launch from right
-                    proj_x[i] <= launchpt_x_right; // starting point for projectile
-                end else if (char_xvect == 127) begin // facing left, launch from left
-                    proj_x[i] <= launchpt_x_left; // starting point for projectile
-                end
-                proj_y[i] <= launchpt_y;                
-            end else begin
-                if (jumping[i] > 0) begin
-                    y_increment[i] = 127 - jumping[i] / 3 + 1;
-                end else if (falling[i] < 64) begin
-                    y_increment[i] = 1 + falling[i] / 3; 
-                end
-                jumping[i] = (jumping[i] > 0) ? jumping[i] - 1 : 0; // count down to 0
-                falling[i] = (jumping[i] > 0) ? 0 : falling[i] + 1; // falling counter will count continuously, will reset when y is stationary 
-             
-                proj_x[i] <= proj_x[i]+ x_increment[i];
-                proj_y[i] <= proj_y[i] + y_increment[i];
-            end 
+            end else if (!paused) begin
+                if (proj_x[i] == 127) begin // first launched
+                    x_increment[i] = char_xvect;
+                    if (char_xvect == 1) begin // facing right, launch from right
+                        proj_x[i] <= launchpt_x_right; // starting point for projectile
+                    end else if (char_xvect == 127) begin // facing left, launch from left
+                        proj_x[i] <= launchpt_x_left; // starting point for projectile
+                    end
+                    proj_y[i] <= launchpt_y;                
+                end else begin
+                    if (jumping[i] > 0) begin
+                        y_increment[i] = 127 - jumping[i] / 3 + 1;
+                    end else if (falling[i] < 64) begin
+                        y_increment[i] = 1 + falling[i] / 3; 
+                    end
+                    jumping[i] = (jumping[i] > 0) ? jumping[i] - 1 : 0; // count down to 0
+                    falling[i] = (jumping[i] > 0) ? 0 : falling[i] + 1; // falling counter will count continuously, will reset when y is stationary 
+                 
+                    proj_x[i] <= proj_x[i]+ x_increment[i];
+                    proj_y[i] <= proj_y[i] + y_increment[i];
+                end 
+            end
         end 
     end
 endmodule
 
 module double_shot #(parameter MAX_PROJ = 2) (
-    input clk, [MAX_PROJ:0] active,
+    input clk, [MAX_PROJ:0] active, paused,
     [6:0]char_x, [6:0]char_y, [6:0]sq_width, [6:0]sq_height, 
     output reg [6:0] proj_x [0:MAX_PROJ], output reg [6:0] proj_y [0:MAX_PROJ], 
     output reg [6:0] proj_h, output reg [6:0] proj_w
@@ -221,11 +223,13 @@ module double_shot #(parameter MAX_PROJ = 2) (
         for (i = 0; i <= MAX_PROJ; i++) begin 
             if (active[i] == 0) begin //active i and max_proj - 1 (max proj must be even)
                 proj_x[i] <= 127;
-            end else if (proj_x[i] == 127) begin //if proj was not activated 
-                proj_x[i] <= launchpt_x;
-                proj_y[i] <= launchpt_y;
-            end else begin    
-                proj_x[i] <= (i <= 2) ? proj_x[i] + 1 :  proj_x[i] - 1;
+            end else if (!paused) begin 
+                if (proj_x[i] == 127) begin //if proj was not activated 
+                    proj_x[i] <= launchpt_x;
+                    proj_y[i] <= launchpt_y;
+                end else begin    
+                    proj_x[i] <= (i <= 2) ? proj_x[i] + 1 :  proj_x[i] - 1;
+                end
             end
         end
     end
@@ -233,7 +237,7 @@ endmodule
 
 //clk runs at 624_999
 module single_shot #(parameter MAX_PROJ = 2) (
-    input clk, [MAX_PROJ:0] active,
+    input clk, [MAX_PROJ:0] active, paused,
     [6:0]char_x, [6:0]char_y, [6:0]char_xvect, [6:0]sq_width, [6:0]sq_height, 
     output reg [6:0] proj_x [0:MAX_PROJ], output reg [6:0] proj_y [0:MAX_PROJ], 
     output reg [6:0] proj_h, output reg [6:0] proj_w
@@ -270,16 +274,18 @@ module single_shot #(parameter MAX_PROJ = 2) (
             if (active[i] == 0) begin
                 proj_x[i] = 127;
                 x_increment[i] = 0;
-             end else if (proj_x[i] == 127) begin //if proj was not activated 
-                x_increment[i] = char_xvect;
-                if (char_xvect == 1) begin // facing right, launch from right
-                    proj_x[i] <= launchpt_x_right; // starting point for projectile
-                end else if (char_xvect == 127) begin // facing left, launch from left
-                    proj_x[i] <= launchpt_x_left; // starting point for projectile
+             end else if (!paused) begin
+                 if (proj_x[i] == 127) begin //if proj was not activated 
+                    x_increment[i] = char_xvect;
+                    if (char_xvect == 1) begin // facing right, launch from right
+                        proj_x[i] <= launchpt_x_right; // starting point for projectile
+                    end else if (char_xvect == 127) begin // facing left, launch from left
+                        proj_x[i] <= launchpt_x_left; // starting point for projectile
+                    end
+                    proj_y[i] <= launchpt_y;
+                end else begin    
+                    proj_x[i] <= proj_x[i] + x_increment[i];
                 end
-                proj_y[i] <= launchpt_y;
-            end else begin    
-                proj_x[i] <= proj_x[i] + x_increment[i];
             end
         end 
     end

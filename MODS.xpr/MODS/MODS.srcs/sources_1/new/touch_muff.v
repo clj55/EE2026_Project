@@ -21,7 +21,7 @@
 
 
 module touch_muff(
-    input clk, hit_muff, start_muff, reset,
+    input clk, hit_muff, start_muff, reset, pause,
     output reg [2:0]char_no,
     output reg [31:0]muff_count
     );
@@ -38,14 +38,15 @@ module touch_muff(
     end
     
     always @ (posedge damage_clk) begin
-         
-        if (reset) begin
-            muff_count = 0;
-        end
-        
-        if (hit_muff) begin            
-            muff_count = muff_count + 1;
-            char_no = ((char_no + ((random_counter + 1) % (N - 1))) + 1) % N;        
+        if (!pause) begin
+            if (reset) begin
+                muff_count = 0;
+            end
+            
+            if (hit_muff) begin            
+                muff_count = muff_count + 1;
+                char_no = ((char_no + ((random_counter + 1) % (N - 1))) + 1) % N;        
+            end
         end
     end
     

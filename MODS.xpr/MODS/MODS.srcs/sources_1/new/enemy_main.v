@@ -27,7 +27,7 @@ input [6:0]platform_width[0:NUM_PLATFORMS], input [6:0]platform_x[0:NUM_PLATFORM
 input [6:0]spawn1, input [6:0]spawn2,
 input enemyprojclk, input [2:0] proj_d, input [MAX_ENEMIES:0] enemy_hit,
 output [MAX_ENEMIES:0] angry 
-//,input rando_sig
+,input pause, input reset
     );
     wire maxed;
  
@@ -38,20 +38,20 @@ output [MAX_ENEMIES:0] angry
     enemy_maxcheck #(.MAX_NUM(MAX_ENEMIES)) maxcheck(.clk(clk), .enemies(enemy_health), .maxed(maxed));
     
     wire [1:0] enemy_spawn [0:MAX_ENEMIES];  wire [MAX_ENEMIES:0] resetted_xy; 
-    enemy_spawner  #(.MAX_NUM(MAX_ENEMIES)) spawner(.clk(clk), .spawning(spawning), .spawn_type(spawn_type), .reset(reset_spawn),
+    enemy_spawner  #(.MAX_NUM(MAX_ENEMIES)) spawner(.clk(clk), .spawning(spawning), .spawn_type(spawn_type), .reset(reset_spawn  || reset),
     .spawned_small (spawned_small), .spawned_big (spawned_big),
     .enemies(enemy_spawn), .resetted_xy(resetted_xy)
-    //,input paused
+    ,.paused(paused)
         );
     enemy_health #(.MAX_NUM(MAX_ENEMIES)) health (.clk(enemyprojclk), .healths(enemy_health), .spawner(enemy_spawn), 
     .x(enemy_xref), .y(enemy_yref),
-    .proj_d(proj_d), .enemy_hit(enemy_hit), .angry(angry));
+    .proj_d(proj_d), .enemy_hit(enemy_hit), .angry(angry)
+    , .reset(reset));
     
     enemy_movement #(.MAX_NUM_ENEMIES(MAX_ENEMIES), .size(ENEMY_SIZE), .NUM_PLATFORMS(NUM_PLATFORMS)) move (.clk(clk), .spawn1(spawn1),  .spawn2(spawn2), 
              .healths(enemy_health), .xref(enemy_xref), .yref(enemy_yref), .resetted_xy(resetted_xy),
              .platform_width(platform_width), .x_obs(platform_x), .y_obs(platform_y),
-             .angry(angry)
-//             .rando_sig(rando_sig)
+             .angry(angry), .paused(paused)
              );
         
    

@@ -23,7 +23,7 @@
 module enemy_spawnfsm(input clk, input maxed, 
 input [3:0]spawned_small, input [3:0]spawned_big,
 output spawning, output reg reset_spawn, output reg spawn_type
-//,input paused
+,input paused, input reset
     );
     reg [4:0]level;
     reg [2:0]level_small[0:10]; reg [2:0]level_big[0:10];
@@ -58,33 +58,43 @@ output spawning, output reg reset_spawn, output reg spawn_type
     wire counting;
     assign counting = spawn_done && (!maxed);
     assign spawning = (!spawn_done) && (!maxed);
-    counter c(.clk(clk), .inc_count(counting), .count(count));
+    counter c(.clk(clk), .inc_count(counting), .count(count)
+    ,.paused(paused), .reset(reset)
+    );
     
     always @(posedge clk) begin 
-        if (spawned_small == 0 && spawned_big == 0)  begin // && spawned_big == 0)
-            reset_spawn = 0; //once resetted disable reset
-        end
-        
-        if (spawn_done) begin 
-            if (count == level_count[level]) begin 
-                num_small <= level_small[level]; 
-                num_big = level_big[level];
-                spawn_done <= 0;
-                reset_spawn <= 1;
-                level <= level + 1;
+        if (reset) begin 
+            reset_spawn = 0;
+            level = 0;
+            num_small = 0;
+            num_big = 0;
+            spawn_done = 1;
+            spawn_type = 0;
+        end else if (!paused) begin
+            if (spawned_small == 0 && spawned_big == 0)  begin // && spawned_big == 0)
+                reset_spawn = 0; //once resetted disable reset
             end
-        end else begin 
-            if (spawned_small < num_small) begin 
-                spawn_type <= 0;
-            end 
-            else if (spawned_big < num_big) begin 
-                spawn_type <= 1;
-            end
-            else begin 
-                spawn_done <= 1;
-            end
-        end
             
+            if (spawn_done) begin 
+                if (count == level_count[level]) begin 
+                    num_small <= level_small[level]; 
+                    num_big = level_big[level];
+                    spawn_done <= 0;
+                    reset_spawn <= 1;
+                    level <= level + 1;
+                end
+            end else begin 
+                if (spawned_small < num_small) begin 
+                    spawn_type <= 0;
+                end 
+                else if (spawned_big < num_big) begin 
+                    spawn_type <= 1;
+                end
+                else begin 
+                    spawn_done <= 1;
+                end
+            end
+        end   
     end 
     
 endmodule

@@ -21,7 +21,7 @@
 
 
 module counter(input clk, input inc_count, output reg [4:0]count
-//,input paused
+,input paused, input reset
 );
     wire onehz;
     flexy_clk secondsclk (clk, 49_999_999, onehz); //49_999_999
@@ -30,8 +30,10 @@ module counter(input clk, input inc_count, output reg [4:0]count
     end 
     
     always @(posedge onehz) begin 
-//        if (!paused) begin 
-            count <= (inc_count) ? count + 1: 0;
-//        end 
+        if (reset) begin
+            count = 0;
+        end else if (!paused) begin 
+            count <= (inc_count) ? count + 1: 0; 
+        end
     end 
 endmodule

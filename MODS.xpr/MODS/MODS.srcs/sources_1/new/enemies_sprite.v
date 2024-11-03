@@ -23,7 +23,7 @@
 
 module enemies_sprite #(parameter MAX_NUM_ENEMIES = 14)(
     input [6:0] x, input [6:0] y,
-    input [2:0] enemy_health [0:MAX_NUM_ENEMIES], input [MAX_NUM_ENEMIES:0] angry,
+    input [3:0] enemy_health [0:MAX_NUM_ENEMIES], input [MAX_NUM_ENEMIES:0] angry,
     input [6:0] xref [0:MAX_NUM_ENEMIES], input [6:0] yref [0:MAX_NUM_ENEMIES],
     output reg [15:0] oled_data
     );

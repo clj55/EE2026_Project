@@ -21,7 +21,7 @@
 
 
 module direction_mux(
-    input clk, btnC, btnL, btnR, btnD, btnU, is_y_stat,
+    input clk, btnL, btnR, btnU, is_y_stat,
     output reg [6:0]x_vect, reg [6:0]y_vect, reg facing // 1 is left, 0 is right
     );
 
