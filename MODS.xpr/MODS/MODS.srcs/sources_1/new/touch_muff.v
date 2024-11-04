@@ -27,7 +27,7 @@ module touch_muff(
     );
     
     wire damage_clk;
-    flexy_clock(.clk(clk), .m_value(1_249_999), .slow_clk(damage_clk)); // every 1ms
+    flexy_clock kkek(.clk(clk), .m_value(1_249_999), .slow_clk(damage_clk)); // every 1ms
     
     localparam N = 5; // number of characters    
     wire [11:0]random_counter; // count from 0 to 4
@@ -35,6 +35,7 @@ module touch_muff(
     
     initial begin
         muff_count = 0;
+        char_no = 0;
     end
     
     always @ (posedge damage_clk) begin

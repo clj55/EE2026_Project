@@ -33,7 +33,7 @@ module hero_damage(
     end
     
     wire damage_clk;
-    flexy_clock(.clk(clk), .m_value(49_999), .slow_clk(damage_clk)); // every 1ms
+    flexy_clock sdf(.clk(clk), .m_value(49_999), .slow_clk(damage_clk)); // every 1ms
     wire fps_clock;
     flexy_clock get_fps_clock (.clk(clk), .m_value(1_249_999), .slow_clk(fps_clock));
     

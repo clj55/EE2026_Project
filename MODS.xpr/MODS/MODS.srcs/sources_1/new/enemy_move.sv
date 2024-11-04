@@ -23,13 +23,16 @@
 
 
 module enemy_movement #(parameter MAX_NUM_ENEMIES = 15, parameter size = 8, parameter NUM_PLATFORMS = 3)
-(input clk, input [6:0]spawn1,  input [6:0]spawn2, input[3:0]healths [0: MAX_NUM_ENEMIES], 
+(input clk, input fps_clock, input[3:0]healths [0: MAX_NUM_ENEMIES], 
 input [6:0] platform_width[0:NUM_PLATFORMS], input [6:0] x_obs [0:NUM_PLATFORMS], input [6:0] y_obs [0:NUM_PLATFORMS],
 output reg [6:0] xref [0: MAX_NUM_ENEMIES]  , output reg [6:0] yref [0: MAX_NUM_ENEMIES],
 output [MAX_NUM_ENEMIES:0]resetted_xy, output reg [MAX_NUM_ENEMIES:0]angry
 ,input paused, reset
 );
-    wire normalhz; wire fasthz; wire fps_clock;
+        
+    localparam spawn1 = 15; // x coordinate
+    localparam spawn2 = 80; // x coordinate
+    wire normalhz; wire fasthz;
     reg [0:MAX_NUM_ENEMIES] direction; //0: left 1: right
     reg [6:0] y_increment [0:MAX_NUM_ENEMIES];
     reg [31:0]falling [0:MAX_NUM_ENEMIES];
@@ -37,7 +40,6 @@ output [MAX_NUM_ENEMIES:0]resetted_xy, output reg [MAX_NUM_ENEMIES:0]angry
     reg [1:0] x_inc;
     
     flexy_clk walk_clk (clk, 6_999_999, normalhz); //6_999_999
-    flexy_clk get_fps_clock (clk,  1_249_999, fps_clock); // 1_249_999
     integer i; integer j;
 
     initial begin 

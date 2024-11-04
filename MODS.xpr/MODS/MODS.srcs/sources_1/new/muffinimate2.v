@@ -49,6 +49,7 @@ module muffinimate2 #(parameter NUM_PLATFORMS = 3)(
         falling = 0;
         start = 1;
         stop_falling = 0;
+        hit_muff = 0;
     end
 //    wire m_value;
 //    m_value_calculator calc_m (.freq(fps), .m_value(m_value));

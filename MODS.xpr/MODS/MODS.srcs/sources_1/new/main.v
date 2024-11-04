@@ -21,7 +21,7 @@
 
 
 module main(
-    input clk, btnC, btnL, btnR, btnD, btnU, [4:0]sw,  
+    input clk, btnC, btnL, btnR, btnD, btnU,
     output [7:0]JC, [2:0]led, [6:0]seg, [3:0]an
     );
     
@@ -29,7 +29,7 @@ module main(
 wire frame_begin, sending_pixels, sample_pixels;
 wire [12:0] pixel_index;
 
-//wire [15:0] oled_data;
+wire [15:0] oled_data;
 reg [15:0] oled_data_reg;
 
 initial begin
@@ -37,7 +37,7 @@ initial begin
 end    
 
 parameter NUM_PLATFORMS = 3;    
-parameter MAX_ENEMIES = 7;
+parameter MAX_ENEMIES = 5;
 parameter ENEMY_SIZE = 8; //all of this should be the number you want -1
 parameter MAX_PROJ = 3;
 
@@ -57,9 +57,6 @@ assign platform_width[0] = 28; assign platform_width[1] = 32; assign platform_wi
 wire [6:0] platform_height [0:NUM_PLATFORMS];
 assign platform_height[0] = 3; assign platform_height[1] = 3; assign platform_height[2] = 3; assign platform_height[3] = 3;
 
-
-parameter enemy_spawn1 = 15; // x coordinate
-parameter enemy_spawn2 = 80; // x coordinate
 //wire [6:0]platform_width; wire [6:0]platform_height; 
 //wire [6:0]platform_x[0:NUM_PLATFORMS]; wire [6:0]platform_y[0:NUM_PLATFORMS]; 
 //assign platform_width = 30; assign platform_height = 3;
@@ -84,21 +81,21 @@ direction_mux choose_direction (.clk(clk), .btnL(btnL), .btnR(btnR), .btnU(btnU)
 
 wire [6:0] x_spawn = 48;
 wire [6:0] y_spawn = 0;
-wire [3:0] hitbox_size = 8; 
+wire [6:0] hitbox_size = 8; 
 wire [3:0] sprite_no;
 
 
 
 wire enemyprojclk;
-flexy_clk interactionclk (clk, 624_999, enemyprojclk); //624_999
+flexy_clk interactionclk (clk, 1, enemyprojclk); //624_999
 wire fps_clock;
-flexy_clock get_fps_clock (.clk(clk), .m_value(1_249_999), .slow_clk(fps_clock)); //1_249_999
+flexy_clock get_fps_clock (.clk(clk), .m_value(2), .slow_clk(fps_clock)); //1_249_999
 
 
 wire [3:0]enemies [MAX_ENEMIES:0]; wire [6:0]enemy_xref [MAX_ENEMIES:0]; wire [6:0]enemy_yref [MAX_ENEMIES:0];
 wire [2:0] proj_d; wire [MAX_ENEMIES:0] enemy_hit;
-wire [6:0] proj_x [0:MAX_PROJ]; wire [6:0] proj_y [0:MAX_PROJ]; 
-wire [2:0] proj_h; wire [6:0] proj_w; wire [MAX_PROJ:0]active_proj;
+wire [6:0] proj_x [0:MAX_PROJ]; wire [6:0] proj_y [0:MAX_PROJ]; wire [6:0] proj_h; wire [6:0]proj_w;
+wire [MAX_PROJ:0]active_proj;
 // projectile logic
 wire hit_muff; wire [2:0]char_no;
 projectile_main #(.MAX_PROJ(MAX_PROJ), .MAX_ENEMIES(MAX_ENEMIES), .NUM_PLATFORMS(NUM_PLATFORMS), .ENEMY_SIZE(ENEMY_SIZE))  projectiles
@@ -112,20 +109,19 @@ projectile_main #(.MAX_PROJ(MAX_PROJ), .MAX_ENEMIES(MAX_ENEMIES), .NUM_PLATFORMS
 wire [MAX_ENEMIES:0] angry;
 // enemy logic
 enemy_main #(.MAX_ENEMIES(MAX_ENEMIES), .ENEMY_SIZE(ENEMY_SIZE), .NUM_PLATFORMS(NUM_PLATFORMS)) em(
-    .clk(clk), .enemy_health(enemies), .enemy_xref(enemy_xref), .enemy_yref(enemy_yref),
+    .clk(clk), .fps_clock(fps_clock), .enemy_health(enemies), .enemy_xref(enemy_xref), .enemy_yref(enemy_yref),
     .platform_width(platform_width), .platform_x(platform_x), .platform_y(platform_y), 
-    .spawn1(enemy_spawn1), .spawn2(enemy_spawn2),
     .enemyprojclk(enemyprojclk), .proj_d(proj_d), .enemy_hit(enemy_hit),
     .angry(angry),
-    .reset(reset), .pause(pause)
+    .reset(reset), .paused(pause)
     );
 
 // track damage of player (3 lives)
 wire hero_hit;
 wire [31:0] muff_count;
 
-hero_damage(.clk(clk), .hit(hero_hit), .reset(reset), .LED(led));
-touch_muff(.clk(clk), .hit_muff(hit_muff), .start_muff(0), .reset(reset), .char_no(char_no), .muff_count(muff_count));
+hero_damage hd(.clk(clk), .hit(hero_hit), .reset(reset), .LED(led));
+touch_muff tm(.pause(pause), .clk(clk), .hit_muff(hit_muff), .start_muff(0), .reset(reset), .char_no(char_no), .muff_count(muff_count));
 
 // seven seg display to count muffins collected
 seven_seg_display2 display (.n(muff_count), .CLOCK(clk), .an(an), .seg(seg));
@@ -137,11 +133,6 @@ animate #(.MAX_ENEMIES(MAX_ENEMIES), .NUM_PLATFORMS(NUM_PLATFORMS)) animate_hero
         .x_platform(platform_x), .y_platform(platform_y), .width_platform(platform_width), .height_platform(platform_height), 
         .reset(reset), .pause(pause),
         .x_var(x_var), .y_var(y_var), .is_y_stat(is_y_stat), .sprite_no(sprite_no), .hero_hit(hero_hit));
-        
-wire proj_move;
-wire proj_hit_enemy;
-wire [6:0]proj_width;
-wire [6:0]proj_height;
 
 // muffin logic
 muffinimate2 #(.NUM_PLATFORMS(NUM_PLATFORMS)) animate_muffin (.clk(clk),
@@ -151,7 +142,6 @@ muffinimate2 #(.NUM_PLATFORMS(NUM_PLATFORMS)) animate_muffin (.clk(clk),
         .reset(reset), .pause(pause),
         .x_var(x_muff), .y_var(y_muff), .hit_muff(hit_muff));
 
-
 // Timothy's drawing module
 //wire [15:0]oled_data_proj; wire [15:0] oled_data_map;
 pixel_control #(.MAX_ENEMIES(MAX_ENEMIES)) pixycont (
@@ -160,7 +150,7 @@ pixel_control #(.MAX_ENEMIES(MAX_ENEMIES)) pixycont (
         .xref_std(x_var), .yref_std(y_var), .stnum(char_no), .faceleft(facing), .vertical_movement(is_y_stat),
         .xref_e(enemy_xref), .yref_e(enemy_yref), .enemy_health(enemies), .angry(angry),
         .xref_muffin(x_muff), .yref_muffin(y_muff),
-        .pixel_data(oled_data_reg)
+        .pixel_data(oled_data)
         );
 //draw_proj #(.MAX_NUM(MAX_PROJ)) drawp (.p_index(pixel_index), .active_proj(active_proj), 
 //        .xref(proj_x), .yref(proj_y), .oled_data(oled_data_proj), 

@@ -25,7 +25,7 @@ module animate #(parameter NUM_PLATFORMS = 4, parameter MAX_ENEMIES = 7, paramet
     [6:0]x_vect, [6:0]y_vect, [6:0]sq_width, [6:0]sq_height, 
     [6:0]enemy_xref [0:MAX_ENEMIES], [6:0]enemy_yref [0:MAX_ENEMIES],
     [6:0] x_platform [0:NUM_PLATFORMS], [6:0] y_platform [0:NUM_PLATFORMS], [6:0] width_platform [0:NUM_PLATFORMS], [6:0] height_platform [0:NUM_PLATFORMS],
-    reset, pause,
+    input reset, pause,
     output reg [6:0]x_var, reg [6:0]y_var, reg is_y_stat, reg [3:0]sprite_no, reg hero_hit
     );
     
@@ -40,11 +40,14 @@ module animate #(parameter NUM_PLATFORMS = 4, parameter MAX_ENEMIES = 7, paramet
         x_var = PLAYER_RESPAWN_X;
         y_var = PLAYER_RESPAWN_Y;
         // for some reason x_var and y_var cant take values of x_start and y_start... values must be written dirctly in this initial block
+        x_increment = 0;
+        y_increment = 0;
         is_y_stat = 0;
         jump_time = 15;
         jumping = 0; 
         falling = 0;
         start = 1;
+        hero_hit = 0;
     end
 //    wire m_value;
 //    m_value_calculator calc_m (.freq(fps), .m_value(m_value));

@@ -23,8 +23,8 @@
 module projectile_main #(parameter MAX_PROJ = 5, MAX_ENEMIES = 15, ENEMY_SIZE = 8, 
 NUM_PLATFORMS = 3)
 (input clk, input btnD, input reset, input fps_clock, input paused,
-[6:0]char_x, [6:0]char_y, [6:0]char_xvect, 
-[6:0]char_width, [6:0]char_height, [2:0]proj_type,
+input [6:0]char_x, [6:0]char_y, [6:0]char_xvect, 
+[6:0] char_width, [6:0]char_height, [2:0]proj_type,
  input [6:0]platform_x[0:NUM_PLATFORMS], [6:0]platform_y[0:NUM_PLATFORMS], 
  [6:0]platform_h[0:NUM_PLATFORMS], [6:0]platform_w[0:NUM_PLATFORMS],
  input [6:0] enemy_x[0:MAX_ENEMIES], input [6:0] enemy_y [0:MAX_ENEMIES], 
@@ -35,7 +35,7 @@ NUM_PLATFORMS = 3)
     parameter lasercountmax = 20;
     
     reg [MAX_ENEMIES:0] enemy_hitbfr[0:MAX_PROJ];
-    reg [31:0] cooldowncount; reg [31:0] cooldown; 
+    integer cooldowncount; integer cooldown; 
     reg [31:0] lasercount; reg [3:0]mine_i; reg [MAX_PROJ:0]setmine; wire mine_setted;
     integer i; integer j; integer k;
     

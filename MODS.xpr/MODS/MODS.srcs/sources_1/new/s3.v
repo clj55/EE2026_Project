@@ -24,8 +24,8 @@
 module s3(
     input [6:0] xref, 
     input [6:0] x, 
-    input [5:0] yref, 
-    input [5:0] y,
+    input [6:0] yref, 
+    input [6:0] y,
     input clock, // always check, if xref, yref changes, change from frame1 to frame2 for eg
     input btnU, btnL, btnR, ystationary, faceleft,
     output reg [15:0] oled_data = 0

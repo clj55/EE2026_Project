@@ -19,8 +19,8 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 module mine #(parameter MAX_PROJ = 2, parameter NUM_PLATFORMS = 3) (
-    input clk, [MAX_PROJ:0]active, [MAX_PROJ:0] setmine,
-    [6:0]char_x, [6:0]char_y, [6:0]sq_width, [6:0]sq_height,
+    input clk, input [MAX_PROJ:0]active, input [MAX_PROJ:0] setmine,
+    input [6:0]char_x, [6:0]char_y, [6:0]sq_width, [6:0]sq_height,
     output reg [6:0] proj_x [0:MAX_PROJ], output reg [6:0] proj_y [0:MAX_PROJ],  reg [6:0]proj_w, reg[6:0]proj_h, 
     input [6:0]platform_x[0:NUM_PLATFORMS], [6:0]platform_y[0:NUM_PLATFORMS], [6:0]platform_w[0:NUM_PLATFORMS],
     output reg mine_setted
@@ -93,8 +93,8 @@ module mine #(parameter MAX_PROJ = 2, parameter NUM_PLATFORMS = 3) (
 endmodule
 
 module laser (
-    input clk, active,
-    [6:0]char_x, [6:0]char_y, [6:0]char_xvect, [6:0]sq_width, [6:0]sq_height,
+    input clk, input active,
+    input [6:0]char_x, [6:0]char_y, [6:0]char_xvect, [6:0]sq_width, [6:0]sq_height,
     output reg [6:0] proj_x, output reg [6:0] proj_y,  reg [6:0]proj_w, reg[6:0]proj_h
     );
     
@@ -126,8 +126,8 @@ module laser (
 endmodule
 
 module parab_shot #(parameter MAX_PROJ = 2) (
-    input clk, [MAX_PROJ:0]active, input paused,
-    [6:0]char_x, [6:0]char_y, [6:0]char_xvect, [6:0]sq_width, [6:0]sq_height,
+    input clk, input [MAX_PROJ:0]active, input paused,
+    input [6:0]char_x, [6:0]char_y, [6:0]char_xvect, [6:0]sq_width, [6:0]sq_height,
     output reg [6:0] proj_x [0:MAX_PROJ], output reg [6:0] proj_y [0:MAX_PROJ],  reg [6:0]proj_w, reg[6:0]proj_h
     );
 
@@ -197,8 +197,8 @@ module parab_shot #(parameter MAX_PROJ = 2) (
 endmodule
 
 module double_shot #(parameter MAX_PROJ = 2) (
-    input clk, [MAX_PROJ:0] active, paused,
-    [6:0]char_x, [6:0]char_y, [6:0]sq_width, [6:0]sq_height, 
+    input clk, input [MAX_PROJ:0] active, input paused,
+    input [6:0]char_x, [6:0]char_y, [6:0]sq_width, [6:0]sq_height, 
     output reg [6:0] proj_x [0:MAX_PROJ], output reg [6:0] proj_y [0:MAX_PROJ], 
     output reg [6:0] proj_h, output reg [6:0] proj_w
 );
@@ -237,8 +237,8 @@ endmodule
 
 //clk runs at 624_999
 module single_shot #(parameter MAX_PROJ = 2) (
-    input clk, [MAX_PROJ:0] active, paused,
-    [6:0]char_x, [6:0]char_y, [6:0]char_xvect, [6:0]sq_width, [6:0]sq_height, 
+    input clk, input [MAX_PROJ:0] active, input paused,
+    input [6:0]char_x, [6:0]char_y, [6:0]char_xvect, [6:0]sq_width, [6:0]sq_height, 
     output reg [6:0] proj_x [0:MAX_PROJ], output reg [6:0] proj_y [0:MAX_PROJ], 
     output reg [6:0] proj_h, output reg [6:0] proj_w
     );

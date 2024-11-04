@@ -32,6 +32,7 @@ module direction_mux(
         y_vect = 0;
         jump_height = 20;
         jumping = 0;  
+        facing = 1;
     end
     always @ (posedge clk) begin
         if (btnL) begin // move left
